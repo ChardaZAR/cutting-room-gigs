@@ -1,0 +1,37 @@
+name: Automated Job Sweep
+
+on:
+  schedule:
+    # Runs automatically every 6 hours in the cloud
+    - cron: "0 */6 * * *"
+  workflow_dispatch: # Allows manual one-click trigger from the GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run live job sweep across public sources
+        run: python sweep.py
+
+      - name: Commit and push updated job board data
+        run: |
+          git config user.name "cutting-room-bot"
+          git config user.email "actions@github.com"
+          git add jobs.json jobs.js cutting-room-gigs-standalone.html
+          if git diff --staged --quiet; then
+            echo "No new listings found during this sweep."
+          else
+            git commit -m "chore(sweep): auto-update job listings"
+            git push
+          fi

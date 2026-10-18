@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cutting Room Gigs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an editor's bin. A slim "timeline" header with the sweep timecode, navigation tabs, filter bar as track toggles, listings as clips in a single column. */
+:root{
+  --bg:#F2F4F3; --surface:#FFFFFF; --ink:#151D1B; --muted:#5B6764; --line:#D9DFDD;
+  --accent:#C9741A; --accent-ink:#FFFFFF; --soft:#F7EBDD;
+  --social:#2F6FD6; --yt:#C23B3B; --pod:#7A4FC4;
+  --ok:#2C7A4B; --warn:#A8650E; --danger:#C23B3B;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111816; --surface:#18211F; --ink:#E7ECEA; --muted:#97A3A0; --line:#2A3532;
+  --accent:#E8973F; --accent-ink:#1A1206; --soft:#2B2217;
+  --social:#79A5F0; --yt:#EE7D7D; --pod:#B395EC; --ok:#6CC28E; --warn:#E5A957; --danger:#EE7D7D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111816; --surface:#18211F; --ink:#E7ECEA; --muted:#97A3A0; --line:#2A3532;
+  --accent:#E8973F; --accent-ink:#1A1206; --soft:#2B2217;
+  --social:#79A5F0; --yt:#EE7D7D; --pod:#B395EC; --ok:#6CC28E; --warn:#E5A957; --danger:#EE7D7D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);margin:0}
+.wrap{max-width:920px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+header{display:grid;gap:8px}
+.tc-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tc{font:500 12px var(--f-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.tc b{color:var(--accent);font-weight:500}
+h1{font:700 clamp(30px,6vw,44px)/1.05 var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lede{color:var(--muted);margin:0;max-width:62ch}
+.ruler{height:10px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px);border-bottom:1px solid var(--line);position:relative}
+.ruler::after{content:"";position:absolute;left:38%;top:-6px;bottom:-4px;width:2px;background:var(--accent)}
+
+/* Navigation Tabs */
+.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.tab-group{display:flex;gap:8px;flex-wrap:wrap}
+.tab{font:600 14px var(--f-body);padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:all .15s}
+.tab:hover{border-color:var(--accent);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab .badge{font:500 11px var(--f-mono);padding:1px 6px;border-radius:999px;background:color-mix(in srgb,currentColor 16%,transparent)}
+.refresh-btn{font:500 13px var(--f-mono);padding:7px 13px;border-radius:8px;border:1px solid var(--accent);background:var(--soft);color:var(--ink);cursor:pointer;display:inline-flex;gap:7px;align-items:center;transition:all .15s}
+.refresh-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.refresh-btn:disabled{opacity:.6;cursor:wait}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinning{display:inline-block;animation:spin .8s linear infinite}
+
+/* Filter bar */
+.bar{display:grid;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lab{font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:64px}
+.chip{font:500 13px var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .dot{width:8px;height:8px;border-radius:2px}
+.chip:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=search],input[type=text],input[type=email],select,textarea{font:14.5px var(--f-body);padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+input[type=search]{flex:1;min-width:0}
+.count{font:12px var(--f-mono);color:var(--muted)}
+
+/* Clips / Listings */
+.list{display:grid;gap:10px}
+.clip{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:6px 1fr;overflow:hidden}
+.clip .strip{background:var(--c,var(--line))}
+.clip .body{padding:14px 16px;display:grid;gap:8px;min-width:0}
+.clip.saved{border-color:var(--accent)}
+.clip.applied .body{background:color-mix(in srgb,var(--ok) 5%,var(--surface))}
+.clip.hidden{opacity:.65}
+.top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.top h2{font:600 17px/1.3 var(--f-body);margin:0;min-width:0}
+.top h2 a{color:inherit;text-decoration:none}
+.top h2 a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.co{color:var(--muted);font-size:14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font:12.5px var(--f-mono);color:var(--muted)}
+.meta .pay{color:var(--ink)}
+.tag{font:500 11px var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:4px;border:1px solid currentColor}
+.reg-world{color:var(--ok)} .reg-limited{color:var(--warn)} .reg-unknown{color:var(--muted)}
+.alert-match-tag{color:var(--accent);background:var(--soft);border-color:var(--accent)}
+.note{font-size:13.5px;color:var(--muted);margin:0}
+.acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.btn{font:500 12.5px var(--f-body);padding:5px 11px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;gap:5px;align-items:center}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.applied-btn:hover,.btn.applied-btn[aria-pressed="true"]{background:color-mix(in srgb,var(--ok) 15%,var(--surface));border-color:var(--ok);color:var(--ok)}
+.btn.not-int-btn:hover,.btn.not-int-btn[aria-pressed="true"]{background:color-mix(in srgb,var(--danger) 12%,var(--surface));border-color:var(--danger);color:var(--danger)}
+.btn[aria-pressed="true"]{background:var(--soft);border-color:var(--accent)}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}
+
+/* Applied Tracker specifics */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:2px;cursor:pointer}
+.stat-card[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
+.stat-card b{font:700 20px var(--f-display);color:var(--ink)}
+.stat-card span{font:500 11px var(--f-mono);text-transform:uppercase;color:var(--muted)}
+.tracker-box{margin-top:6px;padding-top:10px;border-top:1px dashed var(--line);display:grid;gap:8px}
+.tracker-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tracker-row label{font:500 11.5px var(--f-mono);color:var(--muted);display:flex;align-items:center;gap:6px}
+.stage-select{font:500 12.5px var(--f-mono);padding:4px 8px;border-radius:6px}
+.tracker-notes{width:100%;font:13.5px var(--f-body);padding:7px 10px;border-radius:6px;resize:vertical;min-height:38px}
+
+/* Alerts & Notifications Panel */
+.panel-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:14px}
+.panel-card h3{font:700 18px var(--f-display);margin:0}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;align-items:end}
+.field{display:grid;gap:4px}
+.field label{font:500 11px var(--f-mono);text-transform:uppercase;color:var(--muted)}
+.rule-list{display:grid;gap:8px}
+.rule-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);flex-wrap:wrap}
+.rule-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:13px var(--f-body)}
+.rule-meta code{font:500 12px var(--f-mono);background:var(--surface);padding:2px 6px;border-radius:4px;border:1px solid var(--line)}
+
+/* Source Toggles */
+.src-chip{font:500 12px var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:all .15s}
+.src-chip:hover{border-color:var(--accent)}
+.src-chip.off{opacity:.52;text-decoration:line-through;background:transparent;border-style:dashed}
+.src-chip .sdot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.src-chip.off .sdot{background:var(--danger)}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:10px}
+.src-card{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);transition:all .15s}
+.src-card.off{opacity:.58;border-style:dashed}
+.src-card .src-info{min-width:0;display:grid;gap:2px}
+.src-card .src-title{font:600 14px var(--f-body);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.src-card .src-title a{color:inherit;text-decoration:none}
+.src-card .src-title a:hover{color:var(--accent);text-decoration:underline}
+
+/* Toast banner */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:8px;font:500 13.5px var(--f-body);display:flex;gap:12px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.22);z-index:100;opacity:0;pointer-events:none;transform:translateY(8px);transition:all .2s}
+.toast.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.toast button{background:var(--accent);color:var(--accent-ink);border:none;border-radius:5px;padding:4px 9px;font:600 12px var(--f-body);cursor:pointer}
+
+section h3{font:700 20px var(--f-display);margin:0 0 4px}
+.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.board{display:grid;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
+.board:hover{border-color:var(--accent)}
+.board small{color:var(--muted);font-size:12.5px}
+.sweep{display:grid;gap:8px;padding:16px;border-radius:10px;background:var(--soft)}
+.sweep code{font:13px var(--f-mono);background:var(--surface);padding:8px 10px;border-radius:6px;display:block;overflow-x:auto;white-space:nowrap}
+.status{font:12px var(--f-mono);color:var(--muted)}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:no-preference){.clip{transition:border-color .15s}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="tc-row">
+      <div class="tc">
+        <span>Bin · Remote worldwide</span>
+        <span>Last sweep <b id="sweepDate">—</b></span>
+        <span id="clipCount">0 clips</span>
+      </div>
+      <button class="refresh-btn" id="refreshBtn" title="Re-fetch listings and check for new matches">
+        <span id="refreshIcon">↻</span> <span id="refreshLabel">Refresh Jobs</span>
+      </button>
+    </div>
+    <h1>Cutting Room Gigs</h1>
+    <p class="lede">Open, public listings for remote video editors: social and paid ads, YouTube long-form, and podcasts. Mark roles as <b>Applied</b> to track your pipeline, or toggle any <b>Source</b> on/off below.</p>
+    <div class="ruler" aria-hidden="true"></div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs" aria-label="Board Views">
+    <div class="tab-group" role="tablist">
+      <button class="tab" role="tab" id="tab-bin" aria-selected="true" data-view="bin">
+        Open Bin <span class="badge" id="badge-bin">0</span>
+      </button>
+      <button class="tab" role="tab" id="tab-applied" aria-selected="false" data-view="applied">
+        Applied Tracker <span class="badge" id="badge-applied">0</span>
+      </button>
+      <button class="tab" role="tab" id="tab-alerts" aria-selected="false" data-view="alerts">
+        Sources &amp; Alerts <span class="badge" id="badge-alerts">0</span>
+      </button>
+    </div>
+    <span class="status" id="refreshStatus" aria-live="polite"></span>
+  </nav>
+
+  <!-- VIEW 1: OPEN BIN -->
+  <div id="view-bin" style="display:grid;gap:18px">
+    <div class="bar">
+      <div class="row"><span class="lab">Niche</span>
+        <button class="chip" data-niche="social" aria-pressed="false"><span class="dot" style="background:var(--social)"></span>Social &amp; ads</button>
+        <button class="chip" data-niche="youtube" aria-pressed="false"><span class="dot" style="background:var(--yt)"></span>YouTube</button>
+        <button class="chip" data-niche="podcast" aria-pressed="false"><span class="dot" style="background:var(--pod)"></span>Podcast</button>
+      </div>
+      <div class="row"><span class="lab">Type</span>
+        <button class="chip" data-type="freelance" aria-pressed="false">Freelance / per project</button>
+        <button class="chip" data-type="parttime" aria-pressed="false">Part-time</button>
+        <button class="chip" data-type="fulltime" aria-pressed="false">Full-time contract</button>
+      </div>
+      <div class="row"><span class="lab">Show</span>
+        <button class="chip" id="onlyWorld" aria-pressed="false">Worldwide only</button>
+        <button class="chip" id="onlySaved" aria-pressed="false">Saved ★</button>
+        <button class="chip" id="onlyAlertMatch" aria-pressed="false">Matches My Alerts</button>
+        <button class="chip" id="showHidden" aria-pressed="false">Show Not Interested</button>
+      </div>
+      <div class="row" style="align-items:flex-start"><span class="lab" style="padding-top:5px">Sources</span>
+        <div id="sourceChips" style="display:flex;flex-wrap:wrap;gap:6px;flex:1;align-items:center"></div>
+      </div>
+      <div class="row">
+        <input type="search" id="q" placeholder="Search title, company, source, notes, pay…" aria-label="Search listings">
+        <span class="count" id="shown"></span>
+      </div>
+    </div>
+
+    <div class="list" id="list"><div class="empty">Loading listings…</div></div>
+  </div>
+
+  <!-- VIEW 2: APPLIED TRACKER -->
+  <div id="view-applied" hidden style="display:grid;gap:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <div>
+        <h3 style="margin:0">Application Pipeline</h3>
+        <p class="note">Track your applications, test edits, interviews, rates quoted, and follow-up notes. Click a stage card below to filter.</p>
+      </div>
+      <input type="search" id="qApplied" placeholder="Search applied roles…" style="max-width:260px">
+    </div>
+    <div class="stats-grid" id="appliedStats"></div>
+    <div class="list" id="appliedList"></div>
+  </div>
+
+  <!-- VIEW 3: SOURCES, ALERTS & NOTIFICATIONS -->
+  <div id="view-alerts" hidden style="display:grid;gap:18px">
+    <div class="panel-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+        <div>
+          <h3>Active Job Sources (Turn On / Off)</h3>
+          <p class="note">Toggle which job boards and communities appear on your board and get scraped during sweeps. Turning a source <b>Off</b> (like <b>Reddit</b>) hides its clips immediately and skips it on future sweeps.</p>
+        </div>
+        <div class="acts">
+          <button class="btn" id="enableAllSourcesBtn">Enable All</button>
+          <button class="btn" id="toggleRedditQuickBtn">Toggle Reddit</button>
+        </div>
+      </div>
+      <div class="src-grid" id="sourceGrid"></div>
+    </div>
+
+    <div class="panel-card">
+      <div>
+        <h3>Custom Job Alert Rules</h3>
+        <p class="note">Set up specific rules (like <b>"Podcast Editor"</b> or <b>"Documentary"</b>). Whenever you refresh or an hourly sweep finds a matching new role from an enabled source, you'll get notified and matching cards will be highlighted.</p>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="ruleKeyword">Keywords (e.g. Podcast Editor, UGC)</label>
+          <input type="text" id="ruleKeyword" placeholder="e.g. Podcast Editor">
+        </div>
+        <div class="field">
+          <label for="ruleNiche">Niche</label>
+          <select id="ruleNiche">
+            <option value="any">Any Niche</option>
+            <option value="podcast">Podcast</option>
+            <option value="youtube">YouTube</option>
+            <option value="social">Social &amp; ads</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ruleType">Role Type</label>
+          <select id="ruleType">
+            <option value="any">Any Type</option>
+            <option value="freelance">Freelance / per project</option>
+            <option value="parttime">Part-time</option>
+            <option value="fulltime">Full-time contract</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ruleWorld">Region</label>
+          <select id="ruleWorld">
+            <option value="any">Any Region</option>
+            <option value="world">Worldwide Only</option>
+          </select>
+        </div>
+      </div>
+      <div class="acts">
+        <button class="btn primary" id="addRuleBtn">+ Add Alert Rule</button>
+      </div>
+      <div class="rule-list" id="ruleList"></div>
+    </div>
+
+    <div class="panel-card">
+      <div>
+        <h3>Desktop &amp; Email Notification Channels</h3>
+        <p class="note">Choose how you want to be alerted when a new job matches your rules.</p>
+      </div>
+      <div class="row" style="justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)">
+        <div>
+          <div style="font-weight:600">Desktop Notifications</div>
+          <div class="note" id="desktopPermStatus">Browser &amp; Windows toast notifications when matching jobs arrive.</div>
+        </div>
+        <div class="acts">
+          <button class="btn primary" id="enableDesktopBtn">Enable Desktop Alerts</button>
+          <button class="btn" id="testDesktopBtn">Send Test Notification</button>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>
+            <div style="font-weight:600">Email Notifications</div>
+            <div class="note">Receive an email alert when a sweep finds new roles matching your rules.</div>
+          </div>
+          <label style="font:500 13px var(--f-body);display:flex;align-items:center;gap:6px;cursor:pointer">
+            <input type="checkbox" id="emailEnabled"> Enable Email Alerts
+          </label>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="alertEmailTo">Recipient Email</label>
+            <input type="email" id="alertEmailTo" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="smtpUser">SMTP / Gmail Sender (Optional for background auto-send)</label>
+            <input type="email" id="smtpUser" placeholder="sender@gmail.com">
+          </div>
+          <div class="field">
+            <label for="smtpPass">SMTP App Password (Optional)</label>
+            <input type="text" id="smtpPass" placeholder="xxxx xxxx xxxx xxxx" style="-webkit-text-security:disc">
+          </div>
+        </div>
+        <div class="acts">
+          <button class="btn primary" id="saveEmailCfgBtn">Save Notification Settings</button>
+          <button class="btn" id="testEmailBtn">Test Email Alert</button>
+          <span class="status" id="emailSaveStatus"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sweep">
+    <h3>Fresh sweep &amp; Live Server</h3>
+    <p class="note" style="color:var(--ink)">Click <b>↻ Refresh Jobs</b> in the top-right anytime to reload <code>jobs.json</code> (updated hourly by your scheduled automation) or trigger a live scrape when running <code>start-board.bat</code>. Your Saved, Applied tracker, Source toggles, and Not Interested marks stay untouched.</p>
+    <code id="prompt">Run a fresh sweep on Cutting Room Gigs</code>
+    <div class="acts"><button class="btn" id="copy">Copy chat request</button><span class="status" id="copied" aria-live="polite"></span></div>
+  </section>
+
+  <section>
+    <h3>Search the boards yourself</h3>
+    <p class="note">Live search pages, pre-filtered for video editing.</p>
+    <div class="boards" style="margin-top:10px">
+      <a class="board" href="https://ytjobs.co/" target="_blank" rel="noopener">YT Jobs<small>YouTube &amp; short-form creators hiring</small></a>
+      <a class="board" href="https://yt.careers/" target="_blank" rel="noopener">YT.Careers<small>YouTube creators hiring, mostly worldwide</small></a>
+      <a class="board" href="https://www.remoterocketship.com/country/worldwide/jobs/video-editor/" target="_blank" rel="noopener">Remote Rocketship<small>Worldwide video editor roles</small></a>
+      <a class="board" href="https://dynamitejobs.com/skill/remote-video-editing-jobs" target="_blank" rel="noopener">Dynamite Jobs<small>Remote video editing, pay shown</small></a>
+      <a class="board" href="https://hirezar.co.za/" target="_blank" rel="noopener">Somewhere / Hirezar<small>South Africa remote video editor roles</small></a>
+      <a class="board" href="https://himalayas.app/jobs/video-editor" target="_blank" rel="noopener">Himalayas<small>Worldwide remote video editing jobs</small></a>
+      <a class="board" href="https://podnews.net/job" target="_blank" rel="noopener">Podnews Jobs<small>Podcast video &amp; producer openings</small></a>
+      <a class="board" href="https://www.twine.net/jobs/video-editors" target="_blank" rel="noopener">Twine<small>Freelance video editor briefs</small></a>
+      <a class="board" href="https://weworkremotely.com/remote-jobs-video-editing" target="_blank" rel="noopener">We Work Remotely<small>Video editing category</small></a>
+      <a class="board" href="https://jobgether.com/remote-jobs/video-editor" target="_blank" rel="noopener">Jobgether<small>Remote video editor roles</small></a>
+      <a class="board" href="https://dailyremote.com/remote-video-editor-jobs" target="_blank" rel="noopener">DailyRemote<small>Remote video editor jobs</small></a>
+      <a class="board" href="https://www.reddit.com/r/CreatorServices/search/?q=Hiring+Video+Editor&amp;restrict_sr=1&amp;sort=new" target="_blank" rel="noopener">Reddit (r/CreatorServices)<small>Creator hiring posts</small></a>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span id="toastMsg"></span>
+  <button id="toastAction" hidden></button>
+</div>
+
+<script src="jobs.js"></script>
+<script>
+(function(){
+  const NICHE={social:"Social & ads",youtube:"YouTube",podcast:"Podcast"};
+  const NC={social:"var(--social)",youtube:"var(--yt)",podcast:"var(--pod)"};
+  const TYPE={freelance:"Freelance / per project",parttime:"Part-time",fulltime:"Full-time contract"};
+  const REG={world:["Worldwide","reg-world"],limited:["Region limits","reg-limited"],unknown:["Eligibility not stated","reg-unknown"]};
+  const STAGES=[
+    {id:"applied",label:"Applied"},
+    {id:"test",label:"Test Edit / Audition"},
+    {id:"interview",label:"Interviewing"},
+    {id:"offer",label:"Offer / Won"},
+    {id:"rejected",label:"Closed / Rejected"}
+  ];
+  const SOURCE_CATALOG=[
+    {id:"Ashby",desc:"Direct agency & creator startup ATS boards (AI Digest, Newform, Dream Three, RevStone)",url:"https://jobs.ashbyhq.com/aidigest"},
+    {id:"Workable",desc:"Direct DTC brand & media agency ATS boards (HireHawk, ReWorks Solutions, Somerce)",url:"https://jobs.workable.com/search?query=video+editor&workplace=remote"},
+    {id:"Somewhere / Hirezar",desc:"South Africa & global remote placement agencies with transparent USD salaries",url:"https://himalayas.app/companies/somewhere"},
+    {id:"Himalayas",desc:"Curated global remote job board with salary & timezone filters",url:"https://himalayas.app/jobs/video-editor"},
+    {id:"Dynamite Jobs",desc:"100% remote-first company board with verified USD rates",url:"https://dynamitejobs.com/remote-video-editing-jobs"},
+    {id:"YT Jobs",desc:"Largest YouTube creator & channel editing marketplace",url:"https://ytjobs.co/"},
+    {id:"Twine",desc:"Freelance creative marketplace for TikTok, Reels & YouTube gigs",url:"https://www.twine.net/find-work/video-editor-jobs"},
+    {id:"Reddit",desc:"Community hiring threads on r/CreatorServices, r/forhire & r/VideoEditing",url:"https://www.reddit.com/r/CreatorServices/"},
+    {id:"YT.Careers",desc:"Curated YouTube channel & media studio job board",url:"https://yt.careers/"},
+    {id:"Remote Rocketship",desc:"Global remote job aggregator across company career pages",url:"https://www.remoterocketship.com/jobs/video-editor"},
+    {id:"RemoteSource",desc:"Remote creative & agency matching platform",url:"https://remotesource.com/"},
+    {id:"Podnews",desc:"Daily podcast industry job board for video podcast editors & producers",url:"https://podnews.net/jobs"}
+  ];
+
+  let jobs=[], status={}, appliedMeta={}, alertRules=[], disabledSources=new Set(), notifyCfg={desktop:false,emailEnabled:false,emailTo:"",smtpUser:"",smtpPass:""};
+  let currentView="bin", stageFilter="all", toastTimer=null;
+  const f={niche:new Set(),type:new Set(),world:false,saved:false,alertMatch:false,hidden:false,q:"",qApplied:""};
+
+  const $=id=>document.getElementById(id);
+
+  // Load state from localStorage
+  try{
+    const s=JSON.parse(localStorage.getItem("crg-filters")||"null");
+    if(s){f.niche=new Set(s.niche||[]);f.type=new Set(s.type||[]);f.world=!!s.world;f.saved=!!s.saved;f.alertMatch=!!s.alertMatch;f.hidden=!!s.hidden;}
+  }catch(e){}
+  try{status=JSON.parse(localStorage.getItem("crg-status")||"{}")}catch(e){status={}}
+  try{appliedMeta=JSON.parse(localStorage.getItem("crg-applied-meta")||"{}")}catch(e){appliedMeta={}}
+  try{
+    const ds=JSON.parse(localStorage.getItem("crg-disabled-sources")||"null");
+    if(Array.isArray(ds))disabledSources=new Set(ds);
+  }catch(e){}
+  try{
+    const r=JSON.parse(localStorage.getItem("crg-alert-rules")||"null");
+    alertRules=Array.isArray(r)?r:[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}];
+  }catch(e){alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}]}
+  try{
+    const nc=JSON.parse(localStorage.getItem("crg-notify-cfg")||"null");
+    if(nc)notifyCfg={...notifyCfg,...nc};
+  }catch(e){}
+
+  function persistState(){
+    try{
+      localStorage.setItem("crg-status",JSON.stringify(status));
+      localStorage.setItem("crg-applied-meta",JSON.stringify(appliedMeta));
+      localStorage.setItem("crg-alert-rules",JSON.stringify(alertRules));
+      localStorage.setItem("crg-notify-cfg",JSON.stringify(notifyCfg));
+      localStorage.setItem("crg-disabled-sources",JSON.stringify([...disabledSources]));
+    }catch(e){}
+    // Also sync to local server if running
+    fetch("/api/state",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({status,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources]})
+    }).catch(()=>{});
+  }
+
+  function saveF(){
+    try{localStorage.setItem("crg-filters",JSON.stringify({niche:[...f.niche],type:[...f.type],world:f.world,saved:f.saved,alertMatch:f.alertMatch,hidden:f.hidden}))}catch(e){}
+  }
+
+  function getAllSources(){
+    const known=new Map(SOURCE_CATALOG.map(s=>[s.id,{...s,count:0}]));
+    jobs.forEach(j=>{
+      const src=j.source||"Other";
+      if(!known.has(src))known.set(src,{id:src,desc:"Public job source",url:"#",count:0});
+      known.get(src).count++;
+    });
+    return [...known.values()];
+  }
+
+  function toggleSource(srcId){
+    const wasOff=disabledSources.has(srcId);
+    if(wasOff)disabledSources.delete(srcId);
+    else disabledSources.add(srcId);
+    persistState();
+    render();
+    showToast(
+      wasOff?`Enabled source: ${srcId}`:`Disabled source: ${srcId} (hidden from board & sweeps)`,
+      "Undo",
+      ()=>{wasOff?disabledSources.add(srcId):disabledSources.delete(srcId);persistState();render();}
+    );
+  }
+
+  function renderSourceChips(){
+    const wrap=$("sourceChips");
+    if(!wrap)return;
+    wrap.textContent="";
+    const allSources=getAllSources();
+    allSources.forEach(s=>{
+      const isOff=disabledSources.has(s.id);
+      const chip=el("button",{
+        class:"src-chip"+(isOff?" off":""),
+        type:"button",
+        title:isOff?`Click to turn ${s.id} back ON`:`Click to turn ${s.id} OFF (hide ${s.count} job${s.count===1?"":"s"})`
+      },
+        el("span",{class:"sdot"}),
+        el("span",{},s.id),
+        el("span",{class:"cnt"},`(${s.count})`)
+      );
+      chip.onclick=()=>toggleSource(s.id);
+      wrap.append(chip);
+    });
+    if(disabledSources.size>0){
+      const resetBtn=el("button",{class:"btn",type:"button",style:"padding:2px 8px;font-size:11px;margin-left:4px"},`Enable All (${disabledSources.size} off)`);
+      resetBtn.onclick=()=>{
+        disabledSources.clear();
+        persistState();
+        render();
+        showToast("All job sources enabled");
+      };
+      wrap.append(resetBtn);
+    }
+  }
+
+  function showToast(msg,actionText,actionFn){
+    if(toastTimer)clearTimeout(toastTimer);
+    $("toastMsg").textContent=msg;
+    const btn=$("toastAction");
+    if(actionText&&actionFn){
+      btn.hidden=false;
+      btn.textContent=actionText;
+      btn.onclick=()=>{btn.hidden=true;$("toast").classList.remove("show");actionFn();};
+    }else{
+      btn.hidden=true;
+    }
+    $("toast").classList.add("show");
+    toastTimer=setTimeout(()=>{$("toast").classList.remove("show")},4500);
+  }
+
+  function el(tag,attrs,...kids){
+    const e=document.createElement(tag);
+    for(const k in attrs||{}){
+      if(k==="class")e.className=attrs[k];
+      else if(k==="style")e.style.cssText=attrs[k];
+      else e.setAttribute(k,attrs[k]);
+    }
+    kids.flat().forEach(c=>{if(c==null)return;e.append(c.nodeType?c:document.createTextNode(c))});
+    return e;
+  }
+
+  function matchingRulesForJob(j){
+    const hay=[j.title,j.company,j.notes,j.pay,(j.niche||[]).join(" ")].join(" ").toLowerCase();
+    return alertRules.filter(r=>{
+      if(r.niche&&r.niche!=="any"&&!(j.niche||[]).includes(r.niche))return false;
+      if(r.type&&r.type!=="any"&&j.type!==r.type)return false;
+      if(r.world==="world"&&j.region!=="world")return false;
+      if(r.keyword){
+        const words=r.keyword.toLowerCase().split(/\s+/).filter(Boolean);
+        if(!words.every(w=>hay.includes(w)))return false;
+      }
+      return true;
+    });
+  }
+
+  function syncChips(){
+    document.querySelectorAll("[data-niche]").forEach(b=>b.setAttribute("aria-pressed",f.niche.has(b.dataset.niche)));
+    document.querySelectorAll("[data-type]").forEach(b=>b.setAttribute("aria-pressed",f.type.has(b.dataset.type)));
+    $("onlyWorld").setAttribute("aria-pressed",f.world);
+    $("onlySaved").setAttribute("aria-pressed",f.saved);
+    $("onlyAlertMatch").setAttribute("aria-pressed",f.alertMatch);
+    $("showHidden").setAttribute("aria-pressed",f.hidden);
+  }
+
+  function switchView(view){
+    currentView=view;
+    document.querySelectorAll(".tab[data-view]").forEach(t=>t.setAttribute("aria-selected",String(t.dataset.view===view)));
+    $("view-bin").hidden=(view!=="bin");
+    $("view-applied").hidden=(view!=="applied");
+    $("view-alerts").hidden=(view!=="alerts");
+    render();
+  }
+
+  function setStatus(id,val){
+    const prev=status[id]||"";
+    const job=jobs.find(x=>x.id===id);
+    if(val){
+      status[id]=val;
+      if(val==="applied"&&!appliedMeta[id]){
+        appliedMeta[id]={
+          stage:"applied",
+          date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),
+          rate:job&&job.pay?job.pay:"",
+          notes:"",
+          snapshot:job||null
+        };
+      }
+    }else{
+      delete status[id];
+    }
+    persistState();
+    render();
+
+    if(val==="applied"){
+      showToast(`Moved "${job?job.title:id}" to Applied Tracker`,"View Applied",()=>switchView("applied"));
+    }else if(val==="hidden"){
+      showToast(`Marked "${job?job.title:id}" as Not Interested`,"Undo",()=>setStatus(id,prev));
+    }
+  }
+
+  function updateBadges(){
+    const enabledJobs=jobs.filter(j=>!disabledSources.has(j.source));
+    const openCount=enabledJobs.filter(j=>{const st=status[j.id]||"";return st!=="applied"&&st!=="hidden"}).length;
+    const appliedIds=Object.keys(status).filter(id=>status[id]==="applied");
+    const totalSources=getAllSources().length;
+    const activeSources=totalSources-disabledSources.size;
+    $("badge-bin").textContent=openCount;
+    $("badge-applied").textContent=appliedIds.length;
+    $("badge-alerts").textContent=`${activeSources}/${totalSources}`;
+    $("clipCount").textContent=disabledSources.size
+      ? `${enabledJobs.length} active clips (${jobs.length} total · ${disabledSources.size} source${disabledSources.size>1?"s":""} off)`
+      : `${jobs.length} clips total`;
+  }
+
+  function renderBin(){
+    renderSourceChips();
+    const list=$("list"); list.textContent="";
+    const q=f.q.trim().toLowerCase();
+    const rows=jobs.filter(j=>{
+      if(disabledSources.has(j.source))return false;
+      const st=status[j.id]||"";
+      // Applied jobs live on the Applied Tracker page
+      if(st==="applied")return false;
+      if(st==="hidden"&&!f.hidden)return false;
+      if(f.saved&&st!=="saved")return false;
+      if(f.world&&j.region!=="world")return false;
+      if(f.alertMatch&&matchingRulesForJob(j).length===0)return false;
+      if(f.niche.size&&!(j.niche||[]).some(n=>f.niche.has(n)))return false;
+      if(f.type.size&&!f.type.has(j.type))return false;
+      if(q&&![j.title,j.company,j.notes,j.pay,j.source].join(" ").toLowerCase().includes(q))return false;
+      return true;
+    }).sort((a,b)=>(a.order??999)-(b.order??999));
+
+    $("shown").textContent=rows.length+" shown";
+    if(!jobs.length){
+      list.append(el("div",{class:"empty"},"No listings loaded yet. Click ↻ Refresh Jobs above."));
+      return;
+    }
+    if(!rows.length){
+      list.append(el("div",{class:"empty"},"Nothing in the Open Bin matches these filters or enabled sources. Clear a filter chip or re-enable a source above."));
+      return;
+    }
+
+    rows.forEach(j=>{
+      const st=status[j.id]||"";
+      const reg=REG[j.region]||REG.unknown;
+      const matches=matchingRulesForJob(j);
+
+      const saveBtn=el("button",{class:"btn","aria-pressed":String(st==="saved")},st==="saved"?"★ Saved":"☆ Save");
+      saveBtn.onclick=()=>setStatus(j.id,st==="saved"?"":"saved");
+
+      const appliedBtn=el("button",{class:"btn applied-btn","aria-pressed":"false"},"✓ Applied →");
+      appliedBtn.onclick=()=>setStatus(j.id,"applied");
+
+      const notIntBtn=el("button",{class:"btn not-int-btn","aria-pressed":String(st==="hidden")},st==="hidden"?"Restore to Bin":"✕ Not Interested");
+      notIntBtn.onclick=()=>setStatus(j.id,st==="hidden"?"":"hidden");
+
+      const muteSrcBtn=el("button",{class:"btn",title:`Turn off all listings from ${j.source}`,style:"font-size:11.5px;color:var(--muted)"},`Mute ${j.source}`);
+      muteSrcBtn.onclick=()=>toggleSource(j.source);
+
+      const card=el("article",{class:"clip"+(st?" "+st:""),style:"--c:"+(NC[(j.niche||[])[0]]||"var(--line)")},
+        el("div",{class:"strip"}),
+        el("div",{class:"body"},
+          el("div",{class:"top"},
+            el("div",{style:"min-width:0"},
+              el("h2",{},el("a",{href:j.url,target:"_blank",rel:"noopener"},j.title)),
+              el("div",{class:"co"},j.company+" · via "+j.source)
+            ),
+            el("div",{style:"display:flex;gap:6px;flex-wrap:wrap;align-items:center"},
+              matches.length?el("span",{class:"tag alert-match-tag",title:"Matches alert: "+matches.map(m=>m.keyword||m.niche).join(", ")},"🔔 Alert Match"):null,
+              el("span",{class:"tag "+reg[1],title:j.regionNote||""},reg[0])
+            )
+          ),
+          el("div",{class:"meta"},
+            el("span",{},TYPE[j.type]||j.type),
+            el("span",{class:"pay"},j.pay||"Pay not listed"),
+            el("span",{},j.posted),
+            (j.niche||[]).map(n=>el("span",{style:"color:"+NC[n]},"● "+NICHE[n]))
+          ),
+          j.notes||j.regionNote?el("p",{class:"note"},(j.notes||"")+(j.regionNote&&j.region!=="world"?(j.notes?" ":"")+j.regionNote:"")):null,
+          el("div",{class:"acts"},
+            el("a",{class:"btn primary",href:j.url,target:"_blank",rel:"noopener"},"Open listing ↗"),
+            saveBtn,
+            appliedBtn,
+            notIntBtn,
+            muteSrcBtn
+          )
+        )
+      );
+      list.append(card);
+    });
+  }
+
+  function renderApplied(){
+    const statsEl=$("appliedStats"); statsEl.textContent="";
+    const listEl=$("appliedList"); listEl.textContent="";
+
+    // Gather all applied jobs (even if removed from jobs.json later, keep snapshot)
+    const appliedIds=Object.keys(status).filter(id=>status[id]==="applied");
+    const appliedJobs=appliedIds.map(id=>{
+      const live=jobs.find(j=>j.id===id);
+      const meta=appliedMeta[id]||{stage:"applied",date:"—",rate:"",notes:""};
+      return {job:live||meta.snapshot||{id,title:id,company:"Saved Application",source:"Board",url:"#",niche:["youtube"],type:"freelance",region:"world"},meta,id};
+    });
+
+    const counts={all:appliedJobs.length,applied:0,test:0,interview:0,offer:0,rejected:0};
+    appliedJobs.forEach(item=>{
+      const stg=item.meta.stage||"applied";
+      counts[stg]=(counts[stg]||0)+1;
+    });
+
+    const statDefs=[{id:"all",label:"All Applications"},...STAGES];
+    statDefs.forEach(s=>{
+      const c=el("button",{class:"stat-card","aria-pressed":String(stageFilter===s.id)},
+        el("b",{},String(counts[s.id]||0)),
+        el("span",{},s.label)
+      );
+      c.onclick=()=>{stageFilter=s.id;renderApplied()};
+      statsEl.append(c);
+    });
+
+    const q=f.qApplied.trim().toLowerCase();
+    const filtered=appliedJobs.filter(item=>{
+      if(stageFilter!=="all"&&(item.meta.stage||"applied")!==stageFilter)return false;
+      if(q&&![item.job.title,item.job.company,item.meta.notes,item.meta.rate].join(" ").toLowerCase().includes(q))return false;
+      return true;
+    });
+
+    if(!appliedJobs.length){
+      listEl.append(el("div",{class:"empty"},"No applications tracked yet. Click '✓ Applied →' on any job in the Open Bin to move it here and track your progress."));
+      return;
+    }
+    if(!filtered.length){
+      listEl.append(el("div",{class:"empty"},"No applications in this stage filter."));
+      return;
+    }
+
+    filtered.forEach(({job:j,meta,id})=>{
+      const stageSel=el("select",{class:"stage-select"});
+      STAGES.forEach(s=>{
+        const opt=el("option",{value:s.id},s.label);
+        if((meta.stage||"applied")===s.id)opt.selected=true;
+        stageSel.append(opt);
+      });
+      stageSel.onchange=()=>{
+        appliedMeta[id]={...meta,stage:stageSel.value};
+        persistState();
+        renderApplied();
+      };
+
+      const rateInput=el("input",{type:"text",placeholder:"Rate quoted / pay",value:meta.rate||"",style:"padding:4px 8px;font-size:12.5px;width:180px"});
+      rateInput.onchange=()=>{
+        appliedMeta[id]={...appliedMeta[id],rate:rateInput.value};
+        persistState();
+      };
+
+      const notesArea=el("textarea",{class:"tracker-notes",placeholder:"Add progress notes (e.g. Sent portfolio reel, test edit due Friday, contact name)…"},meta.notes||"");
+      notesArea.onchange=()=>{
+        appliedMeta[id]={...appliedMeta[id],notes:notesArea.value};
+        persistState();
+      };
+
+      const moveBackBtn=el("button",{class:"btn"},"← Move back to Open Bin");
+      moveBackBtn.onclick=()=>setStatus(id,"");
+
+      const card=el("article",{class:"clip applied",style:"--c:"+(NC[(j.niche||[])[0]]||"var(--ok)")},
+        el("div",{class:"strip"}),
+        el("div",{class:"body"},
+          el("div",{class:"top"},
+            el("div",{style:"min-width:0"},
+              el("h2",{},el("a",{href:j.url,target:"_blank",rel:"noopener"},j.title)),
+              el("div",{class:"co"},j.company+" · via "+j.source+" · Applied "+(meta.date||"recently"))
+            ),
+            el("span",{class:"tag reg-world"},STAGES.find(s=>s.id===(meta.stage||"applied"))?.label||"Applied")
+          ),
+          el("div",{class:"tracker-box"},
+            el("div",{class:"tracker-row"},
+              el("label",{},"Stage:",stageSel),
+              el("label",{},"Pay / Quoted Rate:",rateInput),
+              el("a",{class:"btn primary",href:j.url,target:"_blank",rel:"noopener"},"Open original post ↗"),
+              moveBackBtn
+            ),
+            notesArea
+          )
+        )
+      );
+      listEl.append(card);
+    });
+  }
+
+  function renderAlerts(){
+    // Render Source Toggles Grid
+    const sGrid=$("sourceGrid");
+    if(sGrid){
+      sGrid.textContent="";
+      getAllSources().forEach(s=>{
+        const isOff=disabledSources.has(s.id);
+        const toggleBtn=el("button",{
+          class:"btn "+(isOff?"not-int-btn":"applied-btn"),
+          type:"button",
+          style:"min-width:74px;justify-content:center;font-weight:600"
+        },isOff?"OFF":"● ON");
+        toggleBtn.onclick=()=>toggleSource(s.id);
+
+        sGrid.append(el("div",{class:"src-card"+(isOff?" off":"")},
+          el("div",{class:"src-info"},
+            el("strong",{},s.id+" ",el("span",{style:"font-weight:400;color:var(--muted);font-family:var(--mono);font-size:11.5px"},`(${s.count} listing${s.count===1?"":"s"})`)),
+            el("span",{},s.desc)
+          ),
+          toggleBtn
+        ));
+      });
+    }
+    const redditBtn=$("toggleRedditQuickBtn");
+    if(redditBtn){
+      const rOff=disabledSources.has("Reddit");
+      redditBtn.textContent=rOff?"Turn Reddit Back ON":"Quick Toggle: Turn Reddit OFF";
+    }
+
+    const rList=$("ruleList"); rList.textContent="";
+    if(!alertRules.length){
+      rList.append(el("div",{class:"empty"},"No alert rules yet. Add one above (e.g. 'Podcast Editor') to get notified when matching jobs arrive."));
+    }else{
+      alertRules.forEach(r=>{
+        const matchCount=jobs.filter(j=>!disabledSources.has(j.source)&&status[j.id]!=="hidden"&&matchingRulesForJob(j).some(m=>m.id===r.id)).length;
+        const delBtn=el("button",{class:"btn not-int-btn"},"Remove");
+        delBtn.onclick=()=>{
+          alertRules=alertRules.filter(x=>x.id!==r.id);
+          persistState();
+          renderAlerts();
+          updateBadges();
+        };
+        const viewMatchesBtn=el("button",{class:"btn"},`View ${matchCount} matching on board →`);
+        viewMatchesBtn.onclick=()=>{
+          f.alertMatch=true;
+          saveF();
+          syncChips();
+          switchView("bin");
+        };
+        rList.append(el("div",{class:"rule-item"},
+          el("div",{class:"rule-meta"},
+            el("strong",{},"🔔 "+(r.keyword||"Any Keyword")),
+            el("code",{},"Niche: "+(r.niche==="any"?"All":NICHE[r.niche]||r.niche)),
+            el("code",{},"Type: "+(r.type==="any"?"All":TYPE[r.type]||r.type)),
+            el("code",{},"Region: "+(r.world==="world"?"Worldwide":"All"))
+          ),
+          el("div",{class:"acts"},viewMatchesBtn,delBtn)
+        ));
+      });
+    }
+
+    // Desktop permission status
+    if(!("Notification" in window)){
+      $("desktopPermStatus").textContent="Browser notifications not supported in this window; native Windows toast alerts will still work via local server.";
+    }else{
+      $("desktopPermStatus").textContent=`Browser permission: ${Notification.permission.toUpperCase()} · ${notifyCfg.desktop?"Desktop alerts active":"Click Enable to activate"}`;
+      $("enableDesktopBtn").textContent=Notification.permission==="granted"&&notifyCfg.desktop?"✓ Desktop Alerts Enabled":"Enable Desktop Alerts";
+    }
+
+    $("emailEnabled").checked=!!notifyCfg.emailEnabled;
+    $("alertEmailTo").value=notifyCfg.emailTo||"";
+    $("smtpUser").value=notifyCfg.smtpUser||"";
+    $("smtpPass").value=notifyCfg.smtpPass||"";
+  }
+
+  function render(){
+    updateBadges();
+    if(currentView==="bin")renderBin();
+    else if(currentView==="applied")renderApplied();
+    else if(currentView==="alerts")renderAlerts();
+  }
+
+  function fireNotificationsForNewJobs(newJobs){
+    if(!newJobs||!newJobs.length)return;
+    const matched=newJobs.filter(j=>!disabledSources.has(j.source)&&matchingRulesForJob(j).length>0);
+    if(!matched.length)return;
+
+    const title=`Cutting Room Gigs: ${matched.length} new matching job${matched.length>1?"s":""}!`;
+    const body=matched.slice(0,3).map(j=>`${j.title} (${j.company})`).join(" • ");
+
+    // Browser desktop notification
+    if("Notification" in window && Notification.permission==="granted"){
+      try{
+        const n=new Notification(title,{body});
+        n.onclick=()=>{window.focus();f.alertMatch=true;syncChips();switchView("bin");};
+      }catch(e){}
+    }
+
+    showToast(`🔔 ${title}`,"View Matches",()=>{f.alertMatch=true;syncChips();switchView("bin");});
+  }
+
+  function inferBrowserNiche(title){
+    const t=(title||"").toLowerCase();
+    const n=[];
+    if(/short|tiktok|reel|ugc|social|clipper|ad creative/.test(t))n.push("social");
+    if(/podcast|vodcast|audio/.test(t))n.push("podcast");
+    if(/youtube|longform|long-form|creator|retention|documentary/.test(t))n.push("youtube");
+    if(/promo|trailer|commercial|brand|agency|course/.test(t))n.push("promo");
+    return n.length?n.slice(0,2):["youtube"];
+  }
+
+  function isBrowserEditingRole(title){
+    return /video editor|video editing|shortform video|short-form video|longform video|long-form video|youtube editor|podcast editor|reel editor|tiktok editor|clipper|post-production/i.test(title||"");
+  }
+
+  async function clientSideLiveSweep(baseJobs){
+    const list=[...(baseJobs||jobs)];
+    const seenUrls=new Set(list.map(j=>(j.url||"").replace(/\/+$/,"").toLowerCase()));
+    const seenIds=new Set(list.map(j=>j.id));
+    const discovered=[];
+
+    const tasks=[];
+
+    // 1. Ashby Public Posting API (CORS-enabled)
+    if(!disabledSources.has("Ashby")){
+      const ashbyBoards=[
+        ["aidigest","AI Digest"],["newform","Newform"],["dreamthree","Dream Three"],
+        ["revstone","RevStone"],["acquisition","Acquisition.com"],["whop","Whop"],["beehiiv","beehiiv"],["stan","Stan"]
+      ];
+      ashbyBoards.forEach(([slug,co])=>{
+        tasks.push((async()=>{
+          try{
+            const r=await fetch(`https://api.ashbyhq.com/posting-api/job-board/${slug}`);
+            if(!r.ok)return;
+            const d=await r.json();
+            (d.jobs||[]).forEach(job=>{
+              const title=(job.title||"").trim();
+              if(!isBrowserEditingRole(title))return;
+              const url=`https://jobs.ashbyhq.com/${slug}`;
+              const id=`ashby-${slug}-${title.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,22)}`;
+              if(seenIds.has(id))return;
+              seenIds.add(id);
+              seenUrls.add(url.toLowerCase());
+              const loc=(job.location||"Remote").trim();
+              discovered.push({
+                id,title,company:co,source:"Ashby",url,
+                niche:inferBrowserNiche(title),
+                type:/full/i.test(job.employmentType||"")?"fulltime":(/part/i.test(job.employmentType||"")?"parttime":"contract"),
+                region:/remote|world|global|anywhere/i.test(loc)?"world":"restricted",
+                regionNote:loc,
+                pay:job.compensationTierSummary||"",
+                posted:"Live now (Ashby)",
+                order:1,
+                notes:`Live opening on ${co}'s Ashby board (${loc}).`
+              });
+            });
+          }catch(e){}
+        })());
+      });
+    }
+
+    // 2. Remotive Public API (CORS-enabled)
+    if(!disabledSources.has("Remotive")){
+      tasks.push((async()=>{
+        try{
+          const r=await fetch("https://remotive.com/api/remote-jobs?search=video%20editor&limit=12");
+          if(!r.ok)return;
+          const d=await r.json();
+          (d.jobs||[]).forEach(job=>{
+            const title=(job.title||"").trim();
+            if(!isBrowserEditingRole(title))return;
+            const url=(job.url||"").trim();
+            const id=`remotive-${job.id}`;
+            if(!url||seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+            seenIds.add(id);
+            seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
+            const loc=(job.candidate_required_location||"Worldwide").trim();
+            discovered.push({
+              id,title,company:(job.company_name||"Remote Employer").trim(),source:"Remotive",url,
+              niche:inferBrowserNiche(title),
+              type:/contract|freelance/i.test(job.job_type||"")?"contract":"fulltime",
+              region:/worldwide|anywhere/i.test(loc)?"world":"restricted",
+              regionNote:loc,
+              pay:(job.salary||"").trim(),
+              posted:"Posted recently",
+              order:1,
+              notes:`Live remote role via Remotive API (${loc}).`
+            });
+          });
+        }catch(e){}
+      })());
+    }
+
+    // 3. Reddit Public JSON Feeds (CORS-enabled)
+    if(!disabledSources.has("Reddit")){
+      const feeds=[
+        ["https://www.reddit.com/r/CreatorServices/new.json?limit=12","r/CreatorServices"],
+        ["https://www.reddit.com/r/forhire/search.json?q=flair%3Ahiring+video+editor&restrict_sr=1&sort=new&limit=8","r/forhire"]
+      ];
+      feeds.forEach(([furl,sub])=>{
+        tasks.push((async()=>{
+          try{
+            const r=await fetch(furl);
+            if(!r.ok)return;
+            const d=await r.json();
+            ((d.data&&d.data.children)||[]).forEach(item=>{
+              const p=item.data||{};
+              const ptitle=(p.title||"").trim();
+              const flair=(p.link_flair_text||"").toLowerCase();
+              if(!ptitle.toLowerCase().includes("[hiring]")&&!flair.includes("hiring"))return;
+              if(!/editor|editing|clipper/i.test(ptitle))return;
+              if(!p.permalink)return;
+              const url=`https://www.reddit.com${p.permalink}`.replace(/\/+$/,"")+"/";
+              const id=`reddit-${p.id}`;
+              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+              seenIds.add(id);
+              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
+              discovered.push({
+                id,title:ptitle,company:`${sub} (u/${p.author||"creator"})`,source:"Reddit",url,
+                niche:inferBrowserNiche(ptitle),
+                type:"freelance",region:"world",pay:"",posted:"Posted recently",order:1,
+                notes:`Direct creator hiring post on ${sub}.`
+              });
+            });
+          }catch(e){}
+        })());
+      });
+    }
+
+    await Promise.allSettled(tasks);
+    return discovered;
+  }
+
+  async function refreshJobs(){
+    const btn=$("refreshBtn"), icon=$("refreshIcon"), label=$("refreshLabel"), st=$("refreshStatus");
+    btn.disabled=true;
+    icon.classList.add("spinning");
+    label.textContent="Refreshing…";
+    st.textContent="Checking enabled sources for new listings…";
+
+    const oldIds=new Set(jobs.map(j=>j.id));
+    let updated=false;
+
+    // 1. Try local server live sweep endpoint first
+    try{
+      const res=await fetch("/api/sweep",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({disabledSources:[...disabledSources]})
+      });
+      if(res.ok){
+        const payload=await res.json();
+        if(payload&&payload.data&&Array.isArray(payload.data.jobs)){
+          applyData(payload.data);
+          updated=true;
+          const addedCount=payload.added?payload.added.length:0;
+          const removedCount=payload.removed?payload.removed.length:0;
+          st.textContent=`Live sweep complete (+${addedCount} new, -${removedCount} closed)`;
+          showToast(`Live sweep finished: ${addedCount} new, ${removedCount} closed`);
+          if(payload.added&&payload.added.length)fireNotificationsForNewJobs(payload.added);
+        }
+      }
+    }catch(e){}
+
+    // 2. Static / Online Hosting Mode: fetch latest jobs.json + run browser-side live API sweep
+    if(!updated){
+      let baseData={sweepDate:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),jobs:[...jobs]};
+      try{
+        const res=await fetch("./jobs.json?t="+Date.now(),{cache:"no-store"});
+        if(res.ok){
+          const fetched=await res.json();
+          if(fetched&&Array.isArray(fetched.jobs))baseData=fetched;
+        }
+      }catch(e){}
+
+      const liveAdded=await clientSideLiveSweep(baseData.jobs);
+      const merged=[...liveAdded,...baseData.jobs].map((j,i)=>({...j,order:i+1}));
+      const finalData={
+        sweepDate:liveAdded.length?new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}):baseData.sweepDate,
+        jobs:merged
+      };
+
+      if(applyData(finalData)){
+        updated=true;
+        const newItems=finalData.jobs.filter(j=>!oldIds.has(j.id)&&!disabledSources.has(j.source));
+        const activeCnt=finalData.jobs.filter(j=>!disabledSources.has(j.source)).length;
+        st.textContent=newItems.length?`Found ${newItems.length} new listing(s) (${activeCnt} active)`:`Up to date (${activeCnt} active clips)`;
+        showToast(newItems.length?`Found ${newItems.length} new listing(s)!`:`Board refreshed (${activeCnt} active clips)`);
+        if(newItems.length)fireNotificationsForNewJobs(newItems);
+      }
+    }
+
+    btn.disabled=false;
+    icon.classList.remove("spinning");
+    label.textContent="Refresh Jobs";
+  }
+
+  function applyData(data){
+    if(!data||!Array.isArray(data.jobs))return false;
+    jobs=data.jobs;
+    if(data.sweepDate)$("sweepDate").textContent=data.sweepDate;
+    try{localStorage.setItem("crg-jobs-cache",JSON.stringify(data))}catch(e){}
+    render();
+    return true;
+  }
+
+  // Event Listeners
+  document.querySelectorAll(".tab[data-view]").forEach(b=>b.onclick=()=>switchView(b.dataset.view));
+  document.querySelectorAll("[data-niche]").forEach(b=>b.onclick=()=>{const n=b.dataset.niche;f.niche.has(n)?f.niche.delete(n):f.niche.add(n);saveF();syncChips();render()});
+  document.querySelectorAll("[data-type]").forEach(b=>b.onclick=()=>{const n=b.dataset.type;f.type.has(n)?f.type.delete(n):f.type.add(n);saveF();syncChips();render()});
+  $("onlyWorld").onclick=()=>{f.world=!f.world;saveF();syncChips();render()};
+  $("onlySaved").onclick=()=>{f.saved=!f.saved;saveF();syncChips();render()};
+  $("onlyAlertMatch").onclick=()=>{f.alertMatch=!f.alertMatch;saveF();syncChips();render()};
+  $("showHidden").onclick=()=>{f.hidden=!f.hidden;saveF();syncChips();render()};
+  $("q").oninput=e=>{f.q=e.target.value;renderBin()};
+  $("qApplied").oninput=e=>{f.qApplied=e.target.value;renderApplied()};
+  $("refreshBtn").onclick=refreshJobs;
+
+  if($("enableAllSourcesBtn")){
+    $("enableAllSourcesBtn").onclick=()=>{
+      disabledSources.clear();
+      persistState();
+      render();
+      showToast("All job sources enabled!");
+    };
+  }
+  if($("toggleRedditQuickBtn")){
+    $("toggleRedditQuickBtn").onclick=()=>toggleSource("Reddit");
+  }
+
+  $("addRuleBtn").onclick=()=>{
+    const kw=$("ruleKeyword").value.trim();
+    const niche=$("ruleNiche").value;
+    const type=$("ruleType").value;
+    const world=$("ruleWorld").value;
+    if(!kw&&niche==="any"&&type==="any"&&world==="any"){
+      showToast("Enter a keyword (e.g. Podcast Editor) or pick a filter for your alert rule");
+      return;
+    }
+    alertRules.push({id:"rule-"+Date.now(),keyword:kw,niche,type,world});
+    $("ruleKeyword").value="";
+    persistState();
+    renderAlerts();
+    updateBadges();
+    showToast("Added new job alert rule!");
+  };
+
+  $("enableDesktopBtn").onclick=async()=>{
+    if(!("Notification" in window)){
+      showToast("Browser notifications not supported here; use start-board.bat for Windows toast notifications.");
+      return;
+    }
+    const perm=await Notification.requestPermission();
+    notifyCfg.desktop=(perm==="granted");
+    persistState();
+    renderAlerts();
+    if(perm==="granted"){
+      new Notification("Cutting Room Gigs Alerts Enabled",{body:"You'll receive desktop notifications when new jobs match your rules."});
+      showToast("Desktop notifications enabled!");
+    }else{
+      showToast("Notification permission was not granted by browser.");
+    }
+  };
+
+  $("testDesktopBtn").onclick=async()=>{
+    const sample=jobs.find(j=>!disabledSources.has(j.source)&&matchingRulesForJob(j).length>0)||jobs[0];
+    const msg=sample?`Match: ${sample.title} at ${sample.company}`:"Your custom job alerts are working!";
+    if("Notification" in window){
+      if(Notification.permission!=="granted")await Notification.requestPermission();
+      if(Notification.permission==="granted"){
+        new Notification("🔔 Cutting Room Gigs Alert", {body:msg});
+      }
+    }
+    // Also trigger native Windows toast if local server is running
+    fetch("/api/notify-test",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"desktop",message:msg})}).catch(()=>{});
+    showToast("🔔 Sent test desktop notification: "+msg);
+  };
+
+  $("saveEmailCfgBtn").onclick=()=>{
+    notifyCfg.emailEnabled=$("emailEnabled").checked;
+    notifyCfg.emailTo=$("alertEmailTo").value.trim();
+    notifyCfg.smtpUser=$("smtpUser").value.trim();
+    notifyCfg.smtpPass=$("smtpPass").value.trim();
+    persistState();
+    $("emailSaveStatus").textContent="✓ Saved";
+    setTimeout(()=>{$("emailSaveStatus").textContent=""},3000);
+    showToast("Notification settings saved!");
+  };
+
+  $("testEmailBtn").onclick=async()=>{
+    const emailTo=$("alertEmailTo").value.trim();
+    if(!emailTo){
+      showToast("Please enter a Recipient Email first.");
+      return;
+    }
+    notifyCfg.emailTo=emailTo;
+    notifyCfg.smtpUser=$("smtpUser").value.trim();
+    notifyCfg.smtpPass=$("smtpPass").value.trim();
+    persistState();
+
+    const matched=jobs.filter(j=>!disabledSources.has(j.source)&&status[j.id]!=="hidden"&&matchingRulesForJob(j).length>0);
+    try{
+      const res=await fetch("/api/notify-test",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({type:"email",notifyCfg,matched:matched.slice(0,5)})
+      });
+      if(res.ok){
+        const out=await res.json();
+        if(out.ok){
+          showToast("✓ Test email sent via SMTP to "+emailTo);
+          return;
+        }
+      }
+    }catch(e){}
+
+    // Fallback: open pre-filled email draft with current matching jobs
+    const subj=encodeURIComponent(`Cutting Room Gigs Alert: ${matched.length} matching role(s)`);
+    const bodyLines=matched.slice(0,8).map(j=>`• ${j.title} — ${j.company} (${j.pay||"Pay not listed"})\n  ${j.url}`);
+    const body=encodeURIComponent(`Here are the latest roles matching your Cutting Room Gigs alert rules:\n\n${bodyLines.join("\n\n") || "No current matches yet."}`);
+    window.open(`mailto:${encodeURIComponent(emailTo)}?subject=${subj}&body=${body}`,"_blank");
+    showToast("Opened email alert digest for "+emailTo);
+  };
+
+  $("copy").onclick=()=>{
+    const t=$("prompt").textContent;
+    const done=()=>{$("copied").textContent="Copied"};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,()=>{sel()})}else sel();
+    function sel(){const r=document.createRange();r.selectNodeContents($("prompt"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("copied").textContent="Selected, press copy"}
+  };
+
+  syncChips();
+  (async()=>{
+    // Load disk state from local server if running
+    try{
+      const stRes=await fetch("/api/state",{cache:"no-store"});
+      if(stRes.ok){
+        const disk=await stRes.json();
+        if(disk.status&&Object.keys(disk.status).length)status={... disk.status, ...status};
+        if(disk.appliedMeta&&Object.keys(disk.appliedMeta).length)appliedMeta={...disk.appliedMeta, ...appliedMeta};
+        if(Array.isArray(disk.alertRules)&&disk.alertRules.length)alertRules=disk.alertRules;
+        if(Array.isArray(disk.disabledSources)&&!localStorage.getItem("crg-disabled-sources")){
+          disabledSources=new Set(disk.disabledSources);
+        }
+        if(disk.notifyCfg)notifyCfg={...notifyCfg,...disk.notifyCfg};
+      }
+    }catch(e){}
+
+    try{
+      const res=await fetch("./jobs.json?t="+Date.now(),{cache:"no-store"});
+      if(res.ok){
+        const data=await res.json();
+        if(applyData(data))return;
+      }
+    }catch(e){}
+    if(window.CRG_DATA&&applyData(window.CRG_DATA))return;
+    try{
+      const cached=JSON.parse(localStorage.getItem("crg-jobs-cache")||"null");
+      if(applyData(cached))return;
+    }catch(e){}
+    render();
+  })();
+})();
+</script>
+</body>
+</html>
