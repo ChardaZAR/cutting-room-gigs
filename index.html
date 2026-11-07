@@ -156,9 +156,15 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
         <span>Last sweep <b id="sweepDate">—</b></span>
         <span id="clipCount">0 clips</span>
       </div>
-      <button class="refresh-btn" id="refreshBtn" title="Re-fetch listings and check for new matches">
-        <span id="refreshIcon">↻</span> <span id="refreshLabel">Refresh Jobs</span>
-      </button>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn" id="linkFileBtn" title="Link a local JSON file on your PC to auto-save Applied &amp; Hidden jobs on every click" style="padding:5px 10px;font-size:12px">🔗 Auto-Save File</button>
+        <button class="btn" id="exportStateBtn" title="Download a backup of your Applied, Saved &amp; Hidden jobs" style="padding:5px 10px;font-size:12px">💾 Backup Tracker</button>
+        <button class="btn" id="importStateBtn" title="Restore Applied, Saved &amp; Hidden jobs from a backup file" style="padding:5px 10px;font-size:12px">📂 Restore</button>
+        <input type="file" id="importStateFile" accept=".json" hidden>
+        <button class="refresh-btn" id="refreshBtn" title="Re-fetch listings and check for new matches">
+          <span id="refreshIcon">↻</span> <span id="refreshLabel">Refresh Jobs</span>
+        </button>
+      </div>
     </div>
     <h1>Cutting Room Gigs</h1>
     <p class="lede">Open, public listings for remote video editors: social and paid ads, YouTube long-form, and podcasts. Mark roles as <b>Applied</b> to track your pipeline, or toggle any <b>Source</b> on/off below.</p>
@@ -393,46 +399,201 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     {id:"Podnews",desc:"Daily podcast industry job board for video podcast editors & producers",url:"https://podnews.net/jobs"}
   ];
 
-  let jobs=[], status={}, appliedMeta={}, alertRules=[], disabledSources=new Set(), notifyCfg={desktop:false,emailEnabled:false,emailTo:"",smtpUser:"",smtpPass:""};
+  let jobs=[], status={}, statusBySig={}, appliedMeta={}, alertRules=[], disabledSources=new Set(), notifyCfg={desktop:false,emailEnabled:false,emailTo:"",smtpUser:"",smtpPass:""};
   let currentView="bin", stageFilter="all", toastTimer=null;
   const f={niche:new Set(),type:new Set(),world:false,saved:false,alertMatch:false,hidden:false,q:"",qApplied:""};
 
   const $=id=>document.getElementById(id);
 
-  // Load state from localStorage
+  function jobSig(j){
+    if(!j)return "";
+    return `${(j.title||"").trim().toLowerCase()}::${(j.company||"").trim().toLowerCase()}`;
+  }
+
+  function jobUrlKey(j){
+    if(!j||!j.url)return "";
+    return String(j.url).trim().replace(/\/+$/,"").toLowerCase();
+  }
+
+  function getJobStatus(j){
+    if(!j)return "";
+    if(status[j.id])return status[j.id];
+    const uk=jobUrlKey(j);
+    if(uk&&statusBySig[uk]){
+      status[j.id]=statusBySig[uk];
+      return status[j.id];
+    }
+    const sig=jobSig(j);
+    if(sig&&statusBySig[sig]){
+      status[j.id]=statusBySig[sig];
+      return status[j.id];
+    }
+    return "";
+  }
+
+  let stateUpdatedAt=0;
+
+  function mergeLoadedState(src){
+    if(!src||typeof src!=="object")return;
+    const incomingTs=Number(src.updatedAt||0);
+    const incomingIsNewer=incomingTs>=stateUpdatedAt;
+    if(incomingIsNewer&&incomingTs>0){
+      stateUpdatedAt=incomingTs;
+      if(src.status&&typeof src.status==="object")status={...src.status};
+      if(src.statusBySig&&typeof src.statusBySig==="object")statusBySig={...src.statusBySig};
+      if(src.appliedMeta&&typeof src.appliedMeta==="object")appliedMeta={...appliedMeta,...src.appliedMeta};
+      if(Array.isArray(src.disabledSources))disabledSources=new Set(src.disabledSources);
+    }else{
+      if(src.status&&typeof src.status==="object")status={...src.status,...status};
+      if(src.statusBySig&&typeof src.statusBySig==="object")statusBySig={...src.statusBySig,...statusBySig};
+      if(src.appliedMeta&&typeof src.appliedMeta==="object")appliedMeta={...src.appliedMeta,...appliedMeta};
+      if(Array.isArray(src.disabledSources)&&!disabledSources.size)disabledSources=new Set(src.disabledSources);
+    }
+    if(Array.isArray(src.alertRules)&&src.alertRules.length)alertRules=src.alertRules;
+    if(src.notifyCfg&&typeof src.notifyCfg==="object")notifyCfg={...notifyCfg,...src.notifyCfg};
+  }
+
+  // 0. Load embedded state from jobs.js / cutting-room-gigs-standalone.html (survives even if browser wipes file:// storage)
+  try{if(window.CRG_STATE)mergeLoadedState(window.CRG_STATE);}catch(e){}
+
+  // 1. Load state from window.name + document.cookie + localStorage
+  try{
+    if(window.name&&window.name.startsWith("CRG_STATE:")){
+      mergeLoadedState(JSON.parse(window.name.slice(10)));
+    }
+  }catch(e){}
+  try{
+    const ck=document.cookie.split("; ").find(row=>row.startsWith("crg_state="));
+    if(ck)mergeLoadedState(JSON.parse(decodeURIComponent(ck.split("=")[1])));
+  }catch(e){}
   try{
     const s=JSON.parse(localStorage.getItem("crg-filters")||"null");
     if(s){f.niche=new Set(s.niche||[]);f.type=new Set(s.type||[]);f.world=!!s.world;f.saved=!!s.saved;f.alertMatch=!!s.alertMatch;f.hidden=!!s.hidden;}
   }catch(e){}
-  try{status=JSON.parse(localStorage.getItem("crg-status")||"{}")}catch(e){status={}}
-  try{appliedMeta=JSON.parse(localStorage.getItem("crg-applied-meta")||"{}")}catch(e){appliedMeta={}}
+  try{status={...status,...JSON.parse(localStorage.getItem("crg-status")||"{}")}}catch(e){}
+  try{statusBySig={...statusBySig,...JSON.parse(localStorage.getItem("crg-status-sigs")||"{}")}}catch(e){}
+  try{appliedMeta={...appliedMeta,...JSON.parse(localStorage.getItem("crg-applied-meta")||"{}")}}catch(e){}
+  try{stateUpdatedAt=Math.max(stateUpdatedAt,Number(localStorage.getItem("crg-updated-at")||0));}catch(e){}
   try{
     const ds=JSON.parse(localStorage.getItem("crg-disabled-sources")||"null");
     if(Array.isArray(ds))disabledSources=new Set(ds);
   }catch(e){}
   try{
     const r=JSON.parse(localStorage.getItem("crg-alert-rules")||"null");
-    alertRules=Array.isArray(r)?r:[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}];
-  }catch(e){alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}]}
+    if(Array.isArray(r)&&r.length)alertRules=r;
+    else if(!alertRules.length)alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}];
+  }catch(e){if(!alertRules.length)alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}]}
   try{
     const nc=JSON.parse(localStorage.getItem("crg-notify-cfg")||"null");
     if(nc)notifyCfg={...notifyCfg,...nc};
   }catch(e){}
 
+  let linkedFileHandle=null;
+
+  function openBoardDb(){
+    return new Promise(resolve=>{
+      try{
+        const req=indexedDB.open("crg_board_db",2);
+        req.onupgradeneeded=e=>{
+          const db=e.target.result;
+          if(!db.objectStoreNames.contains("kv"))db.createObjectStore("kv");
+        };
+        req.onsuccess=e=>resolve(e.target.result);
+        req.onerror=()=>resolve(null);
+      }catch(e){resolve(null);}
+    });
+  }
+
+  async function saveIdbKey(key,val){
+    const db=await openBoardDb();
+    if(!db)return;
+    try{
+      const tx=db.transaction("kv","readwrite");
+      tx.objectStore("kv").put(val,key);
+    }catch(e){}
+  }
+
+  async function loadIdbKey(key){
+    const db=await openBoardDb();
+    if(!db)return null;
+    return new Promise(resolve=>{
+      try{
+        const tx=db.transaction("kv","readonly");
+        const req=tx.objectStore("kv").get(key);
+        req.onsuccess=()=>resolve(req.result||null);
+        req.onerror=()=>resolve(null);
+      }catch(e){resolve(null);}
+    });
+  }
+
+  async function writeToLinkedFile(payload){
+    if(!linkedFileHandle)return;
+    try{
+      const perm=await linkedFileHandle.queryPermission({mode:"readwrite"});
+      if(perm==="granted"){
+        const writable=await linkedFileHandle.createWritable();
+        await writable.write(JSON.stringify(payload,null,2));
+        await writable.close();
+      }
+    }catch(e){}
+  }
+
+  function syncUrlHashState(){
+    try{
+      const min={s:status,g:statusBySig,m:appliedMeta,d:[...disabledSources]};
+      if(Object.keys(status).length||Object.keys(statusBySig).length||disabledSources.size){
+        const b64=btoa(unescape(encodeURIComponent(JSON.stringify(min))));
+        history.replaceState(null,"","#crg="+b64);
+      }else if(location.hash.startsWith("#crg=")){
+        history.replaceState(null,"",location.pathname+location.search);
+      }
+    }catch(e){}
+  }
+
+  function loadUrlHashState(){
+    try{
+      if(location.hash&&location.hash.startsWith("#crg=")){
+        const raw=decodeURIComponent(escape(atob(location.hash.slice(5))));
+        const parsed=JSON.parse(raw);
+        if(parsed.s)status={...parsed.s,...status};
+        if(parsed.g)statusBySig={...parsed.g,...statusBySig};
+        if(parsed.m)appliedMeta={...parsed.m,...appliedMeta};
+        if(Array.isArray(parsed.d)&&!disabledSources.size)disabledSources=new Set(parsed.d);
+      }
+    }catch(e){}
+  }
+  loadUrlHashState();
+
   function persistState(){
+    stateUpdatedAt=Date.now();
+    const payload={status,statusBySig,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources],updatedAt:stateUpdatedAt};
     try{
       localStorage.setItem("crg-status",JSON.stringify(status));
+      localStorage.setItem("crg-status-sigs",JSON.stringify(statusBySig));
       localStorage.setItem("crg-applied-meta",JSON.stringify(appliedMeta));
       localStorage.setItem("crg-alert-rules",JSON.stringify(alertRules));
       localStorage.setItem("crg-notify-cfg",JSON.stringify(notifyCfg));
       localStorage.setItem("crg-disabled-sources",JSON.stringify([...disabledSources]));
+      localStorage.setItem("crg-updated-at",String(stateUpdatedAt));
     }catch(e){}
-    // Also sync to local server if running
-    fetch("/api/state",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({status,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources]})
-    }).catch(()=>{});
+    try{window.name="CRG_STATE:"+JSON.stringify(payload);}catch(e){}
+    try{
+      const minCookie=encodeURIComponent(JSON.stringify({status,statusBySig}));
+      if(minCookie.length<3800)document.cookie=`crg_state=${minCookie}; max-age=31536000; path=/; SameSite=Lax`;
+    }catch(e){}
+    syncUrlHashState();
+    saveIdbKey("user_state",payload);
+    writeToLinkedFile(payload);
+    // Sync to local server (works whether page is opened via http://localhost:8080 OR file:// while server.py is running)
+    const endpoints=["/api/state","http://127.0.0.1:8080/api/state"];
+    endpoints.forEach(ep=>{
+      fetch(ep,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload),
+        keepalive:true
+      }).catch(()=>{});
+    });
   }
 
   function saveF(){
@@ -552,10 +713,14 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
   }
 
   function setStatus(id,val){
-    const prev=status[id]||"";
-    const job=jobs.find(x=>x.id===id);
+    const job=jobs.find(x=>x.id===id)||(appliedMeta[id]&&appliedMeta[id].snapshot)||null;
+    const prev=job?getJobStatus(job):(status[id]||"");
+    const sig=jobSig(job);
+    const uk=jobUrlKey(job);
     if(val){
       status[id]=val;
+      if(sig)statusBySig[sig]=val;
+      if(uk)statusBySig[uk]=val;
       if(val==="applied"&&!appliedMeta[id]){
         appliedMeta[id]={
           stage:"applied",
@@ -567,6 +732,8 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
       }
     }else{
       delete status[id];
+      if(sig)delete statusBySig[sig];
+      if(uk)delete statusBySig[uk];
     }
     persistState();
     render();
@@ -580,7 +747,7 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
 
   function updateBadges(){
     const enabledJobs=jobs.filter(j=>!disabledSources.has(j.source));
-    const openCount=enabledJobs.filter(j=>{const st=status[j.id]||"";return st!=="applied"&&st!=="hidden"}).length;
+    const openCount=enabledJobs.filter(j=>{const st=getJobStatus(j);return st!=="applied"&&st!=="hidden"}).length;
     const appliedIds=Object.keys(status).filter(id=>status[id]==="applied");
     const totalSources=getAllSources().length;
     const activeSources=totalSources-disabledSources.size;
@@ -598,7 +765,7 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     const q=f.q.trim().toLowerCase();
     const rows=jobs.filter(j=>{
       if(disabledSources.has(j.source))return false;
-      const st=status[j.id]||"";
+      const st=getJobStatus(j);
       // Applied jobs live on the Applied Tracker page
       if(st==="applied")return false;
       if(st==="hidden"&&!f.hidden)return false;
@@ -622,7 +789,7 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     }
 
     rows.forEach(j=>{
-      const st=status[j.id]||"";
+      const st=getJobStatus(j);
       const reg=REG[j.region]||REG.unknown;
       const matches=matchingRulesForJob(j);
 
@@ -883,6 +1050,77 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     return /video editor|video editing|shortform video|short-form video|longform video|long-form video|youtube editor|podcast editor|reel editor|tiktok editor|clipper|post-production/i.test(title||"");
   }
 
+  function formatBrowserAge(isoStr){
+    if(!isoStr)return null;
+    const dt=new Date(isoStr.replace(" ","T"));
+    if(isNaN(dt.getTime()))return null;
+    const diffMs=Math.max(0,Date.now()-dt.getTime());
+    const days=diffMs/86400000;
+    if(days>14.25)return null; // Enforce 14-day freshness cutoff
+    const datePart=dt.toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+    const mins=Math.max(1,Math.floor(diffMs/60000));
+    if(mins<60)return `Posted ${mins}m ago · ${datePart}`;
+    const hrs=Math.max(1,Math.floor(diffMs/3600000));
+    if(hrs<24)return `Posted ${hrs}h ago · ${datePart}`;
+    const d=Math.floor(days);
+    return `Posted ${d}d ago · ${datePart}`;
+  }
+
+  function reloadLocalJobsJs(){
+    return new Promise(resolve=>{
+      try{
+        const s=document.createElement("script");
+        const timer=setTimeout(()=>{s.remove();resolve(window.CRG_DATA||null);},2500);
+        s.src="jobs.js?t="+Date.now();
+        s.onload=()=>{clearTimeout(timer);s.remove();resolve(window.CRG_DATA||null);};
+        s.onerror=()=>{clearTimeout(timer);s.remove();resolve(null);};
+        document.head.appendChild(s);
+      }catch(e){resolve(null);}
+    });
+  }
+
+  function mergeJobDatasets(...datasets){
+    const merged=[];
+    const seenIds=new Set();
+    const seenUrls=new Set();
+    for(const ds of datasets){
+      const arr=Array.isArray(ds)?ds:(ds&&Array.isArray(ds.jobs)?ds.jobs:[]);
+      for(const j of arr){
+        if(!j||!j.id||!j.url)continue;
+        if(j.publishedAt){
+          const lbl=formatBrowserAge(j.publishedAt);
+          if(!lbl)continue; // Skip >14d expired listings
+          j.posted=lbl;
+        }
+        const uk=String(j.url).trim().replace(/\/+$/,"").toLowerCase();
+        if(seenIds.has(j.id)||seenUrls.has(uk))continue;
+        seenIds.add(j.id);
+        seenUrls.add(uk);
+        merged.push({...j});
+      }
+    }
+    merged.sort((a,b)=>{
+      const ta=a.publishedAt?new Date(a.publishedAt.replace(" ","T")).getTime():0;
+      const tb=b.publishedAt?new Date(b.publishedAt.replace(" ","T")).getTime():0;
+      if(ta&&tb&&ta!==tb)return tb-ta;
+      return (a.order??999)-(b.order??999);
+    });
+    return merged.map((j,i)=>({...j,order:i+1}));
+  }
+
+  async function fetchLatestStaticSources(){
+    const GITHUB_RAW_JOBS="https://raw.githubusercontent.com/ChardaZAR/cutting-room-gigs/main/jobs.json";
+    const tasks=[
+      fetch("./jobs.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch(GITHUB_RAW_JOBS+"?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+      reloadLocalJobsJs()
+    ];
+    const [localJson,ghJson,localJs]=await Promise.all(tasks);
+    const jobsList=mergeJobDatasets(localJson,localJs,ghJson,window.CRG_DATA,{jobs});
+    const sweepDate=(localJson&&localJson.sweepDate)||(localJs&&localJs.sweepDate)||(ghJson&&ghJson.sweepDate)||new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+    return {sweepDate,jobs:jobsList};
+  }
+
   async function clientSideLiveSweep(baseJobs){
     const list=[...(baseJobs||jobs)];
     const seenUrls=new Set(list.map(j=>(j.url||"").replace(/\/+$/,"").toLowerCase()));
@@ -891,11 +1129,13 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
 
     const tasks=[];
 
-    // 1. Ashby Public Posting API (CORS-enabled)
+    // 1. Ashby Public Posting API (CORS-enabled, strict deep jobUrl + <=14d publishedAt)
     if(!disabledSources.has("Ashby")){
       const ashbyBoards=[
         ["aidigest","AI Digest"],["newform","Newform"],["dreamthree","Dream Three"],
-        ["revstone","RevStone"],["acquisition","Acquisition.com"],["whop","Whop"],["beehiiv","beehiiv"],["stan","Stan"]
+        ["revstone","RevStone"],["acquisition","Acquisition.com"],["hirehangar","Hire Hangar"],
+        ["superpower","Superpower"],["rehire","Rehire"],["stemwave","StemWave"],["cge","Content Growth Engine"],
+        ["whop","Whop"]
       ];
       ashbyBoards.forEach(([slug,co])=>{
         tasks.push((async()=>{
@@ -904,24 +1144,31 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
             if(!r.ok)return;
             const d=await r.json();
             (d.jobs||[]).forEach(job=>{
+              if(job.isListed===false)return;
               const title=(job.title||"").trim();
               if(!isBrowserEditingRole(title))return;
-              const url=`https://jobs.ashbyhq.com/${slug}`;
-              const id=`ashby-${slug}-${title.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,22)}`;
-              if(seenIds.has(id))return;
-              seenIds.add(id);
-              seenUrls.add(url.toLowerCase());
+              const url=(job.jobUrl||"").trim();
+              if(!url||url.replace(/\/+$/,"").split("/").length<5)return;
+              const postedLabel=formatBrowserAge(job.publishedAt);
+              if(!postedLabel)return;
               const loc=(job.location||"Remote").trim();
+              if(/argentina|mexico|colombia|philippines|latam|united states only|us only/i.test(`${loc} ${title}`)&&!/south africa|africa|worldwide/i.test(`${loc} ${title}`))return;
+              const uuidShort=url.replace(/\/+$/,"").split("/").pop().slice(0,8);
+              const id=`ashby-${slug}-${uuidShort}`;
+              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+              seenIds.add(id);
+              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
               discovered.push({
                 id,title,company:co,source:"Ashby",url,
                 niche:inferBrowserNiche(title),
-                type:/full/i.test(job.employmentType||"")?"fulltime":(/part/i.test(job.employmentType||"")?"parttime":"contract"),
-                region:/remote|world|global|anywhere/i.test(loc)?"world":"restricted",
+                type:/full/i.test(job.employmentType||"")?"fulltime":(/part/i.test(job.employmentType||"")?"parttime":"freelance"),
+                region:/remote|world|global|anywhere|south africa|africa/i.test(loc)?"world":"limited",
                 regionNote:loc,
                 pay:job.compensationTierSummary||"",
-                posted:"Live now (Ashby)",
+                publishedAt:job.publishedAt,
+                posted:postedLabel,
                 order:1,
-                notes:`Live opening on ${co}'s Ashby board (${loc}).`
+                notes:`Verified active opening on ${co}'s Ashby ATS (${loc}).`
               });
             });
           }catch(e){}
@@ -929,7 +1176,90 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
       });
     }
 
-    // 2. Remotive Public API (CORS-enabled)
+    // 2. Workable Public Widget API (CORS-enabled, strict /j/<shortcode> + <=14d published_on)
+    if(!disabledSources.has("Workable")){
+      const workableBoards=[
+        ["virtuhire","VirtuHire"],["pavago","Pavago"],["crewbloom","CrewBloom"],
+        ["reworkssolutions","ReWorks Solutions"],["hirehawk","HireHawk"],["huzzle","Huzzle"]
+      ];
+      workableBoards.forEach(([slug,co])=>{
+        tasks.push((async()=>{
+          try{
+            const r=await fetch(`https://apply.workable.com/api/v1/widget/accounts/${slug}`);
+            if(!r.ok)return;
+            const d=await r.json();
+            (d.jobs||[]).forEach(job=>{
+              const title=(job.title||"").trim();
+              if(!isBrowserEditingRole(title))return;
+              const shortcode=(job.shortcode||"").trim();
+              const url=(job.url||"").trim();
+              if(!shortcode||!url||!url.includes("/j/"))return;
+              const pubIso=job.published_on||job.created_at;
+              const postedLabel=formatBrowserAge(pubIso);
+              if(!postedLabel)return;
+              const loc=[job.country,job.city].filter(Boolean).join(", ")||"Remote";
+              if(/argentina|mexico|colombia|philippines|latam|united states only|us only/i.test(`${loc} ${title}`)&&!/south africa|africa|worldwide/i.test(`${loc} ${title}`))return;
+              const id=`wk-${slug}-${shortcode.toLowerCase()}`;
+              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+              seenIds.add(id);
+              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
+              discovered.push({
+                id,title,company:co,source:"Workable",url,
+                niche:inferBrowserNiche(title),
+                type:/part-time|part time/i.test(title)?"parttime":"fulltime",
+                region:/remote|world|global|anywhere|south africa|africa/i.test(loc)?"world":"limited",
+                regionNote:/remote|world|global|anywhere|south africa|africa/i.test(loc)?"":loc,
+                pay:"",
+                publishedAt:pubIso,
+                posted:postedLabel,
+                order:1,
+                notes:`Verified active opening on ${co}'s Workable ATS (${loc}).`
+              });
+            });
+          }catch(e){}
+        })());
+      });
+    }
+
+    // 3. Podnews Jobs RSS via rss2json (CORS-enabled)
+    if(!disabledSources.has("Podnews")){
+      tasks.push((async()=>{
+        try{
+          const r=await fetch("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fpodnews.net%2Fprebuilt%2Frss-jobs.xml");
+          if(!r.ok)return;
+          const d=await r.json();
+          (d.items||[]).forEach(item=>{
+            const title=(item.title||"").trim();
+            if(!isBrowserEditingRole(title)&&!/podcast producer/i.test(title))return;
+            const url=(item.link||"").trim();
+            const pubIso=item.pubDate?item.pubDate.replace(" ","T")+"Z":"";
+            const postedLabel=formatBrowserAge(pubIso);
+            if(!url||!postedLabel)return;
+            const desc=(item.description||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+            const slugPart=(url.split("/job/")[1]||title).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,36);
+            const coSlug=((url.split("/job/")[1]||"").split("/")[0]||"Podcast").replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase()).trim();
+            const id=`pod-${slugPart}`;
+            if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+            seenIds.add(id);
+            seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
+            discovered.push({
+              id,title,company:coSlug||"Podnews",source:"Podnews",url,
+              niche:["podcast","youtube"],
+              type:/part-time|part time|freelance/i.test(`${title} ${desc}`)?"parttime":"fulltime",
+              region:"world",
+              regionNote:"",
+              pay:"",
+              publishedAt:pubIso,
+              posted:postedLabel,
+              order:1,
+              notes:desc.slice(0,190)||`Remote podcast role at ${coSlug}.`
+            });
+          });
+        }catch(e){}
+      })());
+    }
+
+    // 4. Remotive Public API (CORS-enabled, <=14d publication_date)
     if(!disabledSources.has("Remotive")){
       tasks.push((async()=>{
         try{
@@ -940,61 +1270,28 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
             const title=(job.title||"").trim();
             if(!isBrowserEditingRole(title))return;
             const url=(job.url||"").trim();
+            const postedLabel=formatBrowserAge(job.publication_date);
+            if(!url||!postedLabel)return;
             const id=`remotive-${job.id}`;
-            if(!url||seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+            if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
             seenIds.add(id);
             seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
             const loc=(job.candidate_required_location||"Worldwide").trim();
             discovered.push({
               id,title,company:(job.company_name||"Remote Employer").trim(),source:"Remotive",url,
               niche:inferBrowserNiche(title),
-              type:/contract|freelance/i.test(job.job_type||"")?"contract":"fulltime",
-              region:/worldwide|anywhere/i.test(loc)?"world":"restricted",
+              type:/contract|freelance/i.test(job.job_type||"")?"freelance":"fulltime",
+              region:/worldwide|anywhere/i.test(loc)?"world":"limited",
               regionNote:loc,
               pay:(job.salary||"").trim(),
-              posted:"Posted recently",
+              publishedAt:job.publication_date,
+              posted:postedLabel,
               order:1,
-              notes:`Live remote role via Remotive API (${loc}).`
+              notes:`Verified remote role via Remotive API (${loc}).`
             });
           });
         }catch(e){}
       })());
-    }
-
-    // 3. Reddit Public JSON Feeds (CORS-enabled)
-    if(!disabledSources.has("Reddit")){
-      const feeds=[
-        ["https://www.reddit.com/r/CreatorServices/new.json?limit=12","r/CreatorServices"],
-        ["https://www.reddit.com/r/forhire/search.json?q=flair%3Ahiring+video+editor&restrict_sr=1&sort=new&limit=8","r/forhire"]
-      ];
-      feeds.forEach(([furl,sub])=>{
-        tasks.push((async()=>{
-          try{
-            const r=await fetch(furl);
-            if(!r.ok)return;
-            const d=await r.json();
-            ((d.data&&d.data.children)||[]).forEach(item=>{
-              const p=item.data||{};
-              const ptitle=(p.title||"").trim();
-              const flair=(p.link_flair_text||"").toLowerCase();
-              if(!ptitle.toLowerCase().includes("[hiring]")&&!flair.includes("hiring"))return;
-              if(!/editor|editing|clipper/i.test(ptitle))return;
-              if(!p.permalink)return;
-              const url=`https://www.reddit.com${p.permalink}`.replace(/\/+$/,"")+"/";
-              const id=`reddit-${p.id}`;
-              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
-              seenIds.add(id);
-              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
-              discovered.push({
-                id,title:ptitle,company:`${sub} (u/${p.author||"creator"})`,source:"Reddit",url,
-                niche:inferBrowserNiche(ptitle),
-                type:"freelance",region:"world",pay:"",posted:"Posted recently",order:1,
-                notes:`Direct creator hiring post on ${sub}.`
-              });
-            });
-          }catch(e){}
-        })());
-      });
     }
 
     await Promise.allSettled(tasks);
@@ -1007,46 +1304,47 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     icon.classList.add("spinning");
     label.textContent="Refreshing…";
     st.textContent="Checking enabled sources for new listings…";
+    // A live sweep can take a while; show elapsed seconds so it's clearly still working
+    const startedAt=Date.now();
+    const tick=setInterval(()=>{label.textContent=`Refreshing… ${Math.round((Date.now()-startedAt)/1000)}s`;},1000);
 
     const oldIds=new Set(jobs.map(j=>j.id));
     let updated=false;
 
-    // 1. Try local server live sweep endpoint first
-    try{
-      const res=await fetch("/api/sweep",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({disabledSources:[...disabledSources]})
-      });
-      if(res.ok){
-        const payload=await res.json();
-        if(payload&&payload.data&&Array.isArray(payload.data.jobs)){
-          applyData(payload.data);
-          updated=true;
-          const addedCount=payload.added?payload.added.length:0;
-          const removedCount=payload.removed?payload.removed.length:0;
-          st.textContent=`Live sweep complete (+${addedCount} new, -${removedCount} closed)`;
-          showToast(`Live sweep finished: ${addedCount} new, ${removedCount} closed`);
-          if(payload.added&&payload.added.length)fireNotificationsForNewJobs(payload.added);
-        }
-      }
-    }catch(e){}
-
-    // 2. Static / Online Hosting Mode: fetch latest jobs.json + run browser-side live API sweep
-    if(!updated){
-      let baseData={sweepDate:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),jobs:[...jobs]};
+    // 1. Try local server live sweep endpoint first (supports both http://localhost:8080 and file://)
+    for(const swUrl of ["/api/sweep","http://127.0.0.1:8080/api/sweep"]){
+      if(updated)break;
       try{
-        const res=await fetch("./jobs.json?t="+Date.now(),{cache:"no-store"});
+        const res=await fetch(swUrl,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({disabledSources:[...disabledSources]})
+        });
         if(res.ok){
-          const fetched=await res.json();
-          if(fetched&&Array.isArray(fetched.jobs))baseData=fetched;
+          const payload=await res.json();
+          if(payload&&payload.data&&Array.isArray(payload.data.jobs)){
+            applyData(payload.data);
+            updated=true;
+            const addedCount=payload.added?payload.added.length:0;
+            const removedCount=payload.removed?payload.removed.length:0;
+            const timeNow=new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+            st.textContent=`Live sweep complete at ${timeNow} (+${addedCount} new, -${removedCount} closed)`;
+            showToast(`Live sweep finished: ${addedCount} new, ${removedCount} closed`);
+            if(payload.added&&payload.added.length)fireNotificationsForNewJobs(payload.added);
+          }
         }
       }catch(e){}
+    }
 
+    // 2. Static / Online Hosting / file:// Mode: fetch local + GitHub cloud jobs.json + reload jobs.js + run browser-side live API sweep
+    if(!updated){
+      const baseData=await fetchLatestStaticSources();
       const liveAdded=await clientSideLiveSweep(baseData.jobs);
-      const merged=[...liveAdded,...baseData.jobs].map((j,i)=>({...j,order:i+1}));
+      const merged=mergeJobDatasets(liveAdded,baseData.jobs);
+      const todayStr=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+      const timeNow=new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
       const finalData={
-        sweepDate:liveAdded.length?new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}):baseData.sweepDate,
+        sweepDate:todayStr,
         jobs:merged
       };
 
@@ -1054,12 +1352,15 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
         updated=true;
         const newItems=finalData.jobs.filter(j=>!oldIds.has(j.id)&&!disabledSources.has(j.source));
         const activeCnt=finalData.jobs.filter(j=>!disabledSources.has(j.source)).length;
-        st.textContent=newItems.length?`Found ${newItems.length} new listing(s) (${activeCnt} active)`:`Up to date (${activeCnt} active clips)`;
-        showToast(newItems.length?`Found ${newItems.length} new listing(s)!`:`Board refreshed (${activeCnt} active clips)`);
+        st.textContent=newItems.length
+          ? `Refreshed at ${timeNow}: +${newItems.length} new listing(s) (${activeCnt} active)`
+          : `Refreshed at ${timeNow} · Up to date (${activeCnt} active clips)`;
+        showToast(newItems.length?`Found ${newItems.length} new listing(s)!`:`Board refreshed at ${timeNow} (${activeCnt} active clips)`);
         if(newItems.length)fireNotificationsForNewJobs(newItems);
       }
     }
 
+    clearInterval(tick);
     btn.disabled=false;
     icon.classList.remove("spinning");
     label.textContent="Refresh Jobs";
@@ -1067,9 +1368,9 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
 
   function applyData(data){
     if(!data||!Array.isArray(data.jobs))return false;
-    jobs=data.jobs;
+    jobs=mergeJobDatasets(data.jobs);
     if(data.sweepDate)$("sweepDate").textContent=data.sweepDate;
-    try{localStorage.setItem("crg-jobs-cache",JSON.stringify(data))}catch(e){}
+    try{localStorage.setItem("crg-jobs-cache",JSON.stringify({sweepDate:data.sweepDate,jobs}))}catch(e){}
     render();
     return true;
   }
@@ -1142,7 +1443,9 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
       }
     }
     // Also trigger native Windows toast if local server is running
-    fetch("/api/notify-test",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"desktop",message:msg})}).catch(()=>{});
+    ["/api/notify-test","http://127.0.0.1:8080/api/notify-test"].forEach(nu=>{
+      fetch(nu,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"desktop",message:msg})}).catch(()=>{});
+    });
     showToast("🔔 Sent test desktop notification: "+msg);
   };
 
@@ -1169,20 +1472,22 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     persistState();
 
     const matched=jobs.filter(j=>!disabledSources.has(j.source)&&status[j.id]!=="hidden"&&matchingRulesForJob(j).length>0);
-    try{
-      const res=await fetch("/api/notify-test",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({type:"email",notifyCfg,matched:matched.slice(0,5)})
-      });
-      if(res.ok){
-        const out=await res.json();
-        if(out.ok){
-          showToast("✓ Test email sent via SMTP to "+emailTo);
-          return;
+    for(const nu of ["/api/notify-test","http://127.0.0.1:8080/api/notify-test"]){
+      try{
+        const res=await fetch(nu,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({type:"email",notifyCfg,matched:matched.slice(0,5)})
+        });
+        if(res.ok){
+          const out=await res.json();
+          if(out.ok){
+            showToast("✓ Test email sent via SMTP to "+emailTo);
+            return;
+          }
         }
-      }
-    }catch(e){}
+      }catch(e){}
+    }
 
     // Fallback: open pre-filled email draft with current matching jobs
     const subj=encodeURIComponent(`Cutting Room Gigs Alert: ${matched.length} matching role(s)`);
@@ -1199,22 +1504,100 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     function sel(){const r=document.createRange();r.selectNodeContents($("prompt"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("copied").textContent="Selected, press copy"}
   };
 
+  if($("linkFileBtn")){
+    $("linkFileBtn").onclick=async()=>{
+      if(!window.showSaveFilePicker){
+        showToast("Your browser doesn't support direct file linking; use start-board.bat or 💾 Backup Tracker.");
+        return;
+      }
+      try{
+        const handle=await window.showSaveFilePicker({
+          suggestedName:"user-state.json",
+          types:[{description:"JSON State File",accept:{"application/json":[".json"]}}]
+        });
+        linkedFileHandle=handle;
+        await saveIdbKey("file_handle",handle);
+        // First read existing content if non-empty, then write merged state
+        try{
+          const existingFile=await handle.getFile();
+          if(existingFile.size>2){
+            const txt=await existingFile.text();
+            mergeLoadedState(JSON.parse(txt));
+          }
+        }catch(e){}
+        persistState();
+        render();
+        $("linkFileBtn").textContent="✓ Auto-Save Linked";
+        showToast("✓ Linked user-state.json! Applied & Hidden jobs will now auto-save directly to disk on every click.");
+      }catch(e){}
+    };
+  }
+  if($("exportStateBtn")){
+    $("exportStateBtn").onclick=()=>{
+      const payload={status,statusBySig,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources]};
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+      const a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);
+      a.download="cutting-room-tracker-backup.json";
+      a.click();
+      showToast("Saved tracker backup file (Applied, Saved & Hidden jobs)");
+    };
+  }
+  if($("importStateBtn")&&$("importStateFile")){
+    $("importStateBtn").onclick=()=>$("importStateFile").click();
+    $("importStateFile").onchange=e=>{
+      const file=e.target.files&&e.target.files[0];
+      if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{
+        try{
+          const d=JSON.parse(reader.result);
+          mergeLoadedState(d);
+          persistState();
+          render();
+          showToast("✓ Restored Applied, Saved & Hidden jobs from backup!");
+        }catch(err){
+          showToast("Could not read backup JSON file.");
+        }
+      };
+      reader.readAsText(file);
+    };
+  }
+
   syncChips();
   (async()=>{
-    // Load disk state from local server if running
+    // 1. Load IndexedDB state & any linked file handle
     try{
-      const stRes=await fetch("/api/state",{cache:"no-store"});
-      if(stRes.ok){
-        const disk=await stRes.json();
-        if(disk.status&&Object.keys(disk.status).length)status={... disk.status, ...status};
-        if(disk.appliedMeta&&Object.keys(disk.appliedMeta).length)appliedMeta={...disk.appliedMeta, ...appliedMeta};
-        if(Array.isArray(disk.alertRules)&&disk.alertRules.length)alertRules=disk.alertRules;
-        if(Array.isArray(disk.disabledSources)&&!localStorage.getItem("crg-disabled-sources")){
-          disabledSources=new Set(disk.disabledSources);
-        }
-        if(disk.notifyCfg)notifyCfg={...notifyCfg,...disk.notifyCfg};
+      if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
+      const idb=await loadIdbKey("user_state");
+      if(idb)mergeLoadedState(idb);
+      const savedHandle=await loadIdbKey("file_handle");
+      if(savedHandle){
+        linkedFileHandle=savedHandle;
+        if($("linkFileBtn"))$("linkFileBtn").textContent="✓ Auto-Save Linked";
+        try{
+          const perm=await savedHandle.queryPermission({mode:"read"});
+          if(perm==="granted"){
+            const fObj=await savedHandle.getFile();
+            if(fObj.size>2)mergeLoadedState(JSON.parse(await fObj.text()));
+          }
+        }catch(e){}
       }
     }catch(e){}
+
+    // 2. Load disk state from local server (via relative path OR http://127.0.0.1:8080 so it works even from file://) or user-state.json
+    const stateUrls=["/api/state","http://127.0.0.1:8080/api/state","./user-state.json?t="+Date.now()];
+    for(const su of stateUrls){
+      try{
+        const stRes=await fetch(su,{cache:"no-store"});
+        if(stRes.ok){
+          const disk=await stRes.json();
+          mergeLoadedState(disk);
+          break;
+        }
+      }catch(e){}
+    }
+    syncUrlHashState();
 
     try{
       const res=await fetch("./jobs.json?t="+Date.now(),{cache:"no-store"});

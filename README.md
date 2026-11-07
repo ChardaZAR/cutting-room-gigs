@@ -2,7 +2,7 @@
 
 A private board of open, public, remote video editor jobs. It covers social and paid ads, YouTube long-form, and podcasts. This guide explains how to rebuild it in your own Claude account, or run it without Claude at all.
 
-Last sweep in this package: **18 Oct 2026** (50 listings across 12 public sources).
+Last sweep in this package: **20 Oct 2026** (28 verified listings across active sources).
 
 ---
 
@@ -11,9 +11,9 @@ Last sweep in this package: **18 Oct 2026** (50 listings across 12 public source
 | File | What it is | When to use it |
 |---|---|---|
 | `index.html` | The main board UI (Open Bin, Applied Tracker, Sources & Alerts). | Opening locally or via `start-board.bat`. |
-| `jobs.json` | All 50 listings as plain data, plus the sweep date. | Seeding the database or backing up listings. |
+| `jobs.json` | All listings as plain data, plus the sweep date. | Seeding the database or backing up listings. |
 | `jobs.js` | Browser-ready script wrapper (`window.CRG_DATA`) for `file://` mode. | Automatically loaded by `index.html`. |
-| `cutting-room-gigs-standalone.html` | Single-file version with all 50 listings embedded inline. | Quick single-file use or static hosting. |
+| `cutting-room-gigs-standalone.html` | Single-file version with all listings embedded inline. | Quick single-file use or static hosting. |
 | `server.py` / `start-board.bat` | Local server supporting live sweeps, source toggles, and desktop/email alerts. | Running locally at `http://localhost:8080`. |
 | `README.md` | This guide. | — |
 
@@ -23,15 +23,15 @@ You can turn any individual job source **ON** or **OFF** from either:
 - The **Sources & Alerts** tab (`Active Job Sources (Turn On / Off)` panel, including a one-click **Toggle Reddit** button)
 - The **Mute [Source]** button on any individual job card
 
-Currently tracked sources (50 listings total):
-1. **Ashby** (`jobs.ashbyhq.com`) — Direct agency & creator startup ATS boards (Acquisition.com, AI Digest, Hire Hangar, Newform, Superpower)
-2. **Workable** (`apply.workable.com`) — Direct DTC brand & agency ATS boards (HireHawk, ReWorks Solutions, Creative Chaos)
+Currently tracked sources (67 listings total):
+1. **Ashby** (`jobs.ashbyhq.com`) — Direct agency & creator startup ATS boards (Acquisition.com, AI Digest, Hire Hangar, Newform, Rehire, Superpower)
+2. **Workable** (`apply.workable.com`) — Direct DTC brand & agency ATS boards (HireHawk, ReWorks Solutions, VirtuHire, Creative Chaos)
 3. **Somewhere / Hirezar** (`somewhere.com` / `hirezar.co.za`) — South Africa & global remote placement agencies with USD/ZAR pay
 4. **Himalayas** (`himalayas.app`) — Global remote job board (Seen.tv, Paired)
 5. **Dynamite Jobs** (`dynamitejobs.com`) — 100% remote-first companies with transparent pay
-6. **YT Jobs** (`ytjobs.co`) — YouTube creator & channel editing marketplace
+6. **YT Jobs** (`ytjobs.co`) — YouTube creator & channel editing marketplace (TheGoodHype, Crispy Concords)
 7. **Twine** (`twine.net`) — Freelance creative marketplace for YouTube, documentary & CapCut gigs
-8. **Reddit** (`r/CreatorServices`, `r/forhire`) — Direct creator hiring posts (can be toggled off with 1 click)
+8. **Reddit** (`r/CreatorServices`, `r/YouTubeEditorsForHire`, `r/forhire`) — Direct creator hiring posts (can be toggled off with 1 click)
 9. **YT.Careers** (`yt.careers`) — Curated YouTube channel & media studio job board
 10. **Remote Rocketship** (`remoterocketship.com`) — Worldwide remote video editor aggregator
 11. **RemoteSource** (`remotesource.com`) — Remote creative & agency matching platform
@@ -59,7 +59,7 @@ Please:
 Then tell me when it's live.
 ```
 
-4. Open the page and check that 50 listings appear, and that the "Last sweep" date reads 18 Oct 2026.
+4. Open the page and check that listings appear, and that the "Last sweep" date reads 20 Oct 2026.
 5. Optional: pin it to your sidebar. You can ask Claude to do that.
 
 ### Asking for a fresh sweep in the new account
@@ -133,7 +133,7 @@ Each listing in `jobs.json` (and in the database) looks like this:
 
 The database also uses:
 - `status/<job id>` → `{ "s": "saved" | "applied" | "hidden" }`, written by the page when you click a mark.
-- `meta/sweep` → `{ "date": "18 Oct 2026" }`, shown as "Last sweep" in the header.
+- `meta/sweep` → `{ "date": "20 Oct 2026" }`, shown as "Last sweep" in the header.
 
 Marks are stored apart from listings on purpose. A new sweep can overwrite or delete listings without wiping your marks.
 

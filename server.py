@@ -8,6 +8,7 @@ import smtplib
 import socketserver
 import subprocess
 import sys
+import threading
 import urllib.request
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -18,6 +19,11 @@ STATE_PATH = os.path.join(BASE_DIR, "user-state.json")
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 }
+
+# Requests run on separate threads, so a slow sweep doesn't freeze the board.
+# STATE_LOCK guards user-state.json read-modify-write; SWEEP_LOCK keeps sweeps (which rewrite jobs.json) one at a time.
+STATE_LOCK = threading.Lock()
+SWEEP_LOCK = threading.Lock()
 
 
 def fetch_html(url, timeout=10):
@@ -138,13 +144,15 @@ def send_email_alert(notify_cfg, matched_jobs):
 def run_live_sweep(override_disabled=None):
     from sweep import scrape_all_sources
 
-    state = load_state()
-    if isinstance(override_disabled, list):
-        state["disabledSources"] = override_disabled
-        save_state(state)
+    with STATE_LOCK:
+        state = load_state()
+        if isinstance(override_disabled, list):
+            state["disabledSources"] = override_disabled
+            save_state(state)
     disabled_sources = set(state.get("disabledSources") or [])
 
-    res = scrape_all_sources(disabled_sources=disabled_sources)
+    with SWEEP_LOCK:
+        res = scrape_all_sources(disabled_sources=disabled_sources)
     data = res["data"]
     added_jobs = res["added"]
     removed_jobs = res["removed"]
@@ -173,14 +181,31 @@ class BoardHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=BASE_DIR, **kwargs)
 
+    def end_headers(self):
+        # Make the browser re-check index.html / jobs.js each load so updates show up without a hard refresh
+        if not self.path.startswith("/api/"):
+            self.send_header("Cache-Control", "no-cache")
+        super().end_headers()
+
+    def _send_cors_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+
     def _send_json(self, obj, code=200):
         raw = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
+        self._send_cors_headers()
         self.send_header("Content-Length", str(len(raw)))
         self.end_headers()
         self.wfile.write(raw)
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self._send_cors_headers()
+        self.end_headers()
 
     def do_GET(self):
         if self.path.startswith("/api/state"):
@@ -197,9 +222,29 @@ class BoardHandler(http.server.SimpleHTTPRequestHandler):
             body = {}
 
         if self.path.startswith("/api/state"):
-            state = load_state()
-            state.update(body)
-            save_state(state)
+            with STATE_LOCK:
+                state = load_state()
+                for dict_key in ("status", "statusBySig", "appliedMeta", "notifyCfg"):
+                    if isinstance(body.get(dict_key), dict):
+                        state[dict_key] = body[dict_key]
+                for list_key in ("alertRules", "disabledSources"):
+                    if isinstance(body.get(list_key), list):
+                        state[list_key] = body[list_key]
+                if "updatedAt" in body:
+                    state["updatedAt"] = body["updatedAt"]
+                save_state(state)
+            # If a sweep is running, skip this: the sweep rewrites the bundles (with this state) when it finishes
+            if SWEEP_LOCK.acquire(blocking=False):
+                try:
+                    from sweep import sync_static_bundles
+                    if os.path.exists(JOBS_PATH):
+                        with open(JOBS_PATH, encoding="utf-8") as f:
+                            jdata = json.load(f)
+                        sync_static_bundles(jdata)
+                except Exception:
+                    pass
+                finally:
+                    SWEEP_LOCK.release()
             self._send_json({"ok": True})
             return
 
@@ -227,7 +272,8 @@ class BoardHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("127.0.0.1", port), BoardHandler) as httpd:
+    socketserver.ThreadingTCPServer.allow_reuse_address = True
+    socketserver.ThreadingTCPServer.daemon_threads = True
+    with socketserver.ThreadingTCPServer(("127.0.0.1", port), BoardHandler) as httpd:
         print(f"Cutting Room Gigs server running at http://localhost:{port}")
         httpd.serve_forever()

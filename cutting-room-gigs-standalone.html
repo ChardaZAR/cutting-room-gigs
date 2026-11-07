@@ -156,9 +156,15 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
         <span>Last sweep <b id="sweepDate">—</b></span>
         <span id="clipCount">0 clips</span>
       </div>
-      <button class="refresh-btn" id="refreshBtn" title="Re-fetch listings and check for new matches">
-        <span id="refreshIcon">↻</span> <span id="refreshLabel">Refresh Jobs</span>
-      </button>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn" id="linkFileBtn" title="Link a local JSON file on your PC to auto-save Applied &amp; Hidden jobs on every click" style="padding:5px 10px;font-size:12px">🔗 Auto-Save File</button>
+        <button class="btn" id="exportStateBtn" title="Download a backup of your Applied, Saved &amp; Hidden jobs" style="padding:5px 10px;font-size:12px">💾 Backup Tracker</button>
+        <button class="btn" id="importStateBtn" title="Restore Applied, Saved &amp; Hidden jobs from a backup file" style="padding:5px 10px;font-size:12px">📂 Restore</button>
+        <input type="file" id="importStateFile" accept=".json" hidden>
+        <button class="refresh-btn" id="refreshBtn" title="Re-fetch listings and check for new matches">
+          <span id="refreshIcon">↻</span> <span id="refreshLabel">Refresh Jobs</span>
+        </button>
+      </div>
     </div>
     <h1>Cutting Room Gigs</h1>
     <p class="lede">Open, public listings for remote video editors: social and paid ads, YouTube long-form, and podcasts. Mark roles as <b>Applied</b> to track your pipeline, or toggle any <b>Source</b> on/off below.</p>
@@ -364,7 +370,8 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
   <button id="toastAction" hidden></button>
 </div>
 
-<<script>window.CRG_DATA = {"sweepDate":"18 Oct 2026","jobs":[{"id":"twine-b9tf50","company":"Mvisionz Media","niche":["social"],"notes":"Edit 4K footage into cinematic 15–30s Instagram Reels for high-end restaurants and hospitality brands. Premiere Pro or DaVinci Resolve.","order":1,"pay":"Open to offers","posted":"Posted today","region":"world","source":"Twine","title":"Cinematic Instagram Reels Editor for Hospitality Brands","type":"freelance","url":"https://www.twine.net/projects/b9tf50-searching-cinematic-instagram-reels-editor-for-hospitality-brands-video-editor-remote-job"},{"id":"ashby-cge","company":"Content Growth Engine","niche":["youtube"],"notes":"Edit 1–2 high-quality long-form YouTube videos (15+ min) per week for creator Shane Hummus. Pacing, retention editing, Premiere & After Effects.","order":2,"pay":"","posted":"Posted recently","region":"world","source":"Ashby","title":"Long-Form YouTube Video Editor","type":"fulltime","url":"https://jobs.ashbyhq.com/cge"},{"id":"rr-scalearmy","company":"Scale Army","niche":["social"],"notes":"Performance-driven short-form video ads and UGC for TikTok & Meta. Explicitly open to South Africa & LATAM (US business hours overlap).","order":3,"pay":"$950–$1,800/month","posted":"Posted recently","region":"world","source":"Remote Rocketship","title":"Video Editor (UGC & Social Ads)","type":"fulltime","url":"https://www.remoterocketship.com/us/company/scalearmy/jobs/video-editor-worldwide-remote/"},{"id":"ytj-eugene-fomin","company":"Eugene Fomin","niche":["youtube"],"notes":"Lifestyle vlogs, talking-head videos, VSLs & personal brand content. Storytelling, pacing, UI animations, Premiere Pro & After Effects.","order":4,"pay":"$70–$350 per video ($5–$20/hr)","posted":"Posted recently","region":"world","source":"YT Jobs","title":"YouTube Video Editor","type":"parttime","url":"https://ytjobs.co/job/eugene-fomin-youtube-video-editor"},{"id":"ytc-277","company":"Preston Gifford","niche":["youtube","social"],"notes":"Fast-paced YouTube comedy, fitness & OmeTV edits. Pacing, sound effects, meme timing, and engagement retention.","order":5,"pay":"Negotiable, paid per video","posted":"Posted recently","region":"world","source":"YT.Careers","title":"Video Editor – OmeTV / Fitness / Comedy","type":"parttime","url":"https://yt.careers/youtube-jobs/277"},{"id":"ashby-aidigest-short","company":"AI Digest","niche":["social","youtube"],"notes":"Part-time role creating and editing character-driven narrative videos and YouTube Shorts about the AI Village.","order":6,"pay":"$40–$70/hour (~20h/week)","posted":"Posted recently","region":"world","source":"Ashby","title":"Shortform Video Editor","type":"parttime","url":"https://jobs.ashbyhq.com/aidigest"},{"id":"ashby-aidigest-long","company":"AI Digest","niche":["youtube"],"notes":"Own the end-to-end process of developing, capturing footage, and editing long-form YouTube storytelling videos about the AI Village.","order":7,"pay":"$60–$90/hour","posted":"Posted recently","region":"world","source":"Ashby","title":"Longform Video Creator & Editor","type":"parttime","url":"https://jobs.ashbyhq.com/aidigest"},{"id":"ashby-newform","company":"Newform","niche":["social"],"notes":"Build scroll-stopping, conversion-focused short-form UGC ads for paid social (Meta, TikTok, YouTube Shorts) at high volume.","order":8,"pay":"$12k–$36k/year + bonus","posted":"Posted recently","region":"world","source":"Ashby","title":"Video Editor (UGC & Paid Social)","type":"fulltime","url":"https://jobs.ashbyhq.com/newform"},{"id":"ashby-dreamthree","company":"Dream Three","niche":["social","podcast"],"notes":"Digital & narrative story studio seeking a Short-Form Video Editor to cut high-retention vertical videos (TikTok, Reels, Shorts) from interviews and podcasts.","order":9,"pay":"","posted":"Posted recently","region":"world","source":"Ashby","title":"Short Form Video Editor","type":"freelance","url":"https://jobs.ashbyhq.com/dreamthree"},{"id":"ashby-revstone","company":"RevStone","niche":["social"],"notes":"Full-time remote contractor producing high-volume short-form vertical video ads and ad creative for a US marketing agency.","order":10,"pay":"$5.50–$9.50/hour (USD)","posted":"Posted recently","region":"world","source":"Ashby","title":"Remote Video Editor – Short-Form & Ad Creative","type":"fulltime","url":"https://jobs.ashbyhq.com/revstone"},{"id":"wk-hirehawk","company":"HireHawk","niche":["social"],"notes":"Long-term contractor turning conversational founder recordings into engaging short-form social content (Reels, Facebook, TikTok).","order":11,"pay":"$1,500–$1,800/month","posted":"Posted recently","region":"world","source":"Workable","title":"Video Editor (Founder Personal Brands)","type":"fulltime","url":"https://apply.workable.com/hirehawk/"},{"id":"wk-reworks","company":"ReWorks Solutions","niche":["social","youtube"],"notes":"Part-time/freelance remote role (South Africa focus, US hours) assembling recorded footage in Premiere Pro with motion graphics and sound design.","order":12,"pay":"","posted":"Posted recently","region":"world","source":"Workable","title":"Senior Video Editor","type":"parttime","url":"https://apply.workable.com/reworkssolutions/"},{"id":"wk-somerce","company":"Somerce (via Workable)","niche":["social"],"notes":"Cape Town / global TikTok Shop agency looking for a Content & Video Editor to cut short-form social videos (TikTok, Reels, Shorts) and direct-response ads.","order":13,"pay":"","posted":"Posted recently","region":"world","source":"Workable","title":"Short-Form Content & Video Editor","type":"fulltime","url":"https://jobs.workable.com/search?query=video+editor&workplace=remote"},{"id":"sw-somewhere-ve","company":"Somewhere","niche":["youtube","social"],"notes":"Recruiting in South Africa & LATAM. End-to-end post-production across long-form and short-form content using Premiere Pro, After Effects, LucidLink & Frame.io.","order":14,"pay":"$2,500–$3,500/month","posted":"Posted recently","region":"world","source":"Somewhere / Hirezar","title":"Video Editor (Long & Short-Form)","type":"fulltime","url":"https://himalayas.app/companies/somewhere"},{"id":"sw-dynime","company":"Dynime LLC","niche":["social"],"notes":"South Africa remote listing producing multimedia content, motion graphics, and sound design for digital marketing campaigns.","order":15,"pay":"R27,750–R30,833/mo (~$1,600/mo)","posted":"Posted recently","region":"world","source":"Somewhere / Hirezar","title":"Remote Video Editor","type":"fulltime","url":"https://himalayas.app/companies/dynime-llc"},{"id":"him-seentv","company":"Seen.tv","niche":["social","youtube"],"notes":"Mobile-first media company (South Africa / Remote) focused on raw storytelling, strong pacing, and emotional arcs for high-retention online video.","order":16,"pay":"","posted":"Posted recently","region":"world","source":"Himalayas","title":"Narrative Video Editor (South Africa)","type":"fulltime","url":"https://himalayas.app/companies/seen-tv"},{"id":"him-paired","company":"Paired","niche":["social","youtube"],"notes":"High-volume vertical video ads and long/short-form edits (TikTok, Meta, YouTube Shorts) for DTC brands and agencies using Premiere Pro, After Effects, or DaVinci Resolve.","order":17,"pay":"","posted":"Posted recently","region":"world","source":"Himalayas","title":"Video Editor (Long & Short-Form / DTC Ads)","type":"fulltime","url":"https://himalayas.app/companies/paired"},{"id":"dj-base360","company":"Base360.ai","niche":["social","youtube"],"notes":"Product launch films, founder stories, and short-form video for Reels, TikTok, YouTube Shorts, and LinkedIn. Kinetic typography and AI creative tools.","order":18,"pay":"$50k–$80k/year","posted":"Opened recently","region":"world","source":"Dynamite Jobs","title":"Video Editor","type":"fulltime","url":"https://dynamitejobs.com/company/base360/remote-job/video-editor"},{"id":"ytj-lessons-of","company":"Lessons Of","niche":["youtube"],"notes":"Video essay-style content exploring philosophy and hidden meanings in pop culture. Script and voiceover provided; source clips, B-roll, and pacing.","order":19,"pay":"$200–$450 per video","posted":"Posted recently","region":"world","source":"YT Jobs","title":"YouTube Video Editor","type":"freelance","url":"https://ytjobs.co/"},{"id":"ytj-finney","company":"Finney Productions","niche":["youtube"],"notes":"Business vlogs, educational pieces, and behind-the-scenes content. DaVinci Resolve Studio & Blackmagic Cloud collaboration required.","order":20,"pay":"$200–$300 per video","posted":"Posted recently","region":"world","source":"YT Jobs","title":"Freelance YouTube Video Editor","type":"freelance","url":"https://ytjobs.co/"},{"id":"ytj-bobby","company":"Bobby Approved","niche":["social"],"notes":"Part-time short-form vertical content (TikTok, Reels, Shorts) for established food, health, and lifestyle brand.","order":21,"pay":"$40–$70/hour","posted":"Posted recently","region":"world","source":"YT Jobs","title":"Short-Form Video Editor","type":"parttime","url":"https://ytjobs.co/"},{"id":"ytj-larrygao","company":"Larry Gao","niche":["social"],"notes":"Short-form vertical video edits (~1/day) for fitness, entrepreneurship, and lifestyle content.","order":22,"pay":"","posted":"Posted recently","region":"world","source":"YT Jobs","title":"Short-Form Video Editor","type":"parttime","url":"https://ytjobs.co/"},{"id":"twine-wildlife","company":"Private Client","niche":["youtube"],"notes":"Long-form wildlife & animal encounter documentaries. English narration provided; matching AI visuals and real wildlife B-roll, 5–10s scene cuts.","order":23,"pay":"Open to offers","posted":"Posted recently","region":"world","source":"Twine","title":"YouTube Wildlife Documentary Video Editor","type":"freelance","url":"https://www.twine.net/jobs/video-editor"},{"id":"red-gaming-retainer","company":"Independent Creator (r/CreatorServices)","niche":["social","youtube"],"notes":"Ongoing partnership with an independent gaming/media creator handling clip curation, TikTok/Reels/Shorts, and selective long-form edits.","order":24,"pay":"$400/month starting retainer","posted":"Posted recently","region":"world","source":"Reddit","title":"Gaming & Short-Form Video Editor","type":"parttime","url":"https://www.reddit.com/r/CreatorServices/search/?q=Hiring+Video+Editor&restrict_sr=1&sort=new"},{"id":"red-yt-narrative","company":"YouTube Creator (r/CreatorServices)","niche":["youtube"],"notes":"Ongoing YouTube projects focusing on narrative building, B-roll selection, and background music.","order":25,"pay":"$4 per edited minute","posted":"Posted recently","region":"world","source":"Reddit","title":"YouTube Narrative Video Editor","type":"freelance","url":"https://www.reddit.com/r/CreatorServices/search/?q=Hiring+YouTube+Editor&restrict_sr=1&sort=new"},{"id":"twine-b9tf20","company":"Private Client","niche":["youtube"],"notes":"10–18 min faceless educational documentaries/video essays (history, science). Archive/stock footage, simple motion graphics/diagrams, maps, and sound design.","order":26,"pay":"Open to offers","posted":"Posted today","region":"world","source":"Twine","title":"Faceless Educational Documentary Video Editor","type":"freelance","url":"https://www.twine.net/projects/b9tf20-searching-video-editor-video-editor-remote-job"},{"id":"twine-b9teo0","company":"Private Client","niche":["social"],"notes":"Remote CapCut video editing project: clean pacing, transitions, captions/text overlays, and audio syncing.","order":27,"pay":"Open to offers","posted":"Posted ~1 day ago","region":"world","source":"Twine","title":"CapCut Video Editor","type":"freelance","url":"https://www.twine.net/projects/b9teo0-searching-capcut-video-editor-video-editor-remote-job"},{"id":"twine-b9te50","company":"Sushant","niche":["youtube"],"notes":"Turning raw vlog footage into polished YouTube episodes with pacing, transitions, music, captions, and audio enhancements.","order":28,"pay":"Open to offers","posted":"Posted ~1 day ago","region":"world","source":"Twine","title":"YouTube Vlog Video Editor","type":"freelance","url":"https://www.twine.net/projects/b9te50-searching-youtube-vlog-video-editor-video-editor-remote-job"},{"id":"ytc-303","company":"Ray Sinlao","niche":["podcast","social"],"notes":"Clipping podcast episodes into short-form social content.","order":29,"pay":"$25–$65 per video or $1,500/month","posted":"Posted ~1 day ago","region":"world","source":"YT.Careers","title":"Short-Form Video Editor for Podcasts & Social Media","type":"parttime","url":"https://yt.careers/youtube-jobs/303"},{"id":"ytc-304","company":"Tomi | Midas","niche":["social","youtube"],"notes":"Short-form edits for a tech and fitness creator.","order":30,"pay":"","posted":"Posted ~1 day ago","region":"world","source":"YT.Careers","title":"Short-form Video Editor – Tech & Fitness","type":"parttime","url":"https://yt.careers/youtube-jobs/304"},{"id":"dj-uproot","company":"Uproot Clean","niche":["social"],"notes":"Turn creator and product footage into high-converting Meta, Instagram, and TikTok ads for a scaling DTC pet care brand.","order":31,"pay":"$25k–$45k/year","posted":"Opened 4 days ago","region":"unknown","regionNote":"Listed as Fully Remote; specific country restrictions not stated.","source":"Dynamite Jobs","title":"Performance Video Editor","type":"fulltime","url":"https://dynamitejobs.com/company/uprootclean/remote-job/performance-video-editor"},{"id":"dj-kendago","company":"Kendago","niche":["social"],"notes":"Performance-scale DTC video creative across paid channels and funnels. Premiere Pro, motion graphics, sound design, and storytelling.","order":32,"pay":"$2,000–$3,000/month","posted":"Opened 4 days ago","region":"unknown","regionNote":"Listed as Fully Remote; check post for regional overlap requirements.","source":"Dynamite Jobs","title":"Creative Lead - Video","type":"fulltime","url":"https://dynamitejobs.com/company/kendago/remote-job/creative-lead-video"},{"id":"dj-stemwave","company":"StemWave","niche":["social"],"notes":"Digital advertising, social media, and brand storytelling combining Adobe Creative Cloud with AI production workflows.","order":33,"pay":"$8/hour","posted":"Opened 4 days ago","region":"world","source":"Dynamite Jobs","title":"Video Editor - AI-Enhanced Production","type":"fulltime","url":"https://dynamitejobs.com/company/stemwave/remote-job/video-editor-ai-enhanced-production"},{"id":"chasr-ugc","company":"CHASR","niche":["social"],"notes":"Meta and TikTok performance ads. French is listed as required.","order":34,"pay":"","posted":"Posted ~5 days ago","region":"world","source":"Remote Rocketship","title":"Freelance Video Editor – UGC, VSL, Performance Ads","type":"freelance","url":"https://www.remoterocketship.com/us/company/chasr-io/jobs/freelance-video-editor-ugc-vsl-performance-ads-worldwide-remote-3/"},{"id":"onhires-meta","company":"OnHires (for a US DTC wellness brand)","niche":["social"],"notes":"40h/week independent contractor. Needs a portfolio of real DTC Meta ads; UGC experience.","order":35,"pay":"Not stated; bonus for winning ads","posted":"Posted 13 Oct","region":"limited","regionNote":"Listed for Europe, with 4+ hours overlap with 9:00–16:00 CET. SA hours fit, but check if non-EU applicants are accepted.","source":"RemoteSource","title":"Performance Video Editor (Meta DTC Ads)","type":"fulltime","url":"https://www.remotesource.com/jobs/ta-vrZanlrLS0fBN9abjC-performance-video-editor-meta-dtc-ads-remote-cet-2h-full-time-contract-at-onhires"},{"id":"ytc-301","company":"Sagan Recruitment","niche":["youtube","social"],"notes":"Short-form and long-form edits for YouTube, Instagram, TikTok, and Meta. Explicitly welcomes candidates based in Africa (US business hours).","order":36,"pay":"$1,800–$2,000/month","posted":"Posted 6 days ago","region":"world","source":"YT.Careers","title":"Video Editor (Independent Contractor)","type":"fulltime","url":"https://yt.careers/youtube-jobs/301"},{"id":"pod-7xcontent","company":"7xContent","niche":["podcast","youtube","social"],"notes":"Podcast video agency editing for shows like The High Performance Podcast and Money for Couples (Ramit Sethi). Closes 7 Nov 2026.","order":37,"pay":"","posted":"Posted 10 Oct · closes 7 Nov","region":"unknown","regionNote":"Fully remote working with a UK-based team (SA timezone aligns directly with UK hours).","source":"Podnews","title":"Video Editor (Podcasts & Short-Form)","type":"fulltime","url":"https://podnews.net/job/7xcontent/podcast-producer-122"},{"id":"ytc-297","company":"Itzjunior","niche":["youtube"],"notes":"","order":38,"pay":"Negotiable, per project","posted":"Posted ~8 days ago","region":"world","source":"YT.Careers","title":"YouTube Video Editor","type":"parttime","url":"https://yt.careers/youtube-jobs/297"},{"id":"gostek-yt","company":"Gostek Media (PatGostek.com)","niche":["youtube"],"notes":"Contract role editing for a YouTube channel.","order":39,"pay":"","posted":"Posted 8 Oct","region":"world","source":"Remote Rocketship","title":"YouTube Video Editor","type":"freelance","url":"https://www.remoterocketship.com/us/company/gostek-media/jobs/youtube-video-editor-worldwide-remote-2/"},{"id":"dj-later","company":"Later","niche":["social"],"notes":"Freelance creator and social media video editing & graphic design for influencer marketing campaigns.","order":40,"pay":"$40–$75/hour","posted":"Opened 10 days ago","region":"unknown","regionNote":"Listed as Remote freelance; check post for country eligibility.","source":"Dynamite Jobs","title":"Social Media Creative Network (Freelance)","type":"freelance","url":"https://dynamitejobs.com/company/later/remote-job/social-media-creative-network-freelance"},{"id":"ytc-296","company":"Xentra Transport","niche":["youtube"],"notes":"Long-form documentary style with motion design. Paid test first.","order":41,"pay":"Per video, rate set by portfolio","posted":"Posted ~11 days ago","region":"world","source":"YT.Careers","title":"Documentary Video Editor & Motion Designer","type":"freelance","url":"https://yt.careers/youtube-jobs/296"},{"id":"ytc-290","company":"Gemstone Rhapsody","niche":["social"],"notes":"Cut and post daily short vertical videos to TikTok, YouTube Shorts, and Reels for an iOS puzzle game.","order":42,"pay":"","posted":"Posted 16 days ago","region":"world","source":"YT.Careers","title":"Short-form Video Editor & Community Manager","type":"parttime","url":"https://yt.careers/youtube-jobs/290"},{"id":"ytc-289","company":"Midas Movement","niche":["youtube"],"notes":"Project-based.","order":43,"pay":"$100 per completed video","posted":"Posted ~16 days ago","region":"world","source":"YT.Careers","title":"Follow-Along Workout Video Editor","type":"freelance","url":"https://yt.careers/youtube-jobs/289"},{"id":"ytc-285","company":"CheefCurry","niche":["youtube"],"notes":"","order":44,"pay":"","posted":"Posted ~20 days ago","region":"world","source":"YT.Careers","title":"Documentary Video Editor","type":"parttime","url":"https://yt.careers/youtube-jobs/285"},{"id":"linear-ai","company":"Linear Agency","niche":["social"],"notes":"2+ years of direct-response ads for DTC brands. CapCut, Premiere or After Effects.","order":45,"pay":"","posted":"Posted 2 Oct","region":"world","source":"Remote Rocketship","title":"AI Video Editor","type":"fulltime","url":"https://www.remoterocketship.com/us/company/wearelinear/jobs/ai-video-editor-worldwide-remote/"},{"id":"rr-linear-dr","company":"Linear Agency","niche":["social"],"notes":"Short-form direct-response video ads for Meta & TikTok (UGC, testimonials, product demos). 2+ years DTC ad experience.","order":46,"pay":"","posted":"Posted Oct","region":"world","source":"Remote Rocketship","title":"Direct Response Video Editor","type":"fulltime","url":"https://www.remoterocketship.com/us/company/wearelinear/jobs/direct-response-video-editor-worldwide-remote/"},{"id":"afford-anything","company":"Afford Anything","niche":["podcast","youtube"],"notes":"Long-form podcast/interview video and audio editing. Closes 23 Oct 2026, so move fast.","order":47,"pay":"Based on experience; you quote a monthly rate","posted":"Posted 28 Sep · closes 23 Oct","region":"unknown","regionNote":"Fully remote with a US-based team; no country limits named.","source":"Podnews","title":"The Best Podcast & Video Editor Role Ever","type":"fulltime","url":"https://podnews.net/job/afford-anything/the-best-podcast-video-editor-role-ever"},{"id":"bluetuskr","company":"BlueTuskr","niche":["social"],"notes":"Mix of design and video editing.","order":48,"pay":"$20–$25/hour","posted":"Opened ~28 Sep","region":"unknown","source":"Dynamite Jobs","title":"Graphic Designer & Video Editor (Part-Time)","type":"parttime","url":"https://dynamitejobs.com/company/bluetuskr/remote-job/graphic-designer-video-editor-part-time"},{"id":"rr-fullpond","company":"FullPond","niche":["youtube","social"],"notes":"30–60s vertical videos (Reels, TikTok, Shorts) and 15–20 min long-form YouTube videos. Premiere Pro & After Effects.","order":49,"pay":"","posted":"Posted 26 Sep","region":"world","source":"Remote Rocketship","title":"Senior Video Editor","type":"fulltime","url":"https://www.remoterocketship.com/us/company/fullpond-co/jobs/senior-video-editor-worldwide-remote/"},{"id":"ytc-272","company":"Omni Capital","niche":["youtube"],"notes":"","order":50,"pay":"$10 per minute of runtime","posted":"Posted ~1 month ago","region":"world","source":"YT.Careers","title":"Finance/Investing Video Editor","type":"parttime","url":"https://yt.careers/youtube-jobs/272"}]};</script>
+<script>window.CRG_DATA = {"sweepDate":"7 Nov 2026","jobs":[{"id":"reddit-1xov0sk","title":"LOOKING for short form music video editor (father of peace)","company":"r/VideoEditors_forhire (/u/GRANDMAShouse2000)","source":"Reddit","url":"https://www.reddit.com/r/VideoEditors_forhire/comments/1xov0sk/hiring_looking_for_short_form_music_video_editor/","niche":["social"],"type":"freelance","region":"world","pay":"","notes":"please check out the band father of peace and let me know if you think you could create videos like that for me. on going work for a long term","publishedAt":"2026-11-05T21:35:07+00:00","posted":"Posted 56m ago · 5 Nov","order":1},{"id":"twine-b9un30","title":"Video Editor for True Crime YouTube Documentaries","company":"Twine Client","source":"Twine","url":"https://www.twine.net/projects/b9un30-searching-video-editor-for-true-crime-youtube-documentaries-video-editor-remote-job","niche":["youtube"],"type":"freelance","region":"world","pay":"Open to offers","notes":"I need a video editor to help shape engaging true crime documentaries for my YouTube channel. The edits should support clear storytelling, suspenseful pacing, and a polished documentary-style viewing","publishedAt":"2026-11-05T19:31:40.197929+00:00","posted":"Posted 3h ago · 5 Nov","order":2},{"id":"twine-b9unc0","title":"YouTube Video Editor","company":"Twine Client","source":"Twine","url":"https://www.twine.net/projects/b9unc0-searching-youtube-video-editor-video-editor-remote-job","niche":["youtube"],"type":"freelance","region":"world","pay":"Open to offers","notes":"Edit engaging YouTube videos for publication, with polished pacing, clean cuts, and a viewer-focused final result. Please be comfortable shaping raw footage into a cohesive story and applying appropri","publishedAt":"2026-11-05T19:31:40.196928+00:00","posted":"Posted 3h ago · 5 Nov","order":3},{"id":"twine-b9unv0","title":"Long-form YouTube Video Editor (Premiere Pro)","company":"Twine Client","source":"Twine","url":"https://www.twine.net/projects/b9unv0-long-form-youtube-video-editor-premiere-pro-video-editor-remote-job","niche":["youtube"],"type":"freelance","region":"world","pay":"Open to offers","notes":"About the role JNL Creatives is looking for one long-term video editor to handle long-form YouTube vlog edits for a lifestyle creator. The work includes day-in-the-life, food, talking-head, and some m","publishedAt":"2026-11-05T19:31:40.195929+00:00","posted":"Posted 3h ago · 5 Nov","order":4},{"id":"twine-b9uo00","title":"Video Editor","company":"Twine Client","source":"Twine","url":"https://www.twine.net/projects/b9uo00-consultation-video-editor-video-editor-remote-job","niche":["podcast"],"type":"freelance","region":"world","pay":"Open to offers","notes":"Seeking a remote video editor for an upcoming project. Please be comfortable editing footage into polished, engaging final videos with clean pacing, transitions, and basic audio cleanup. Project detai","publishedAt":"2026-11-05T19:31:40.193744+00:00","posted":"Posted 3h ago · 5 Nov","order":5},{"id":"rr-freelance-video-editor-w","title":"Freelance Video Editor","company":"OnStage","source":"Remote Rocketship","url":"https://www.remoterocketship.com/us/company/onstage-berlin/jobs/freelance-video-editor-worldwide-remote-2/","niche":["social","youtube"],"type":"freelance","region":"world","pay":"","notes":"• Editing and post-production of YouTube long-form videos (8–15 minutes) • Creative execution of storytelling, structure, and visuals • Independent thinking rather than simply following inst","publishedAt":"2026-11-05T18:31:48.617386+00:00","posted":"Posted 4h ago · 5 Nov","order":6},{"id":"reddit-1xooxxc","title":"UGC Video Editor – 300 Videos/Month | Monthly Fixed Pay | Simple, Quick Edits","company":"r/HireAnEditor (/u/Beginning-Ad9507)","source":"Reddit","url":"https://www.reddit.com/r/HireAnEditor/comments/1xooxxc/hiring_ugc_video_editor_300_videosmonth_monthly/","niche":["social"],"type":"freelance","region":"world","pay":"","notes":"I'm looking for a reliable video editor to join me on an ongoing monthly basis to handle high-volume UGC video editing. Workload: Approximately 300 short-form videos per month. (30 hours of …","publishedAt":"2026-11-05T17:38:46+00:00","posted":"Posted 4h ago · 5 Nov","order":7},{"id":"rr-video-editor-studio-prod","title":"Video Editor – Studio Production Assistant","company":"Growthub","source":"Remote Rocketship","url":"https://www.remoterocketship.com/us/company/growthub-agency/jobs/video-editor-studio-production-assistant-worldwide-remote/","niche":["social","podcast"],"type":"fulltime","region":"world","pay":"","notes":"• Edit studio, street interview, and creator footage into short-form vertical ads according to briefs and editor notes • Restyle, extend, or rebuild specific shots using AI video tools • Sup","publishedAt":"2026-11-05T15:31:48.619385+00:00","posted":"Posted 7h ago · 5 Nov","order":8},{"id":"reddit-1xolh87","title":"Looking for an Experienced Indian Gaming Video Editor – Long-Term Work","company":"r/YouTubeEditorsForHire (/u/Defiant-Car-9103)","source":"Reddit","url":"https://www.reddit.com/r/YouTubeEditorsForHire/comments/1xolh87/hiring_looking_for_an_experienced_indian_gaming/","niche":["youtube"],"type":"freelance","region":"world","pay":"","notes":"Direct creator hiring post on r/YouTubeEditorsForHire.","publishedAt":"2026-11-05T15:25:46+00:00","posted":"Posted 7h ago · 5 Nov","order":9},{"id":"ytc-329","title":"YouTube video editor – sailing and adventure","company":"Sailing Adventures Seafinn","source":"YT.Careers","url":"https://yt.careers/youtube-jobs/329","niche":["social","youtube"],"type":"parttime","region":"world","pay":"","notes":"I’m looking for a freelance editor to help develop the long-form storytelling on Sailing Seafinn, starting with one paid episode and potentially building an ongoing collaboration. The first project An","publishedAt":"2026-11-05T11:31:41.110800+00:00","posted":"Posted 11h ago · 5 Nov","order":10},{"id":"hz-3cbb30da","title":"Video Editor / Content Strategist","company":"Somewhere","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/video-editor-content-strategist-somewhere-3cbb30da/","niche":["social","podcast"],"type":"fulltime","region":"world","pay":"","notes":"Job Description: Video Editor & Content Strategist (Remote) Location:Remote (Latin America or South Africa) The Role We are seeking a highly skilled, self-startingVideo Editor & Content Strategis","publishedAt":"2026-11-05T06:00:16.435263+00:00","posted":"Posted 16h ago · 5 Nov","order":11},{"id":"hz-74718a66","title":"Video Editor (Remote)","company":"Somewhere","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/video-editor-remote-somewhere-74718a66/","niche":["social","podcast"],"type":"fulltime","region":"world","pay":"","notes":"Video Editor: YouTube Growth Agency (Remote – LATAM & South Africa) The Opportunity We are a full-service YouTube content production agency. We manage YouTube channels for coaches, consultants, i","publishedAt":"2026-11-05T06:00:16.335463+00:00","posted":"Posted 16h ago · 5 Nov","order":12},{"id":"hz-5f825a33","title":"Video Editor (Remote)","company":"Somewhere","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/video-editor-remote-somewhere-5f825a33/","niche":["social","podcast"],"type":"fulltime","region":"world","pay":"","notes":"Location:Remote (South Africa and LATAM)Contract:Independent ContractorSchedule:Full-Time, Monday-Friday, ESTRole Overview We are seeking an advanced, highly skilled Video Editor to take full own","publishedAt":"2026-11-05T06:00:15.198570+00:00","posted":"Posted 16h ago · 5 Nov","order":13},{"id":"hz-1c0f2987","title":"Social Media Video Editor & Graphic Designer (P/T)","company":"Somewhere","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/social-media-video-editor-graphic-designer-pt-somewhere-1c0f2987/","niche":["social"],"type":"parttime","region":"world","pay":"","notes":"Social Media Video Editor & Graphic Designer Location:Remote (Latin America, South Africa, or Philippines)Employment Type:Part-time to start (fixed hours per week), with a clear path to full-time","publishedAt":"2026-11-05T06:00:15.052835+00:00","posted":"Posted 16h ago · 5 Nov","order":14},{"id":"hz-a6373da2","title":"Video Editor","company":"Somewhere","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/video-editor-somewhere-a6373da2/","niche":["youtube"],"type":"fulltime","region":"world","pay":"2,500-3,500USD/month","notes":"Position: Video Editor Work Hours (Client):atleast 4 hours overlap with PST, 40 hours/week, Monday-Friday Pay Range: 2,500-3,500USD/month(varies based on skill set and experience level) Location","publishedAt":"2026-11-05T06:00:13.610953+00:00","posted":"Posted 16h ago · 5 Nov","order":15},{"id":"hz-6890498f","title":"AI Video Editor & Content Producer","company":"Somewhere","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/ai-video-editor-content-producer-somewhere-6890498f/","niche":["social","youtube"],"type":"parttime","region":"world","pay":"","notes":"AI Video Producer & Editor (Political Satire & Internet Culture) Job Title AI Video Producer & Editor (Political Satire & Internet Culture) Location / Employment Details * Location:Fully remote.","publishedAt":"2026-11-05T06:00:11.851090+00:00","posted":"Posted 16h ago · 5 Nov","order":16},{"id":"wk-pavago-8d6eac056a","title":"Video Editor","company":"Pavago","source":"Workable","url":"https://apply.workable.com/j/8D6EAC056A","niche":["youtube"],"type":"fulltime","region":"unknown","regionNote":"Pakistan","pay":"","notes":"Verified active opening on Pavago's Workable ATS (Pakistan).","publishedAt":"2026-11-05T00:00:00+00:00","posted":"Posted 22h ago · 5 Nov","order":17},{"id":"twine-b9ulg0","title":"AI Video Editor","company":"Twine Client","source":"Twine","url":"https://www.twine.net/projects/b9ulg0-searching-ai-video-editor-video-editor-remote-job","niche":["youtube"],"type":"freelance","region":"world","pay":"Open to offers","notes":"Create engaging video content using AI-powered video creation and editing tools. The work may include generating visuals, assembling clips, adding transitions, captions, music, and basic motion graphi","publishedAt":"2026-11-04T22:31:40.199929+00:00","posted":"Posted 1d ago · 4 Nov","order":18},{"id":"twine-b9um70","title":"Short-form video editor for cafe and restaurant Instagram Reels (ongoing)","company":"Twine Client","source":"Twine","url":"https://www.twine.net/projects/b9um70-urgent-short-form-video-editor-for-cafe-and-restaurant-instagram-reels-ongoing-video-editor-remote-job","niche":["social"],"type":"freelance","region":"world","pay":"$250–$750","notes":"Edit an initial volume of 16–20 vertical Instagram Reels and TikToks per month, typically 15–45 seconds each. Content will include food and drink features, barista and behind-the-scenes moments, produ","publishedAt":"2026-11-04T22:31:40.198929+00:00","posted":"Posted 1d ago · 4 Nov","order":19},{"id":"dj-digitalmediamanagement-video-editor-tempo","title":"Video Editor, Temporary","company":"Digitalmediamanagement","source":"Dynamite Jobs","url":"https://dynamitejobs.com/company/digitalmediamanagement/remote-job/video-editor-temporary-5","niche":["youtube"],"type":"fulltime","region":"world","pay":"$55k - $70k per year","notes":"Video Editing Adobe Premiere Pro Post-production Content Creation Adobe After Effects Video Editor, Temporary Please note that DMM will only contact you using email addresses that end in .com. We have","publishedAt":"2026-11-04T12:00:00+00:00","posted":"Posted 1d ago · 4 Nov","order":20},{"id":"dj-img01-nhl-youtube-video-","title":"NHL, YouTube Video Editor","company":"Img01","source":"Dynamite Jobs","url":"https://dynamitejobs.com/company/img01/remote-job/nhl-youtube-video-editor","niche":["youtube"],"type":"fulltime","region":"world","pay":"$45k - $60k per year","notes":"Video Editing Premiere Pro After Effects Subtitling Captioning Color Correction German NHL, YouTube Video Editor Who We Are: WWE® is the global leader in sports entertainment. The company creates and","publishedAt":"2026-11-03T12:00:00+00:00","posted":"Posted 2d ago · 3 Nov","order":21},{"id":"hz-1105b681","title":"Long and Short Form Video Editor (Social Media Clipper) (BBS927)","company":"Hire Overseas","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/long-and-short-form-video-editor-social-media-clipper-bbs927-hire-overseas-1105b681/","niche":["social","youtube"],"type":"fulltime","region":"world","pay":"","notes":"We're looking for a Long and Short Form Video Editor to watch YouTube content from a fast-growing social media creator, identify the best clippable moments, edit them into short-form clips, and r","publishedAt":"2026-11-03T00:00:00+00:00","posted":"Posted 2d ago · 3 Nov","order":22},{"id":"ytc-324","title":"Gaming Video Editor","company":"Carthee_","source":"YT.Careers","url":"https://yt.careers/youtube-jobs/324","niche":["youtube"],"type":"freelance","region":"world","pay":"","notes":"I’m looking for a creative and reliable gaming video editor to turn raw gameplay footage into engaging, entertaining videos. You should have a good sense of pacing, funny moments, smooth transitions,","publishedAt":"2026-11-02T22:31:41.111804+00:00","posted":"Posted 3d ago · 2 Nov","order":23},{"id":"pod-one-decision-freelance-short-form-vi","title":"Freelance Short-Form Video Editor","company":"One Decision","source":"Podnews","url":"https://podnews.net/job/one-decision-/freelance-short-form-video-editor","niche":["podcast","youtube"],"type":"parttime","region":"world","pay":"","notes":"Remote podcast role at One Decision .","publishedAt":"2026-11-02T21:41:51+00:00","posted":"Posted 3d ago · 2 Nov","order":24},{"id":"ytc-322","title":"AI Video Editor - Paid Social Ads","company":"Sagan Recruitment","source":"YT.Careers","url":"https://yt.careers/youtube-jobs/322","niche":["social"],"type":"fulltime","region":"world","pay":"USD 1,750–2,500 per month","notes":"Job Title: AI Video Editor - Paid Social Ads Location: Worldwide remote Employment Type: Full-time Engagement: Independent contractor Compensation: USD 1,750–2,500 per month Company Overview Sagan con","publishedAt":"2026-10-30T22:31:41.112804+00:00","posted":"Posted 6d ago · 30 Oct","order":25},{"id":"ytc-321","title":"Video Editor for Swiss Travel Documentaries","company":"Swiss Moments","source":"YT.Careers","url":"https://yt.careers/youtube-jobs/321","niche":["youtube"],"type":"freelance","region":"world","pay":"20-80 per project for now","notes":"We're looking for a long-term video editor who knows how to keep viewers hooked from the first second. You'll take our raw footage and turn it into dynamic, well-paced stories where the serious histor","publishedAt":"2026-10-30T22:31:41.112804+00:00","posted":"Posted 6d ago · 30 Oct","order":26},{"id":"hz-85f3a1dd","title":"Digital Video Editor","company":"Soar With Us","source":"Somewhere / Hirezar","url":"https://hirezar.co.za/jobs/digital-video-editor-soar-with-us-85f3a1dd/","niche":["social"],"type":"fulltime","region":"world","pay":"$2,000 USD/month","notes":"Role:Video Editor Function:Videography | Production | UGC Content | Performance Marketing Responsibility:Edit high-production performance ads for D2C brands Reports to:Senior Video Editor Locatio","publishedAt":"2026-10-29T01:38:37+00:00","posted":"Posted 7d ago · 29 Oct","order":27},{"id":"ytc-319","title":"Gaming Video Editor","company":"PotatoesOBrienn","source":"YT.Careers","url":"https://yt.careers/youtube-jobs/319","niche":["youtube"],"type":"fulltime","region":"world","pay":"","notes":"I'm the creator behind PotatoesOBrienn , a personality-driven gaming channel built around funny interactions, unpredictable gameplay, reactions, and community entertainment. I'm looking for an editor","publishedAt":"2026-10-28T22:31:41.113804+00:00","posted":"Posted 8d ago · 28 Oct","order":28},{"id":"dj-betterme-motion-designer-vi","title":"Motion Designer/Video Editor","company":"Betterme","source":"Dynamite Jobs","url":"https://dynamitejobs.com/company/betterme/remote-job/motion-designer-video-editor","niche":["youtube"],"type":"fulltime","region":"world","pay":"$18k - $30k per year","notes":"After Effects Motion Design Video Editing Motion Designer/Video Editor About us: BetterMe — an all-in-one well-being ecosystem empowering millions to become better — physically, mentally, and emotiona","publishedAt":"2026-10-28T12:00:00+00:00","posted":"Posted 8d ago · 28 Oct","order":29},{"id":"ytc-314","title":"Short-form video editor (Freelance, Remote, UK)","company":"Tom Sharman","source":"YT.Careers","url":"https://yt.careers/youtube-jobs/314","niche":["social","youtube"],"type":"freelance","region":"world","pay":"","notes":"About Tom Sharman and The Content Operators Tom Sharman is a UK content operator and founder of The Content Operators, based in Brighton. He builds the strategy, teams and systems that turn creators a","publishedAt":"2026-10-26T22:31:41.116922+00:00","posted":"Posted 10d ago · 26 Oct","order":30},{"id":"dj-yaqeen-video-editor","title":"Video Editor","company":"Yaqeen","source":"Dynamite Jobs","url":"https://dynamitejobs.com/company/yaqeen/remote-job/video-editor","niche":["podcast"],"type":"parttime","region":"world","pay":"$25 - $40 per hour","notes":"Video Editing Adobe Premiere Pro Adobe After Effects Audio Editing Video Editor The Video Editor will transform raw footage into polished, compelling content optimized for digital platforms. This role","publishedAt":"2026-10-26T12:00:00+00:00","posted":"Posted 10d ago · 26 Oct","order":31},{"id":"dj-afar-associate-video-ed","title":"Associate Video Editor","company":"Afar","source":"Dynamite Jobs","url":"https://dynamitejobs.com/company/afar/remote-job/associate-video-editor","niche":["youtube"],"type":"fulltime","region":"world","pay":"$65k - $75k per year","notes":"Video Editing Adobe Premiere Pro Adobe After Effects YouTube Analytics Associate Video Editor Afar is seeking a talented and creative video editor to join our team! The ideal candidate is an enthusias","publishedAt":"2026-10-26T12:00:00+00:00","posted":"Posted 10d ago · 26 Oct","order":32},{"id":"rr-dtc-performance-video-ed","title":"DTC Performance Video Editor – AI-First, Freelance","company":"agencro | part of YY Operations GmbH","source":"Remote Rocketship","url":"https://www.remoterocketship.com/us/company/agencro-part-of-yy-operations-gmbh/jobs/dtc-performance-video-editor-ai-first-freelance-worldwide-remote/","niche":["social"],"type":"freelance","region":"world","pay":"","notes":"• Edit performance video ads for the company's own brands, including UGC ads, AI-generated creatives, VSL-style videos, and testimonial cuts • Create ads for Meta, TikTok, and paid social ca","publishedAt":"2026-10-24T12:00:00+00:00","posted":"Posted 12d ago · 24 Oct","order":33}]};
+window.CRG_STATE = {"status":{"reddit-1xb0zaq":"hidden","reddit-1xaxuz4":"hidden","reddit-1xaxnwj":"hidden","reddit-1xaulja":"hidden","reddit-1xar0ez":"hidden","ytc-297":"hidden"},"appliedMeta":{},"alertRules":[{"id":"default-pod","keyword":"Podcast Editor","niche":"podcast","type":"any","world":"any"}],"disabledSources":["Ashby"],"statusBySig":{"part-time editor for animated youtube explainers – $300+/month, remote, no animation experience needed::r/hireaneditor (/u/outsidelifetutorial)":"hidden","https://www.reddit.com/r/hireaneditor/comments/1xb0zaq/hiring_parttime_editor_for_animated_youtube":"hidden","amv/mmv lyric video editor::r/videoeditors_forhire (/u/b-where)":"hidden","https://www.reddit.com/r/videoeditors_forhire/comments/1xaxuz4/hiring_amvmmv_lyric_video_editor":"hidden","looking for an editor for a youtube reaction channel::r/hireaneditor (/u/thedramanticist)":"hidden","https://www.reddit.com/r/hireaneditor/comments/1xaxnwj/hiring_looking_for_an_editor_for_a_youtube":"hidden","video editor for short facebook ad videos – ₹400–500 per video, ongoing work::r/hireaneditor (/u/ecomdmn)":"hidden","https://www.reddit.com/r/hireaneditor/comments/1xaulja/hiring_video_editor_for_short_facebook_ad_videos":"hidden","looking for someone to join my team! must be skilled in image to video, video extension, and video editing. 2+ min vids. offsite editing.::r/videoeditors_forhire (/u/leighanon18)":"hidden","https://www.reddit.com/r/videoeditors_forhire/comments/1xar0ez/hiring_looking_for_someone_to_join_my_team_must":"hidden","youtube video editor::itzjunior":"hidden","https://yt.careers/youtube-jobs/297":"hidden"},"updatedAt":1792524499033};</script>
 <script>
 (function(){
   const NICHE={social:"Social & ads",youtube:"YouTube",podcast:"Podcast"};
@@ -393,46 +400,201 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     {id:"Podnews",desc:"Daily podcast industry job board for video podcast editors & producers",url:"https://podnews.net/jobs"}
   ];
 
-  let jobs=[], status={}, appliedMeta={}, alertRules=[], disabledSources=new Set(), notifyCfg={desktop:false,emailEnabled:false,emailTo:"",smtpUser:"",smtpPass:""};
+  let jobs=[], status={}, statusBySig={}, appliedMeta={}, alertRules=[], disabledSources=new Set(), notifyCfg={desktop:false,emailEnabled:false,emailTo:"",smtpUser:"",smtpPass:""};
   let currentView="bin", stageFilter="all", toastTimer=null;
   const f={niche:new Set(),type:new Set(),world:false,saved:false,alertMatch:false,hidden:false,q:"",qApplied:""};
 
   const $=id=>document.getElementById(id);
 
-  // Load state from localStorage
+  function jobSig(j){
+    if(!j)return "";
+    return `${(j.title||"").trim().toLowerCase()}::${(j.company||"").trim().toLowerCase()}`;
+  }
+
+  function jobUrlKey(j){
+    if(!j||!j.url)return "";
+    return String(j.url).trim().replace(/\/+$/,"").toLowerCase();
+  }
+
+  function getJobStatus(j){
+    if(!j)return "";
+    if(status[j.id])return status[j.id];
+    const uk=jobUrlKey(j);
+    if(uk&&statusBySig[uk]){
+      status[j.id]=statusBySig[uk];
+      return status[j.id];
+    }
+    const sig=jobSig(j);
+    if(sig&&statusBySig[sig]){
+      status[j.id]=statusBySig[sig];
+      return status[j.id];
+    }
+    return "";
+  }
+
+  let stateUpdatedAt=0;
+
+  function mergeLoadedState(src){
+    if(!src||typeof src!=="object")return;
+    const incomingTs=Number(src.updatedAt||0);
+    const incomingIsNewer=incomingTs>=stateUpdatedAt;
+    if(incomingIsNewer&&incomingTs>0){
+      stateUpdatedAt=incomingTs;
+      if(src.status&&typeof src.status==="object")status={...src.status};
+      if(src.statusBySig&&typeof src.statusBySig==="object")statusBySig={...src.statusBySig};
+      if(src.appliedMeta&&typeof src.appliedMeta==="object")appliedMeta={...appliedMeta,...src.appliedMeta};
+      if(Array.isArray(src.disabledSources))disabledSources=new Set(src.disabledSources);
+    }else{
+      if(src.status&&typeof src.status==="object")status={...src.status,...status};
+      if(src.statusBySig&&typeof src.statusBySig==="object")statusBySig={...src.statusBySig,...statusBySig};
+      if(src.appliedMeta&&typeof src.appliedMeta==="object")appliedMeta={...src.appliedMeta,...appliedMeta};
+      if(Array.isArray(src.disabledSources)&&!disabledSources.size)disabledSources=new Set(src.disabledSources);
+    }
+    if(Array.isArray(src.alertRules)&&src.alertRules.length)alertRules=src.alertRules;
+    if(src.notifyCfg&&typeof src.notifyCfg==="object")notifyCfg={...notifyCfg,...src.notifyCfg};
+  }
+
+  // 0. Load embedded state from jobs.js / cutting-room-gigs-standalone.html (survives even if browser wipes file:// storage)
+  try{if(window.CRG_STATE)mergeLoadedState(window.CRG_STATE);}catch(e){}
+
+  // 1. Load state from window.name + document.cookie + localStorage
+  try{
+    if(window.name&&window.name.startsWith("CRG_STATE:")){
+      mergeLoadedState(JSON.parse(window.name.slice(10)));
+    }
+  }catch(e){}
+  try{
+    const ck=document.cookie.split("; ").find(row=>row.startsWith("crg_state="));
+    if(ck)mergeLoadedState(JSON.parse(decodeURIComponent(ck.split("=")[1])));
+  }catch(e){}
   try{
     const s=JSON.parse(localStorage.getItem("crg-filters")||"null");
     if(s){f.niche=new Set(s.niche||[]);f.type=new Set(s.type||[]);f.world=!!s.world;f.saved=!!s.saved;f.alertMatch=!!s.alertMatch;f.hidden=!!s.hidden;}
   }catch(e){}
-  try{status=JSON.parse(localStorage.getItem("crg-status")||"{}")}catch(e){status={}}
-  try{appliedMeta=JSON.parse(localStorage.getItem("crg-applied-meta")||"{}")}catch(e){appliedMeta={}}
+  try{status={...status,...JSON.parse(localStorage.getItem("crg-status")||"{}")}}catch(e){}
+  try{statusBySig={...statusBySig,...JSON.parse(localStorage.getItem("crg-status-sigs")||"{}")}}catch(e){}
+  try{appliedMeta={...appliedMeta,...JSON.parse(localStorage.getItem("crg-applied-meta")||"{}")}}catch(e){}
+  try{stateUpdatedAt=Math.max(stateUpdatedAt,Number(localStorage.getItem("crg-updated-at")||0));}catch(e){}
   try{
     const ds=JSON.parse(localStorage.getItem("crg-disabled-sources")||"null");
     if(Array.isArray(ds))disabledSources=new Set(ds);
   }catch(e){}
   try{
     const r=JSON.parse(localStorage.getItem("crg-alert-rules")||"null");
-    alertRules=Array.isArray(r)?r:[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}];
-  }catch(e){alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}]}
+    if(Array.isArray(r)&&r.length)alertRules=r;
+    else if(!alertRules.length)alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}];
+  }catch(e){if(!alertRules.length)alertRules=[{id:"default-pod",keyword:"Podcast Editor",niche:"podcast",type:"any",world:"any"}]}
   try{
     const nc=JSON.parse(localStorage.getItem("crg-notify-cfg")||"null");
     if(nc)notifyCfg={...notifyCfg,...nc};
   }catch(e){}
 
+  let linkedFileHandle=null;
+
+  function openBoardDb(){
+    return new Promise(resolve=>{
+      try{
+        const req=indexedDB.open("crg_board_db",2);
+        req.onupgradeneeded=e=>{
+          const db=e.target.result;
+          if(!db.objectStoreNames.contains("kv"))db.createObjectStore("kv");
+        };
+        req.onsuccess=e=>resolve(e.target.result);
+        req.onerror=()=>resolve(null);
+      }catch(e){resolve(null);}
+    });
+  }
+
+  async function saveIdbKey(key,val){
+    const db=await openBoardDb();
+    if(!db)return;
+    try{
+      const tx=db.transaction("kv","readwrite");
+      tx.objectStore("kv").put(val,key);
+    }catch(e){}
+  }
+
+  async function loadIdbKey(key){
+    const db=await openBoardDb();
+    if(!db)return null;
+    return new Promise(resolve=>{
+      try{
+        const tx=db.transaction("kv","readonly");
+        const req=tx.objectStore("kv").get(key);
+        req.onsuccess=()=>resolve(req.result||null);
+        req.onerror=()=>resolve(null);
+      }catch(e){resolve(null);}
+    });
+  }
+
+  async function writeToLinkedFile(payload){
+    if(!linkedFileHandle)return;
+    try{
+      const perm=await linkedFileHandle.queryPermission({mode:"readwrite"});
+      if(perm==="granted"){
+        const writable=await linkedFileHandle.createWritable();
+        await writable.write(JSON.stringify(payload,null,2));
+        await writable.close();
+      }
+    }catch(e){}
+  }
+
+  function syncUrlHashState(){
+    try{
+      const min={s:status,g:statusBySig,m:appliedMeta,d:[...disabledSources]};
+      if(Object.keys(status).length||Object.keys(statusBySig).length||disabledSources.size){
+        const b64=btoa(unescape(encodeURIComponent(JSON.stringify(min))));
+        history.replaceState(null,"","#crg="+b64);
+      }else if(location.hash.startsWith("#crg=")){
+        history.replaceState(null,"",location.pathname+location.search);
+      }
+    }catch(e){}
+  }
+
+  function loadUrlHashState(){
+    try{
+      if(location.hash&&location.hash.startsWith("#crg=")){
+        const raw=decodeURIComponent(escape(atob(location.hash.slice(5))));
+        const parsed=JSON.parse(raw);
+        if(parsed.s)status={...parsed.s,...status};
+        if(parsed.g)statusBySig={...parsed.g,...statusBySig};
+        if(parsed.m)appliedMeta={...parsed.m,...appliedMeta};
+        if(Array.isArray(parsed.d)&&!disabledSources.size)disabledSources=new Set(parsed.d);
+      }
+    }catch(e){}
+  }
+  loadUrlHashState();
+
   function persistState(){
+    stateUpdatedAt=Date.now();
+    const payload={status,statusBySig,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources],updatedAt:stateUpdatedAt};
     try{
       localStorage.setItem("crg-status",JSON.stringify(status));
+      localStorage.setItem("crg-status-sigs",JSON.stringify(statusBySig));
       localStorage.setItem("crg-applied-meta",JSON.stringify(appliedMeta));
       localStorage.setItem("crg-alert-rules",JSON.stringify(alertRules));
       localStorage.setItem("crg-notify-cfg",JSON.stringify(notifyCfg));
       localStorage.setItem("crg-disabled-sources",JSON.stringify([...disabledSources]));
+      localStorage.setItem("crg-updated-at",String(stateUpdatedAt));
     }catch(e){}
-    // Also sync to local server if running
-    fetch("/api/state",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({status,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources]})
-    }).catch(()=>{});
+    try{window.name="CRG_STATE:"+JSON.stringify(payload);}catch(e){}
+    try{
+      const minCookie=encodeURIComponent(JSON.stringify({status,statusBySig}));
+      if(minCookie.length<3800)document.cookie=`crg_state=${minCookie}; max-age=31536000; path=/; SameSite=Lax`;
+    }catch(e){}
+    syncUrlHashState();
+    saveIdbKey("user_state",payload);
+    writeToLinkedFile(payload);
+    // Sync to local server (works whether page is opened via http://localhost:8080 OR file:// while server.py is running)
+    const endpoints=["/api/state","http://127.0.0.1:8080/api/state"];
+    endpoints.forEach(ep=>{
+      fetch(ep,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload),
+        keepalive:true
+      }).catch(()=>{});
+    });
   }
 
   function saveF(){
@@ -552,10 +714,14 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
   }
 
   function setStatus(id,val){
-    const prev=status[id]||"";
-    const job=jobs.find(x=>x.id===id);
+    const job=jobs.find(x=>x.id===id)||(appliedMeta[id]&&appliedMeta[id].snapshot)||null;
+    const prev=job?getJobStatus(job):(status[id]||"");
+    const sig=jobSig(job);
+    const uk=jobUrlKey(job);
     if(val){
       status[id]=val;
+      if(sig)statusBySig[sig]=val;
+      if(uk)statusBySig[uk]=val;
       if(val==="applied"&&!appliedMeta[id]){
         appliedMeta[id]={
           stage:"applied",
@@ -567,6 +733,8 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
       }
     }else{
       delete status[id];
+      if(sig)delete statusBySig[sig];
+      if(uk)delete statusBySig[uk];
     }
     persistState();
     render();
@@ -580,7 +748,7 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
 
   function updateBadges(){
     const enabledJobs=jobs.filter(j=>!disabledSources.has(j.source));
-    const openCount=enabledJobs.filter(j=>{const st=status[j.id]||"";return st!=="applied"&&st!=="hidden"}).length;
+    const openCount=enabledJobs.filter(j=>{const st=getJobStatus(j);return st!=="applied"&&st!=="hidden"}).length;
     const appliedIds=Object.keys(status).filter(id=>status[id]==="applied");
     const totalSources=getAllSources().length;
     const activeSources=totalSources-disabledSources.size;
@@ -598,7 +766,7 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     const q=f.q.trim().toLowerCase();
     const rows=jobs.filter(j=>{
       if(disabledSources.has(j.source))return false;
-      const st=status[j.id]||"";
+      const st=getJobStatus(j);
       // Applied jobs live on the Applied Tracker page
       if(st==="applied")return false;
       if(st==="hidden"&&!f.hidden)return false;
@@ -622,7 +790,7 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     }
 
     rows.forEach(j=>{
-      const st=status[j.id]||"";
+      const st=getJobStatus(j);
       const reg=REG[j.region]||REG.unknown;
       const matches=matchingRulesForJob(j);
 
@@ -883,6 +1051,77 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     return /video editor|video editing|shortform video|short-form video|longform video|long-form video|youtube editor|podcast editor|reel editor|tiktok editor|clipper|post-production/i.test(title||"");
   }
 
+  function formatBrowserAge(isoStr){
+    if(!isoStr)return null;
+    const dt=new Date(isoStr.replace(" ","T"));
+    if(isNaN(dt.getTime()))return null;
+    const diffMs=Math.max(0,Date.now()-dt.getTime());
+    const days=diffMs/86400000;
+    if(days>14.25)return null; // Enforce 14-day freshness cutoff
+    const datePart=dt.toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+    const mins=Math.max(1,Math.floor(diffMs/60000));
+    if(mins<60)return `Posted ${mins}m ago · ${datePart}`;
+    const hrs=Math.max(1,Math.floor(diffMs/3600000));
+    if(hrs<24)return `Posted ${hrs}h ago · ${datePart}`;
+    const d=Math.floor(days);
+    return `Posted ${d}d ago · ${datePart}`;
+  }
+
+  function reloadLocalJobsJs(){
+    return new Promise(resolve=>{
+      try{
+        const s=document.createElement("script");
+        const timer=setTimeout(()=>{s.remove();resolve(window.CRG_DATA||null);},2500);
+        s.src="jobs.js?t="+Date.now();
+        s.onload=()=>{clearTimeout(timer);s.remove();resolve(window.CRG_DATA||null);};
+        s.onerror=()=>{clearTimeout(timer);s.remove();resolve(null);};
+        document.head.appendChild(s);
+      }catch(e){resolve(null);}
+    });
+  }
+
+  function mergeJobDatasets(...datasets){
+    const merged=[];
+    const seenIds=new Set();
+    const seenUrls=new Set();
+    for(const ds of datasets){
+      const arr=Array.isArray(ds)?ds:(ds&&Array.isArray(ds.jobs)?ds.jobs:[]);
+      for(const j of arr){
+        if(!j||!j.id||!j.url)continue;
+        if(j.publishedAt){
+          const lbl=formatBrowserAge(j.publishedAt);
+          if(!lbl)continue; // Skip >14d expired listings
+          j.posted=lbl;
+        }
+        const uk=String(j.url).trim().replace(/\/+$/,"").toLowerCase();
+        if(seenIds.has(j.id)||seenUrls.has(uk))continue;
+        seenIds.add(j.id);
+        seenUrls.add(uk);
+        merged.push({...j});
+      }
+    }
+    merged.sort((a,b)=>{
+      const ta=a.publishedAt?new Date(a.publishedAt.replace(" ","T")).getTime():0;
+      const tb=b.publishedAt?new Date(b.publishedAt.replace(" ","T")).getTime():0;
+      if(ta&&tb&&ta!==tb)return tb-ta;
+      return (a.order??999)-(b.order??999);
+    });
+    return merged.map((j,i)=>({...j,order:i+1}));
+  }
+
+  async function fetchLatestStaticSources(){
+    const GITHUB_RAW_JOBS="https://raw.githubusercontent.com/ChardaZAR/cutting-room-gigs/main/jobs.json";
+    const tasks=[
+      fetch("./jobs.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch(GITHUB_RAW_JOBS+"?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+      reloadLocalJobsJs()
+    ];
+    const [localJson,ghJson,localJs]=await Promise.all(tasks);
+    const jobsList=mergeJobDatasets(localJson,localJs,ghJson,window.CRG_DATA,{jobs});
+    const sweepDate=(localJson&&localJson.sweepDate)||(localJs&&localJs.sweepDate)||(ghJson&&ghJson.sweepDate)||new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+    return {sweepDate,jobs:jobsList};
+  }
+
   async function clientSideLiveSweep(baseJobs){
     const list=[...(baseJobs||jobs)];
     const seenUrls=new Set(list.map(j=>(j.url||"").replace(/\/+$/,"").toLowerCase()));
@@ -891,11 +1130,13 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
 
     const tasks=[];
 
-    // 1. Ashby Public Posting API (CORS-enabled)
+    // 1. Ashby Public Posting API (CORS-enabled, strict deep jobUrl + <=14d publishedAt)
     if(!disabledSources.has("Ashby")){
       const ashbyBoards=[
         ["aidigest","AI Digest"],["newform","Newform"],["dreamthree","Dream Three"],
-        ["revstone","RevStone"],["acquisition","Acquisition.com"],["whop","Whop"],["beehiiv","beehiiv"],["stan","Stan"]
+        ["revstone","RevStone"],["acquisition","Acquisition.com"],["hirehangar","Hire Hangar"],
+        ["superpower","Superpower"],["rehire","Rehire"],["stemwave","StemWave"],["cge","Content Growth Engine"],
+        ["whop","Whop"]
       ];
       ashbyBoards.forEach(([slug,co])=>{
         tasks.push((async()=>{
@@ -904,24 +1145,31 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
             if(!r.ok)return;
             const d=await r.json();
             (d.jobs||[]).forEach(job=>{
+              if(job.isListed===false)return;
               const title=(job.title||"").trim();
               if(!isBrowserEditingRole(title))return;
-              const url=`https://jobs.ashbyhq.com/${slug}`;
-              const id=`ashby-${slug}-${title.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,22)}`;
-              if(seenIds.has(id))return;
-              seenIds.add(id);
-              seenUrls.add(url.toLowerCase());
+              const url=(job.jobUrl||"").trim();
+              if(!url||url.replace(/\/+$/,"").split("/").length<5)return;
+              const postedLabel=formatBrowserAge(job.publishedAt);
+              if(!postedLabel)return;
               const loc=(job.location||"Remote").trim();
+              if(/argentina|mexico|colombia|philippines|latam|united states only|us only/i.test(`${loc} ${title}`)&&!/south africa|africa|worldwide/i.test(`${loc} ${title}`))return;
+              const uuidShort=url.replace(/\/+$/,"").split("/").pop().slice(0,8);
+              const id=`ashby-${slug}-${uuidShort}`;
+              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+              seenIds.add(id);
+              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
               discovered.push({
                 id,title,company:co,source:"Ashby",url,
                 niche:inferBrowserNiche(title),
-                type:/full/i.test(job.employmentType||"")?"fulltime":(/part/i.test(job.employmentType||"")?"parttime":"contract"),
-                region:/remote|world|global|anywhere/i.test(loc)?"world":"restricted",
+                type:/full/i.test(job.employmentType||"")?"fulltime":(/part/i.test(job.employmentType||"")?"parttime":"freelance"),
+                region:/remote|world|global|anywhere|south africa|africa/i.test(loc)?"world":"limited",
                 regionNote:loc,
                 pay:job.compensationTierSummary||"",
-                posted:"Live now (Ashby)",
+                publishedAt:job.publishedAt,
+                posted:postedLabel,
                 order:1,
-                notes:`Live opening on ${co}'s Ashby board (${loc}).`
+                notes:`Verified active opening on ${co}'s Ashby ATS (${loc}).`
               });
             });
           }catch(e){}
@@ -929,7 +1177,90 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
       });
     }
 
-    // 2. Remotive Public API (CORS-enabled)
+    // 2. Workable Public Widget API (CORS-enabled, strict /j/<shortcode> + <=14d published_on)
+    if(!disabledSources.has("Workable")){
+      const workableBoards=[
+        ["virtuhire","VirtuHire"],["pavago","Pavago"],["crewbloom","CrewBloom"],
+        ["reworkssolutions","ReWorks Solutions"],["hirehawk","HireHawk"],["huzzle","Huzzle"]
+      ];
+      workableBoards.forEach(([slug,co])=>{
+        tasks.push((async()=>{
+          try{
+            const r=await fetch(`https://apply.workable.com/api/v1/widget/accounts/${slug}`);
+            if(!r.ok)return;
+            const d=await r.json();
+            (d.jobs||[]).forEach(job=>{
+              const title=(job.title||"").trim();
+              if(!isBrowserEditingRole(title))return;
+              const shortcode=(job.shortcode||"").trim();
+              const url=(job.url||"").trim();
+              if(!shortcode||!url||!url.includes("/j/"))return;
+              const pubIso=job.published_on||job.created_at;
+              const postedLabel=formatBrowserAge(pubIso);
+              if(!postedLabel)return;
+              const loc=[job.country,job.city].filter(Boolean).join(", ")||"Remote";
+              if(/argentina|mexico|colombia|philippines|latam|united states only|us only/i.test(`${loc} ${title}`)&&!/south africa|africa|worldwide/i.test(`${loc} ${title}`))return;
+              const id=`wk-${slug}-${shortcode.toLowerCase()}`;
+              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+              seenIds.add(id);
+              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
+              discovered.push({
+                id,title,company:co,source:"Workable",url,
+                niche:inferBrowserNiche(title),
+                type:/part-time|part time/i.test(title)?"parttime":"fulltime",
+                region:/remote|world|global|anywhere|south africa|africa/i.test(loc)?"world":"limited",
+                regionNote:/remote|world|global|anywhere|south africa|africa/i.test(loc)?"":loc,
+                pay:"",
+                publishedAt:pubIso,
+                posted:postedLabel,
+                order:1,
+                notes:`Verified active opening on ${co}'s Workable ATS (${loc}).`
+              });
+            });
+          }catch(e){}
+        })());
+      });
+    }
+
+    // 3. Podnews Jobs RSS via rss2json (CORS-enabled)
+    if(!disabledSources.has("Podnews")){
+      tasks.push((async()=>{
+        try{
+          const r=await fetch("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fpodnews.net%2Fprebuilt%2Frss-jobs.xml");
+          if(!r.ok)return;
+          const d=await r.json();
+          (d.items||[]).forEach(item=>{
+            const title=(item.title||"").trim();
+            if(!isBrowserEditingRole(title)&&!/podcast producer/i.test(title))return;
+            const url=(item.link||"").trim();
+            const pubIso=item.pubDate?item.pubDate.replace(" ","T")+"Z":"";
+            const postedLabel=formatBrowserAge(pubIso);
+            if(!url||!postedLabel)return;
+            const desc=(item.description||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+            const slugPart=(url.split("/job/")[1]||title).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,36);
+            const coSlug=((url.split("/job/")[1]||"").split("/")[0]||"Podcast").replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase()).trim();
+            const id=`pod-${slugPart}`;
+            if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+            seenIds.add(id);
+            seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
+            discovered.push({
+              id,title,company:coSlug||"Podnews",source:"Podnews",url,
+              niche:["podcast","youtube"],
+              type:/part-time|part time|freelance/i.test(`${title} ${desc}`)?"parttime":"fulltime",
+              region:"world",
+              regionNote:"",
+              pay:"",
+              publishedAt:pubIso,
+              posted:postedLabel,
+              order:1,
+              notes:desc.slice(0,190)||`Remote podcast role at ${coSlug}.`
+            });
+          });
+        }catch(e){}
+      })());
+    }
+
+    // 4. Remotive Public API (CORS-enabled, <=14d publication_date)
     if(!disabledSources.has("Remotive")){
       tasks.push((async()=>{
         try{
@@ -940,61 +1271,28 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
             const title=(job.title||"").trim();
             if(!isBrowserEditingRole(title))return;
             const url=(job.url||"").trim();
+            const postedLabel=formatBrowserAge(job.publication_date);
+            if(!url||!postedLabel)return;
             const id=`remotive-${job.id}`;
-            if(!url||seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
+            if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
             seenIds.add(id);
             seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
             const loc=(job.candidate_required_location||"Worldwide").trim();
             discovered.push({
               id,title,company:(job.company_name||"Remote Employer").trim(),source:"Remotive",url,
               niche:inferBrowserNiche(title),
-              type:/contract|freelance/i.test(job.job_type||"")?"contract":"fulltime",
-              region:/worldwide|anywhere/i.test(loc)?"world":"restricted",
+              type:/contract|freelance/i.test(job.job_type||"")?"freelance":"fulltime",
+              region:/worldwide|anywhere/i.test(loc)?"world":"limited",
               regionNote:loc,
               pay:(job.salary||"").trim(),
-              posted:"Posted recently",
+              publishedAt:job.publication_date,
+              posted:postedLabel,
               order:1,
-              notes:`Live remote role via Remotive API (${loc}).`
+              notes:`Verified remote role via Remotive API (${loc}).`
             });
           });
         }catch(e){}
       })());
-    }
-
-    // 3. Reddit Public JSON Feeds (CORS-enabled)
-    if(!disabledSources.has("Reddit")){
-      const feeds=[
-        ["https://www.reddit.com/r/CreatorServices/new.json?limit=12","r/CreatorServices"],
-        ["https://www.reddit.com/r/forhire/search.json?q=flair%3Ahiring+video+editor&restrict_sr=1&sort=new&limit=8","r/forhire"]
-      ];
-      feeds.forEach(([furl,sub])=>{
-        tasks.push((async()=>{
-          try{
-            const r=await fetch(furl);
-            if(!r.ok)return;
-            const d=await r.json();
-            ((d.data&&d.data.children)||[]).forEach(item=>{
-              const p=item.data||{};
-              const ptitle=(p.title||"").trim();
-              const flair=(p.link_flair_text||"").toLowerCase();
-              if(!ptitle.toLowerCase().includes("[hiring]")&&!flair.includes("hiring"))return;
-              if(!/editor|editing|clipper/i.test(ptitle))return;
-              if(!p.permalink)return;
-              const url=`https://www.reddit.com${p.permalink}`.replace(/\/+$/,"")+"/";
-              const id=`reddit-${p.id}`;
-              if(seenIds.has(id)||seenUrls.has(url.replace(/\/+$/,"").toLowerCase()))return;
-              seenIds.add(id);
-              seenUrls.add(url.replace(/\/+$/,"").toLowerCase());
-              discovered.push({
-                id,title:ptitle,company:`${sub} (u/${p.author||"creator"})`,source:"Reddit",url,
-                niche:inferBrowserNiche(ptitle),
-                type:"freelance",region:"world",pay:"",posted:"Posted recently",order:1,
-                notes:`Direct creator hiring post on ${sub}.`
-              });
-            });
-          }catch(e){}
-        })());
-      });
     }
 
     await Promise.allSettled(tasks);
@@ -1007,46 +1305,47 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     icon.classList.add("spinning");
     label.textContent="Refreshing…";
     st.textContent="Checking enabled sources for new listings…";
+    // A live sweep can take a while; show elapsed seconds so it's clearly still working
+    const startedAt=Date.now();
+    const tick=setInterval(()=>{label.textContent=`Refreshing… ${Math.round((Date.now()-startedAt)/1000)}s`;},1000);
 
     const oldIds=new Set(jobs.map(j=>j.id));
     let updated=false;
 
-    // 1. Try local server live sweep endpoint first
-    try{
-      const res=await fetch("/api/sweep",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({disabledSources:[...disabledSources]})
-      });
-      if(res.ok){
-        const payload=await res.json();
-        if(payload&&payload.data&&Array.isArray(payload.data.jobs)){
-          applyData(payload.data);
-          updated=true;
-          const addedCount=payload.added?payload.added.length:0;
-          const removedCount=payload.removed?payload.removed.length:0;
-          st.textContent=`Live sweep complete (+${addedCount} new, -${removedCount} closed)`;
-          showToast(`Live sweep finished: ${addedCount} new, ${removedCount} closed`);
-          if(payload.added&&payload.added.length)fireNotificationsForNewJobs(payload.added);
-        }
-      }
-    }catch(e){}
-
-    // 2. Static / Online Hosting Mode: fetch latest jobs.json + run browser-side live API sweep
-    if(!updated){
-      let baseData={sweepDate:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),jobs:[...jobs]};
+    // 1. Try local server live sweep endpoint first (supports both http://localhost:8080 and file://)
+    for(const swUrl of ["/api/sweep","http://127.0.0.1:8080/api/sweep"]){
+      if(updated)break;
       try{
-        const res=await fetch("./jobs.json?t="+Date.now(),{cache:"no-store"});
+        const res=await fetch(swUrl,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({disabledSources:[...disabledSources]})
+        });
         if(res.ok){
-          const fetched=await res.json();
-          if(fetched&&Array.isArray(fetched.jobs))baseData=fetched;
+          const payload=await res.json();
+          if(payload&&payload.data&&Array.isArray(payload.data.jobs)){
+            applyData(payload.data);
+            updated=true;
+            const addedCount=payload.added?payload.added.length:0;
+            const removedCount=payload.removed?payload.removed.length:0;
+            const timeNow=new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+            st.textContent=`Live sweep complete at ${timeNow} (+${addedCount} new, -${removedCount} closed)`;
+            showToast(`Live sweep finished: ${addedCount} new, ${removedCount} closed`);
+            if(payload.added&&payload.added.length)fireNotificationsForNewJobs(payload.added);
+          }
         }
       }catch(e){}
+    }
 
+    // 2. Static / Online Hosting / file:// Mode: fetch local + GitHub cloud jobs.json + reload jobs.js + run browser-side live API sweep
+    if(!updated){
+      const baseData=await fetchLatestStaticSources();
       const liveAdded=await clientSideLiveSweep(baseData.jobs);
-      const merged=[...liveAdded,...baseData.jobs].map((j,i)=>({...j,order:i+1}));
+      const merged=mergeJobDatasets(liveAdded,baseData.jobs);
+      const todayStr=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+      const timeNow=new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
       const finalData={
-        sweepDate:liveAdded.length?new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}):baseData.sweepDate,
+        sweepDate:todayStr,
         jobs:merged
       };
 
@@ -1054,12 +1353,15 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
         updated=true;
         const newItems=finalData.jobs.filter(j=>!oldIds.has(j.id)&&!disabledSources.has(j.source));
         const activeCnt=finalData.jobs.filter(j=>!disabledSources.has(j.source)).length;
-        st.textContent=newItems.length?`Found ${newItems.length} new listing(s) (${activeCnt} active)`:`Up to date (${activeCnt} active clips)`;
-        showToast(newItems.length?`Found ${newItems.length} new listing(s)!`:`Board refreshed (${activeCnt} active clips)`);
+        st.textContent=newItems.length
+          ? `Refreshed at ${timeNow}: +${newItems.length} new listing(s) (${activeCnt} active)`
+          : `Refreshed at ${timeNow} · Up to date (${activeCnt} active clips)`;
+        showToast(newItems.length?`Found ${newItems.length} new listing(s)!`:`Board refreshed at ${timeNow} (${activeCnt} active clips)`);
         if(newItems.length)fireNotificationsForNewJobs(newItems);
       }
     }
 
+    clearInterval(tick);
     btn.disabled=false;
     icon.classList.remove("spinning");
     label.textContent="Refresh Jobs";
@@ -1067,9 +1369,9 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
 
   function applyData(data){
     if(!data||!Array.isArray(data.jobs))return false;
-    jobs=data.jobs;
+    jobs=mergeJobDatasets(data.jobs);
     if(data.sweepDate)$("sweepDate").textContent=data.sweepDate;
-    try{localStorage.setItem("crg-jobs-cache",JSON.stringify(data))}catch(e){}
+    try{localStorage.setItem("crg-jobs-cache",JSON.stringify({sweepDate:data.sweepDate,jobs}))}catch(e){}
     render();
     return true;
   }
@@ -1142,7 +1444,9 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
       }
     }
     // Also trigger native Windows toast if local server is running
-    fetch("/api/notify-test",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"desktop",message:msg})}).catch(()=>{});
+    ["/api/notify-test","http://127.0.0.1:8080/api/notify-test"].forEach(nu=>{
+      fetch(nu,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"desktop",message:msg})}).catch(()=>{});
+    });
     showToast("🔔 Sent test desktop notification: "+msg);
   };
 
@@ -1169,20 +1473,22 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     persistState();
 
     const matched=jobs.filter(j=>!disabledSources.has(j.source)&&status[j.id]!=="hidden"&&matchingRulesForJob(j).length>0);
-    try{
-      const res=await fetch("/api/notify-test",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({type:"email",notifyCfg,matched:matched.slice(0,5)})
-      });
-      if(res.ok){
-        const out=await res.json();
-        if(out.ok){
-          showToast("✓ Test email sent via SMTP to "+emailTo);
-          return;
+    for(const nu of ["/api/notify-test","http://127.0.0.1:8080/api/notify-test"]){
+      try{
+        const res=await fetch(nu,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({type:"email",notifyCfg,matched:matched.slice(0,5)})
+        });
+        if(res.ok){
+          const out=await res.json();
+          if(out.ok){
+            showToast("✓ Test email sent via SMTP to "+emailTo);
+            return;
+          }
         }
-      }
-    }catch(e){}
+      }catch(e){}
+    }
 
     // Fallback: open pre-filled email draft with current matching jobs
     const subj=encodeURIComponent(`Cutting Room Gigs Alert: ${matched.length} matching role(s)`);
@@ -1199,22 +1505,100 @@ section h3{font:700 20px var(--f-display);margin:0 0 4px}
     function sel(){const r=document.createRange();r.selectNodeContents($("prompt"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("copied").textContent="Selected, press copy"}
   };
 
+  if($("linkFileBtn")){
+    $("linkFileBtn").onclick=async()=>{
+      if(!window.showSaveFilePicker){
+        showToast("Your browser doesn't support direct file linking; use start-board.bat or 💾 Backup Tracker.");
+        return;
+      }
+      try{
+        const handle=await window.showSaveFilePicker({
+          suggestedName:"user-state.json",
+          types:[{description:"JSON State File",accept:{"application/json":[".json"]}}]
+        });
+        linkedFileHandle=handle;
+        await saveIdbKey("file_handle",handle);
+        // First read existing content if non-empty, then write merged state
+        try{
+          const existingFile=await handle.getFile();
+          if(existingFile.size>2){
+            const txt=await existingFile.text();
+            mergeLoadedState(JSON.parse(txt));
+          }
+        }catch(e){}
+        persistState();
+        render();
+        $("linkFileBtn").textContent="✓ Auto-Save Linked";
+        showToast("✓ Linked user-state.json! Applied & Hidden jobs will now auto-save directly to disk on every click.");
+      }catch(e){}
+    };
+  }
+  if($("exportStateBtn")){
+    $("exportStateBtn").onclick=()=>{
+      const payload={status,statusBySig,appliedMeta,alertRules,notifyCfg,disabledSources:[...disabledSources]};
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+      const a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);
+      a.download="cutting-room-tracker-backup.json";
+      a.click();
+      showToast("Saved tracker backup file (Applied, Saved & Hidden jobs)");
+    };
+  }
+  if($("importStateBtn")&&$("importStateFile")){
+    $("importStateBtn").onclick=()=>$("importStateFile").click();
+    $("importStateFile").onchange=e=>{
+      const file=e.target.files&&e.target.files[0];
+      if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{
+        try{
+          const d=JSON.parse(reader.result);
+          mergeLoadedState(d);
+          persistState();
+          render();
+          showToast("✓ Restored Applied, Saved & Hidden jobs from backup!");
+        }catch(err){
+          showToast("Could not read backup JSON file.");
+        }
+      };
+      reader.readAsText(file);
+    };
+  }
+
   syncChips();
   (async()=>{
-    // Load disk state from local server if running
+    // 1. Load IndexedDB state & any linked file handle
     try{
-      const stRes=await fetch("/api/state",{cache:"no-store"});
-      if(stRes.ok){
-        const disk=await stRes.json();
-        if(disk.status&&Object.keys(disk.status).length)status={... disk.status, ...status};
-        if(disk.appliedMeta&&Object.keys(disk.appliedMeta).length)appliedMeta={...disk.appliedMeta, ...appliedMeta};
-        if(Array.isArray(disk.alertRules)&&disk.alertRules.length)alertRules=disk.alertRules;
-        if(Array.isArray(disk.disabledSources)&&!localStorage.getItem("crg-disabled-sources")){
-          disabledSources=new Set(disk.disabledSources);
-        }
-        if(disk.notifyCfg)notifyCfg={...notifyCfg,...disk.notifyCfg};
+      if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
+      const idb=await loadIdbKey("user_state");
+      if(idb)mergeLoadedState(idb);
+      const savedHandle=await loadIdbKey("file_handle");
+      if(savedHandle){
+        linkedFileHandle=savedHandle;
+        if($("linkFileBtn"))$("linkFileBtn").textContent="✓ Auto-Save Linked";
+        try{
+          const perm=await savedHandle.queryPermission({mode:"read"});
+          if(perm==="granted"){
+            const fObj=await savedHandle.getFile();
+            if(fObj.size>2)mergeLoadedState(JSON.parse(await fObj.text()));
+          }
+        }catch(e){}
       }
     }catch(e){}
+
+    // 2. Load disk state from local server (via relative path OR http://127.0.0.1:8080 so it works even from file://) or user-state.json
+    const stateUrls=["/api/state","http://127.0.0.1:8080/api/state","./user-state.json?t="+Date.now()];
+    for(const su of stateUrls){
+      try{
+        const stRes=await fetch(su,{cache:"no-store"});
+        if(stRes.ok){
+          const disk=await stRes.json();
+          mergeLoadedState(disk);
+          break;
+        }
+      }catch(e){}
+    }
+    syncUrlHashState();
 
     try{
       const res=await fetch("./jobs.json?t="+Date.now(),{cache:"no-store"});
