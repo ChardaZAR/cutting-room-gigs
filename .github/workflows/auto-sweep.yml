@@ -2,8 +2,8 @@ name: Automated Job Sweep
 
 on:
   schedule:
-    # Runs automatically every 6 hours in the cloud
-    - cron: "0 */6 * * *"
+    # Runs automatically every hour in the cloud
+    - cron: "17 * * * *"
   workflow_dispatch: # Allows manual one-click trigger from the GitHub Actions tab
 
 permissions:
