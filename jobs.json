@@ -1,6 +1,108 @@
 {
-  "sweepDate": "15 Nov 2026",
+  "sweepDate": "16 Nov 2026",
   "jobs": [
+    {
+      "id": "reddit-1xxcz0h",
+      "title": "Long-form YouTube video editor for a data career education channel | $400–550 per video",
+      "company": "r/CreatorServices (/u/E0rMP)",
+      "source": "Reddit",
+      "url": "https://www.reddit.com/r/CreatorServices/comments/1xxcz0h/hiring_longform_youtube_video_editor_for_a_data/",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "$400–550 per video",
+      "notes": "About us We're a data analytics education company. Our YouTube channel (61K subscribers) teaches people how to break into and grow in data analyst careers. Every video is long-form and educa…",
+      "publishedAt": "2026-11-16T01:46:11+00:00",
+      "posted": "Posted 13m ago · 16 Nov",
+      "order": 1
+    },
+    {
+      "id": "reddit-1xxbqjl",
+      "title": "highly skilled true crime documentary video editor.",
+      "company": "r/HireAnEditor (/u/Select-Concentrate65)",
+      "source": "Reddit",
+      "url": "https://www.reddit.com/r/HireAnEditor/comments/1xxbqjl/hiring_highly_skilled_true_crime_documentary/",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "",
+      "notes": "Direct creator hiring post on r/HireAnEditor.",
+      "publishedAt": "2026-11-16T00:46:05+00:00",
+      "posted": "Posted 1h ago · 16 Nov",
+      "order": 2
+    },
+    {
+      "id": "reddit-1xx9uoy",
+      "title": "highly skilled true crime documentary video editor",
+      "company": "r/YouTubeEditorsForHire (/u/Select-Concentrate65)",
+      "source": "Reddit",
+      "url": "https://www.reddit.com/r/YouTubeEditorsForHire/comments/1xx9uoy/hiring_highly_skilled_true_crime_documentary/",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "",
+      "notes": "Direct creator hiring post on r/YouTubeEditorsForHire.",
+      "publishedAt": "2026-11-15T23:19:47+00:00",
+      "posted": "Posted 2h ago · 15 Nov",
+      "order": 3
+    },
+    {
+      "id": "ytc-336",
+      "title": "YouTube Video Editor",
+      "company": "Build Your Moxie",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/336",
+      "niche": [
+        "youtube"
+      ],
+      "type": "parttime",
+      "region": "world",
+      "pay": "$150–$300/video; paid trial",
+      "notes": "YouTube Video Editor – Travel & Lifestyle Channel (118K Subscribers) Hi! I’m the creator behind Build Your Moxie , an established YouTube channel focused on travel tips, packing guides, practical life",
+      "publishedAt": "2026-11-15T01:59:47.980545+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 4
+    },
+    {
+      "id": "ytc-337",
+      "title": "Ongoing freelance video editor for educational talking-head content",
+      "company": "InvestorDNA",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/337",
+      "niche": [
+        "social"
+      ],
+      "type": "parttime",
+      "region": "world",
+      "pay": "",
+      "notes": "Freelance Video Editor for Retirement & Finance Content I’m Riley, a CPA and retirement planner at InvestorDNA, a Canadian retirement planning firm. I create educational videos for Instagram, TikTok,",
+      "publishedAt": "2026-11-15T01:59:47.980016+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 5
+    },
+    {
+      "id": "ytc-338",
+      "title": "Video Editor for a Growing YouTube Channel (Long-Form Explainers)",
+      "company": "Rational Believer",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/338",
+      "niche": [
+        "youtube"
+      ],
+      "type": "parttime",
+      "region": "world",
+      "pay": "$2000 for the project",
+      "notes": "You will be a good fit if: You are looking for long-term growth and a partnership with a channel, not one-off video jobs. You are great at storytelling and at making eye-catching animations that hook",
+      "publishedAt": "2026-11-15T01:59:47.979411+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 6
+    },
     {
       "id": "twine-b9vg30",
       "title": "Russian-Speaking Video Editor for Political Media Content",
@@ -14,9 +116,9 @@
       "region": "world",
       "pay": "$3,000–$5,000",
       "notes": "Hello Ekaterina! I’m looking for a Russian-speaking video editor based in Vienna for long-term collaboration. I’m developing a personal media project focused on political news, interviews, investigati",
-      "publishedAt": "2026-11-15T18:45:01.394999+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 1
+      "publishedAt": "2026-11-15T01:59:47.270989+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 7
     },
     {
       "id": "twine-b9vg90",
@@ -31,9 +133,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Seeking a freelance video editor to collaborate on cinematic films and short-form social content for travel, hospitality, and lifestyle brands. Projects will involve shaping polished, engaging edits t",
-      "publishedAt": "2026-11-15T18:45:01.394131+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 2
+      "publishedAt": "2026-11-15T01:59:47.270001+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 8
     },
     {
       "id": "twine-b9vgc0",
@@ -48,9 +150,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "An international business entrepreneur in the luxury-lifestyle world (high-end hotels, supercars, Dubai and beyond) is looking for a dedicated videographer-editor & social media manager to join him on",
-      "publishedAt": "2026-11-15T18:45:01.393284+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 3
+      "publishedAt": "2026-11-15T01:59:47.269010+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 9
     },
     {
       "id": "twine-b9vgi0",
@@ -66,9 +168,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Create beautifully edited, high-impact travel reels and short-form videos for social media.need my voice over for more engagement in YouTube.The edits should capture attention immediately, build inter",
-      "publishedAt": "2026-11-15T18:45:01.392384+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 4
+      "publishedAt": "2026-11-15T01:59:47.267992+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 10
     },
     {
       "id": "twine-b9vgm0",
@@ -83,9 +185,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "About us We run a Papa John’s pizza restaurant in Laatzen (Hannover), Germany, opening on 27 November 2026. We need a creative editor to make short reels for Instagram, TikTok and Facebook. The work i",
-      "publishedAt": "2026-11-15T18:45:01.391374+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 5
+      "publishedAt": "2026-11-15T01:59:47.266799+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 11
     },
     {
       "id": "twine-b9vgn0",
@@ -100,9 +202,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "About us We run a Papa John’s pizza restaurant in Laatzen (Hannover), Germany, opening on 27 November 2026. We need a creative editor to make short reels for Instagram, TikTok and Facebook. The work i",
-      "publishedAt": "2026-11-15T18:45:01.390481+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 6
+      "publishedAt": "2026-11-15T01:59:47.265770+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 12
     },
     {
       "id": "twine-b9vh20",
@@ -117,9 +219,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Create one 10–20 second Instagram reel for SALT RADIO, an Australian clothing brand inspired by music, skate culture and nostalgia. The initial reel will serve as a paid trial, with potential for ongo",
-      "publishedAt": "2026-11-15T18:45:01.389568+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 7
+      "publishedAt": "2026-11-15T01:59:47.264737+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
+      "order": 13
     },
     {
       "id": "twine-b9vhm0",
@@ -134,112 +236,8 @@
       "region": "world",
       "pay": "$750–$1,500",
       "notes": "Seeking a creative video editor for fully remote video production work. The exact scope, footage format, and deliverables will be defined during project discussions. Please be comfortable editing enga",
-      "publishedAt": "2026-11-15T18:45:01.388191+00:00",
-      "posted": "Posted 3h ago · 15 Nov",
-      "order": 8
-    },
-    {
-      "id": "reddit-1xx1h4i",
-      "title": "• [Hiring] Looking for a Bilingual YouTube Editor (Malayalam & Hindi) — ₹3,500 per video (Long-term)",
-      "company": "r/YouTubeEditorsForHire (/u/unfair-rodygoddam)",
-      "source": "Reddit",
-      "url": "https://www.reddit.com/r/YouTubeEditorsForHire/comments/1xx1h4i/hiring_looking_for_a_bilingual_youtube_editor/",
-      "niche": [
-        "social",
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "",
-      "notes": "Hey everyone! I’m looking for a reliable, creative freelance YouTube video editor who understands both Malayalam and Hindi for a consistent, long-term creator project. The Niche & Editing St…",
-      "publishedAt": "2026-11-15T17:35:08+00:00",
-      "posted": "Posted 4h ago · 15 Nov",
-      "order": 9
-    },
-    {
-      "id": "reddit-1xwznm3",
-      "title": "Video Editor for daily YouTube Shorts (meme edits), long-term, ($20 HOURLY)",
-      "company": "r/YouTubeEditorsForHire (/u/zDxmps)",
-      "source": "Reddit",
-      "url": "https://www.reddit.com/r/YouTubeEditorsForHire/comments/1xwznm3/hiring_video_editor_for_daily_youtube_shorts_meme/",
-      "niche": [
-        "social",
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "$20",
-      "notes": "Hi! I run a growing, monetized YouTube Shorts channel (US meme and reaction clips) and I’m looking for a reliable editor for the long run. The job: 1 Short per day to start, scaling up to 3 …",
-      "publishedAt": "2026-11-15T16:24:32+00:00",
-      "posted": "Posted 5h ago · 15 Nov",
-      "order": 10
-    },
-    {
-      "id": "reddit-1xwzkny",
-      "title": "URGENT: Video Editor for Long-Form Trading Content | $40-$80 per video | Ongoing Work",
-      "company": "r/HireAnEditor (/u/ManiInsights)",
-      "source": "Reddit",
-      "url": "https://www.reddit.com/r/HireAnEditor/comments/1xwzkny/hiring_urgent_video_editor_for_longform_trading/",
-      "niche": [
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "$40-$80 per video",
-      "notes": "Direct creator hiring post on r/HireAnEditor.",
-      "publishedAt": "2026-11-15T16:21:15+00:00",
-      "posted": "Posted 5h ago · 15 Nov",
-      "order": 11
-    },
-    {
-      "id": "ytc-338",
-      "title": "Video Editor for a Growing YouTube Channel (Long-Form Explainers)",
-      "company": "Rational Believer",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/338",
-      "niche": [
-        "youtube"
-      ],
-      "type": "parttime",
-      "region": "world",
-      "pay": "$2000 for the project",
-      "notes": "You will be a good fit if: You are looking for long-term growth and a partnership with a channel, not one-off video jobs. You are great at storytelling and at making eye-catching animations that hook",
-      "publishedAt": "2026-11-15T01:45:01.749483+00:00",
-      "posted": "Posted 20h ago · 15 Nov",
-      "order": 12
-    },
-    {
-      "id": "ytc-336",
-      "title": "YouTube Video Editor",
-      "company": "Build Your Moxie",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/336",
-      "niche": [
-        "youtube"
-      ],
-      "type": "parttime",
-      "region": "world",
-      "pay": "$150–$300/video; paid trial",
-      "notes": "YouTube Video Editor – Travel & Lifestyle Channel (118K Subscribers) Hi! I’m the creator behind Build Your Moxie , an established YouTube channel focused on travel tips, packing guides, practical life",
-      "publishedAt": "2026-11-14T21:45:01.750504+00:00",
-      "posted": "Posted 1d ago · 14 Nov",
-      "order": 13
-    },
-    {
-      "id": "ytc-337",
-      "title": "Ongoing freelance video editor for educational talking-head content",
-      "company": "InvestorDNA",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/337",
-      "niche": [
-        "social"
-      ],
-      "type": "parttime",
-      "region": "world",
-      "pay": "",
-      "notes": "Freelance Video Editor for Retirement & Finance Content I’m Riley, a CPA and retirement planner at InvestorDNA, a Canadian retirement planning firm. I create educational videos for Instagram, TikTok,",
-      "publishedAt": "2026-11-14T21:45:01.750059+00:00",
-      "posted": "Posted 1d ago · 14 Nov",
+      "publishedAt": "2026-11-15T01:59:47.263161+00:00",
+      "posted": "Posted 1d ago · 15 Nov",
       "order": 14
     },
     {
@@ -272,8 +270,8 @@
       "region": "world",
       "pay": "",
       "notes": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel About the channel Chris Guerriero has spent over 30 years building, buying and selling companies. He’s grown a portfolio of",
-      "publishedAt": "2026-11-13T21:45:01.751017+00:00",
-      "posted": "Posted 2d ago · 13 Nov",
+      "publishedAt": "2026-11-14T01:59:47.981088+00:00",
+      "posted": "Posted 2d ago · 14 Nov",
       "order": 16
     },
     {
@@ -307,8 +305,8 @@
       "region": "world",
       "pay": "",
       "notes": "About GraphicsZoo GraphicsZoo (GZoo) is a creative services company providing graphic design and video editing solutions to businesses, brands, and content creators. We work with clients across differ",
-      "publishedAt": "2026-11-11T21:45:01.752094+00:00",
-      "posted": "Posted 4d ago · 11 Nov",
+      "publishedAt": "2026-11-12T01:59:47.982318+00:00",
+      "posted": "Posted 4d ago · 12 Nov",
       "order": 18
     },
     {
@@ -342,7 +340,7 @@
       "pay": "",
       "notes": "We're looking for an AI Video Editor to own AI-driven short-form video creative for a well-established clinical skincare brand with a strong presence across Southeast Asia. You will start from a",
       "publishedAt": "2026-11-11T00:00:00+00:00",
-      "posted": "Posted 4d ago · 11 Nov",
+      "posted": "Posted 5d ago · 11 Nov",
       "order": 20
     },
     {
@@ -377,8 +375,8 @@
       "region": "world",
       "pay": "",
       "notes": "• Edit short-form videos for TikTok, Instagram Reels, and other social media platforms • Collaborate with content creators to refine and polish UGC-style videos • Edit raw footage into perfo",
-      "publishedAt": "2026-11-09T21:45:07.879653+00:00",
-      "posted": "Posted 6d ago · 9 Nov",
+      "publishedAt": "2026-11-10T01:59:49.723994+00:00",
+      "posted": "Posted 6d ago · 10 Nov",
       "order": 22
     },
     {
@@ -572,7 +570,7 @@
       "pay": "",
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-05T00:00:00+00:00",
-      "posted": "Posted 10d ago · 5 Nov",
+      "posted": "Posted 11d ago · 5 Nov",
       "order": 33
     },
     {
@@ -590,25 +588,8 @@
       "pay": "",
       "notes": "We're looking for a Long and Short Form Video Editor to watch YouTube content from a fast-growing social media creator, identify the best clippable moments, edit them into short-form clips, and r",
       "publishedAt": "2026-11-03T00:00:00+00:00",
-      "posted": "Posted 12d ago · 3 Nov",
+      "posted": "Posted 13d ago · 3 Nov",
       "order": 34
-    },
-    {
-      "id": "ytc-324",
-      "title": "Gaming Video Editor",
-      "company": "Carthee_",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/324",
-      "niche": [
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "",
-      "notes": "I’m looking for a creative and reliable gaming video editor to turn raw gameplay footage into engaging, entertaining videos. You should have a good sense of pacing, funny moments, smooth transitions,",
-      "publishedAt": "2026-11-02T21:45:01.753086+00:00",
-      "posted": "Posted 13d ago · 2 Nov",
-      "order": 35
     },
     {
       "id": "pod-one-decision-freelance-short-form-vi",
@@ -626,6 +607,23 @@
       "notes": "Remote podcast role at One Decision .",
       "publishedAt": "2026-11-02T21:41:51+00:00",
       "posted": "Posted 13d ago · 2 Nov",
+      "order": 35
+    },
+    {
+      "id": "ytc-324",
+      "title": "Gaming Video Editor",
+      "company": "Carthee_",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/324",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "",
+      "notes": "I’m looking for a creative and reliable gaming video editor to turn raw gameplay footage into engaging, entertaining videos. You should have a good sense of pacing, funny moments, smooth transitions,",
+      "publishedAt": "2026-11-02T01:59:47.983508+00:00",
+      "posted": "Posted 14d ago · 2 Nov",
       "order": 36
     }
   ]
