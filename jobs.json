@@ -2,23 +2,6 @@
   "sweepDate": "19 Nov 2026",
   "jobs": [
     {
-      "id": "ytc-343",
-      "title": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller",
-      "company": "Dr. Max, MD",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/343",
-      "niche": [
-        "youtube"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "$20K-$36K/Year",
-      "notes": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller Full-time | Worldwide Remote | Long-term We're not looking for someone who just knows how to edit long videos. We're looking for",
-      "publishedAt": "2026-11-19T11:58:11.129420+00:00",
-      "posted": "Posted 1h ago · 19 Nov",
-      "order": 1
-    },
-    {
       "id": "twine-b9vty0",
       "title": "Video Editor for Podcast Episodes and Social Clips",
       "company": "Twine Client",
@@ -32,9 +15,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Hi! We’re two friends starting a brand-new podcast, and we’re looking for a creative video editor who would love to grow with us from the very beginning. We both studied at a luxury hospitality school",
-      "publishedAt": "2026-11-19T09:58:10.838356+00:00",
+      "publishedAt": "2026-11-19T18:28:26.681725+00:00",
       "posted": "Posted 3h ago · 19 Nov",
-      "order": 2
+      "order": 1
     },
     {
       "id": "twine-b9vu40",
@@ -49,9 +32,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Seeking a video editor for an ongoing interview-content production workflow. The project involves editing a growing library of interview-based videos, with more than 430 interviews completed to date.",
-      "publishedAt": "2026-11-19T09:58:10.837787+00:00",
+      "publishedAt": "2026-11-19T18:28:26.680865+00:00",
       "posted": "Posted 3h ago · 19 Nov",
-      "order": 3
+      "order": 2
     },
     {
       "id": "twine-b9vuz0",
@@ -66,9 +49,9 @@
       "region": "world",
       "pay": "$50,000–$100,000",
       "notes": "Create a polished final video from footage you own or are authorized to share, while recording your screen throughout the editing process. Provide clear narration explaining creative decisions, techni",
-      "publishedAt": "2026-11-19T09:58:10.837142+00:00",
+      "publishedAt": "2026-11-19T18:28:26.679928+00:00",
       "posted": "Posted 3h ago · 19 Nov",
-      "order": 4
+      "order": 3
     },
     {
       "id": "twine-b9vv40",
@@ -84,9 +67,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Edit professional video content for YouTube, Instagram Reels, YouTube Shorts, promotional campaigns, and other social platforms. Projects may involve both short-form social clips and longer video form",
-      "publishedAt": "2026-11-19T09:58:10.836596+00:00",
+      "publishedAt": "2026-11-19T18:28:26.679133+00:00",
       "posted": "Posted 3h ago · 19 Nov",
-      "order": 5
+      "order": 4
     },
     {
       "id": "twine-b9vva0",
@@ -101,9 +84,60 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Create engaging video content for a beauty and health direct-to-consumer brand. Editing may include social media ads, product-focused videos, customer testimonials, and short-form organic content. Del",
-      "publishedAt": "2026-11-19T09:58:10.835427+00:00",
+      "publishedAt": "2026-11-19T18:28:26.678302+00:00",
+      "posted": "Posted 3h ago · 19 Nov",
+      "order": 5
+    },
+    {
+      "id": "twine-b9vwh0",
+      "title": "Video Editor for Educational Talking-Head Content",
+      "company": "Twine Client",
+      "source": "Twine",
+      "url": "https://www.twine.net/projects/b9vwh0-urgent-video-editor-for-educational-talking-head-content-video-editor-remote-job",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "Open to offers",
+      "notes": "Edit talking-head videos focused on educational content into clear, engaging final cuts. The work should preserve a professional, approachable presentation while improving pacing and flow. Tasks may i",
+      "publishedAt": "2026-11-19T18:28:26.677532+00:00",
       "posted": "Posted 3h ago · 19 Nov",
       "order": 6
+    },
+    {
+      "id": "twine-b9vwx0",
+      "title": "Ongoing Video Editing for Spanish Wine Content",
+      "company": "Twine Client",
+      "source": "Twine",
+      "url": "https://www.twine.net/projects/b9vwx0-urgent-ongoing-video-editing-for-spanish-wine-content-video-editor-remote-job",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "Open to offers",
+      "notes": "Sunnyside Vines is seeking a video editor to produce ongoing content featuring Spanish wine producers, beginning with footage recently filmed with two winemakers in New York. Editing should emphasize",
+      "publishedAt": "2026-11-19T18:28:26.676257+00:00",
+      "posted": "Posted 3h ago · 19 Nov",
+      "order": 7
+    },
+    {
+      "id": "ytc-343",
+      "title": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller",
+      "company": "Dr. Max, MD",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/343",
+      "niche": [
+        "youtube"
+      ],
+      "type": "fulltime",
+      "region": "world",
+      "pay": "$20K-$36K/Year",
+      "notes": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller Full-time | Worldwide Remote | Long-term We're not looking for someone who just knows how to edit long videos. We're looking for",
+      "publishedAt": "2026-11-19T12:28:27.561902+00:00",
+      "posted": "Posted 9h ago · 19 Nov",
+      "order": 8
     },
     {
       "id": "ytc-342",
@@ -119,27 +153,9 @@
       "region": "world",
       "pay": "",
       "notes": "I’m looking for an editor for long-form YouTube videos that help people learn English through travel and everyday situations. The style is calm and conversational. I’m looking for clear dialogue, natu",
-      "publishedAt": "2026-11-19T08:58:11.129802+00:00",
-      "posted": "Posted 4h ago · 19 Nov",
-      "order": 7
-    },
-    {
-      "id": "twine-b9vsa0",
-      "title": "Social Media Video Editor for Music and Lore Content",
-      "company": "Twine Client",
-      "source": "Twine",
-      "url": "https://www.twine.net/projects/b9vsa0-urgent-social-media-video-editor-for-music-and-lore-content-video-editor-remote-job",
-      "niche": [
-        "social",
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "$1,500–$3,000",
-      "notes": "Create high-quality short-form social content for Legio Symphonica, a music project inspired by the Warhammer 40,000 universe. Content will include Reels, TikToks, YouTube Shorts, and related social a",
-      "publishedAt": "2026-11-18T12:58:10.839893+00:00",
-      "posted": "Posted 1d ago · 18 Nov",
-      "order": 8
+      "publishedAt": "2026-11-19T09:28:27.562430+00:00",
+      "posted": "Posted 12h ago · 19 Nov",
+      "order": 9
     },
     {
       "id": "twine-b9vtf0",
@@ -154,9 +170,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Seeking a video editor for ongoing editing work. Project details, source footage, style references, and deliverable requirements will be provided as assignments are defined. Please share relevant vide",
-      "publishedAt": "2026-11-18T12:58:10.839366+00:00",
+      "publishedAt": "2026-11-18T21:28:26.683249+00:00",
       "posted": "Posted 1d ago · 18 Nov",
-      "order": 9
+      "order": 10
     },
     {
       "id": "twine-b9vts0",
@@ -171,43 +187,9 @@
       "region": "world",
       "pay": "$1,500–$3,000",
       "notes": "Create polished cricket-focused advertisements and short-form reels for APEX, a cricket performance technology brand. Share 2–3 relevant examples of cricket advertisement or reel edits, or a showreel",
-      "publishedAt": "2026-11-18T12:58:10.838880+00:00",
+      "publishedAt": "2026-11-18T21:28:26.682467+00:00",
       "posted": "Posted 1d ago · 18 Nov",
-      "order": 10
-    },
-    {
-      "id": "ytc-339",
-      "title": "Senior Video Editor — YouTube Health Education",
-      "company": "Hylianlink",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/339",
-      "niche": [
-        "youtube"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "",
-      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
-      "publishedAt": "2026-11-17T12:58:11.130421+00:00",
-      "posted": "Posted 2d ago · 17 Nov",
       "order": 11
-    },
-    {
-      "id": "dj-everai-mid-senior-ai-cine",
-      "title": "Mid/Senior AI Cinematic Video Editor (Freelance - Remote - Turkey)",
-      "company": "Everai",
-      "source": "Dynamite Jobs",
-      "url": "https://dynamitejobs.com/company/everai/remote-job/mid-senior-ai-cinematic-video-editor-freelance-remote-turkey",
-      "niche": [
-        "social"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "$24k - $40k per year",
-      "notes": "Video Editing Adobe Premiere Pro After Effects AI Video Storytelling Color Grading Mid/Senior AI Cinematic Video Editor (Freelance - Remote - Turkey) Our Vision & Products 🚀 EverAI — Building the Futu",
-      "publishedAt": "2026-11-17T12:00:00+00:00",
-      "posted": "Posted 2d ago · 17 Nov",
-      "order": 12
     },
     {
       "id": "dj-lumenalta-junior-video-edito",
@@ -222,6 +204,23 @@
       "region": "world",
       "pay": "$40k - $55k per year",
       "notes": "Video Editing Adobe Premiere Pro Color Correction Audio Editing Motion Graphics Junior Video Editor About the Role Lumenalta is a technology firm of more than 500 specialists who build data, AI, and s",
+      "publishedAt": "2026-11-17T12:00:00+00:00",
+      "posted": "Posted 2d ago · 17 Nov",
+      "order": 12
+    },
+    {
+      "id": "dj-everai-mid-senior-ai-cine",
+      "title": "Mid/Senior AI Cinematic Video Editor (Freelance - Remote - Turkey)",
+      "company": "Everai",
+      "source": "Dynamite Jobs",
+      "url": "https://dynamitejobs.com/company/everai/remote-job/mid-senior-ai-cinematic-video-editor-freelance-remote-turkey",
+      "niche": [
+        "social"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "$24k - $40k per year",
+      "notes": "Video Editing Adobe Premiere Pro After Effects AI Video Storytelling Color Grading Mid/Senior AI Cinematic Video Editor (Freelance - Remote - Turkey) Our Vision & Products 🚀 EverAI — Building the Futu",
       "publishedAt": "2026-11-17T12:00:00+00:00",
       "posted": "Posted 2d ago · 17 Nov",
       "order": 13
@@ -331,6 +330,23 @@
       "order": 19
     },
     {
+      "id": "ytc-339",
+      "title": "Senior Video Editor — YouTube Health Education",
+      "company": "Hylianlink",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/339",
+      "niche": [
+        "youtube"
+      ],
+      "type": "fulltime",
+      "region": "world",
+      "pay": "",
+      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
+      "publishedAt": "2026-11-16T21:28:27.563468+00:00",
+      "posted": "Posted 3d ago · 16 Nov",
+      "order": 20
+    },
+    {
       "id": "wk-pavago-d51f760d86",
       "title": "Short-Form Video Editor",
       "company": "Pavago",
@@ -346,7 +362,7 @@
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 3d ago · 16 Nov",
-      "order": 20
+      "order": 21
     },
     {
       "id": "wk-pavago-b3a6fcebbe",
@@ -364,7 +380,7 @@
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 3d ago · 16 Nov",
-      "order": 21
+      "order": 22
     },
     {
       "id": "hz-2b9ec7e0",
@@ -382,7 +398,7 @@
       "notes": "Short-Form Video Editor – Reels & Premium Brand Content | Remote Position Type: Fractional, Remote Function: Creative / Video Production About the Role At Pavago, one of our clients is hiring a S",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 3d ago · 16 Nov",
-      "order": 22
+      "order": 23
     },
     {
       "id": "hz-3174e801",
@@ -400,7 +416,7 @@
       "notes": "Video Editor About the Role We are looking for a creative, detail-oriented Video Editor who can turn raw footage into polished, engaging content that captures attention and communicates a clear m",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 3d ago · 16 Nov",
-      "order": 23
+      "order": 24
     },
     {
       "id": "ytc-338",
@@ -415,9 +431,9 @@
       "region": "world",
       "pay": "$2000 for the project",
       "notes": "You will be a good fit if: You are looking for long-term growth and a partnership with a channel, not one-off video jobs. You are great at storytelling and at making eye-catching animations that hook",
-      "publishedAt": "2026-11-15T12:58:11.130766+00:00",
-      "posted": "Posted 4d ago · 15 Nov",
-      "order": 24
+      "publishedAt": "2026-11-14T21:28:27.563985+00:00",
+      "posted": "Posted 5d ago · 14 Nov",
+      "order": 25
     },
     {
       "id": "hz-13a3fa8f",
@@ -433,8 +449,8 @@
       "pay": "",
       "notes": "Job Title: At-Work Video Recorder (For Business Owners) Role Type:ContractorWork Arrangement:Remote — Eligible Locations Only Job Summary Are you a small business owner looking to earn additional",
       "publishedAt": "2026-11-14T17:59:24+00:00",
-      "posted": "Posted 4d ago · 14 Nov",
-      "order": 25
+      "posted": "Posted 5d ago · 14 Nov",
+      "order": 26
     },
     {
       "id": "ytc-335",
@@ -449,9 +465,9 @@
       "region": "world",
       "pay": "",
       "notes": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel About the channel Chris Guerriero has spent over 30 years building, buying and selling companies. He’s grown a portfolio of",
-      "publishedAt": "2026-11-13T12:58:11.131101+00:00",
+      "publishedAt": "2026-11-13T21:28:27.564525+00:00",
       "posted": "Posted 6d ago · 13 Nov",
-      "order": 26
+      "order": 27
     },
     {
       "id": "dj-nencreative-video-editor",
@@ -468,7 +484,7 @@
       "notes": "Video Editing Sound design Color Grading Motion Graphics Sound Mixing Storytelling Video Editor Please submit your application through this posting only. We're unable to review applications sent via e",
       "publishedAt": "2026-11-13T12:00:00+00:00",
       "posted": "Posted 6d ago · 13 Nov",
-      "order": 27
+      "order": 28
     },
     {
       "id": "ytc-332",
@@ -484,9 +500,9 @@
       "region": "world",
       "pay": "",
       "notes": "About GraphicsZoo GraphicsZoo (GZoo) is a creative services company providing graphic design and video editing solutions to businesses, brands, and content creators. We work with clients across differ",
-      "publishedAt": "2026-11-11T12:58:11.131730+00:00",
+      "publishedAt": "2026-11-11T21:28:27.565554+00:00",
       "posted": "Posted 8d ago · 11 Nov",
-      "order": 28
+      "order": 29
     },
     {
       "id": "dj-birdygrey-video-editor-freel",
@@ -503,7 +519,7 @@
       "notes": "Video Editing Motion Graphics Short-form Video User Generated Content Sound design Social Media Marketing Video Editor (Freelance Part-Time) THE COMPANY: BIRDY GREY Birdy Grey is a direct-to-consumer",
       "publishedAt": "2026-11-11T12:00:00+00:00",
       "posted": "Posted 8d ago · 11 Nov",
-      "order": 29
+      "order": 30
     },
     {
       "id": "hz-a44d2e73",
@@ -520,7 +536,7 @@
       "notes": "We're looking for an AI Video Editor to own AI-driven short-form video creative for a well-established clinical skincare brand with a strong presence across Southeast Asia. You will start from a",
       "publishedAt": "2026-11-11T00:00:00+00:00",
       "posted": "Posted 8d ago · 11 Nov",
-      "order": 30
+      "order": 31
     },
     {
       "id": "hz-64cf623a",
@@ -537,8 +553,8 @@
       "pay": "r 10",
       "notes": "Description Company overview CapsLockspecializes in providing digital marketing services to businesses facing sales growth challenges. Our services include sales consulting, data analytics, and r",
       "publishedAt": "2026-11-10T16:57:54+00:00",
-      "posted": "Posted 8d ago · 10 Nov",
-      "order": 31
+      "posted": "Posted 9d ago · 10 Nov",
+      "order": 32
     },
     {
       "id": "rr-senior-video-editor-worl",
@@ -556,43 +572,7 @@
       "notes": "• Edit short-form videos for TikTok, Instagram Reels, and other social media platforms • Collaborate with content creators to refine and polish UGC-style videos • Edit raw footage into perfo",
       "publishedAt": "2026-11-09T12:00:00+00:00",
       "posted": "Posted 10d ago · 9 Nov",
-      "order": 32
-    },
-    {
-      "id": "rr-freelance-video-editor-w",
-      "title": "Freelance Video Editor",
-      "company": "OnStage",
-      "source": "Remote Rocketship",
-      "url": "https://www.remoterocketship.com/us/company/onstage-berlin/jobs/freelance-video-editor-worldwide-remote-2/",
-      "niche": [
-        "social",
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "",
-      "notes": "• Editing and post-production of YouTube long-form videos (8–15 minutes) • Creative execution of storytelling, structure, and visuals • Independent thinking rather than simply following inst",
-      "publishedAt": "2026-11-05T12:00:00+00:00",
-      "posted": "Posted 14d ago · 5 Nov",
       "order": 33
-    },
-    {
-      "id": "rr-video-editor-studio-prod",
-      "title": "Video Editor – Studio Production Assistant",
-      "company": "Growthub",
-      "source": "Remote Rocketship",
-      "url": "https://www.remoterocketship.com/us/company/growthub-agency/jobs/video-editor-studio-production-assistant-worldwide-remote/",
-      "niche": [
-        "social",
-        "podcast"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "",
-      "notes": "• Edit studio, street interview, and creator footage into short-form vertical ads according to briefs and editor notes • Restyle, extend, or rebuild specific shots using AI video tools • Sup",
-      "publishedAt": "2026-11-05T12:00:00+00:00",
-      "posted": "Posted 14d ago · 5 Nov",
-      "order": 34
     }
   ]
 }
