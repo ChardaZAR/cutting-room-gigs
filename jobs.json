@@ -2,6 +2,23 @@
   "sweepDate": "22 Nov 2026",
   "jobs": [
     {
+      "id": "twine-b9w3f0",
+      "title": "Promotional Video Editing for Social media",
+      "company": "Twine Client",
+      "source": "Twine",
+      "url": "https://www.twine.net/projects/b9w3f0-urgent-promotional-video-editing-for-social-media-video-editor-remote-job",
+      "niche": [
+        "social"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "$750–$1,500",
+      "notes": "We are looking for an experienced video editor to create a high-quality promotional video for a premium lifestyle product brand. The project involves editing approximately 3–5 minutes of raw footage i",
+      "publishedAt": "2026-11-22T08:14:23.283622+00:00",
+      "posted": "Posted 3h ago · 22 Nov",
+      "order": 1
+    },
+    {
       "id": "ytc-345",
       "title": "i am looking for a gaming video editor",
       "company": "Sluxxzz",
@@ -14,9 +31,9 @@
       "region": "world",
       "pay": "",
       "notes": "Just edit my videos as best you can; we can talk about the price. As you can see, I'm just beginning my YouTube journey, and I'm looking for an editor who can take my videos to the next level. I'm not",
-      "publishedAt": "2026-11-21T03:06:47.737349+00:00",
+      "publishedAt": "2026-11-21T11:14:24.147100+00:00",
       "posted": "Posted 1d ago · 21 Nov",
-      "order": 1
+      "order": 2
     },
     {
       "id": "twine-b9vzw0",
@@ -31,9 +48,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Create an approximately 90-second concept reel for a scripted TV/film project, using material and direction supplied from one of eight selected scripts. The reel should communicate the project’s tone,",
-      "publishedAt": "2026-11-21T03:06:47.018696+00:00",
+      "publishedAt": "2026-11-21T11:14:23.288539+00:00",
       "posted": "Posted 1d ago · 21 Nov",
-      "order": 2
+      "order": 3
     },
     {
       "id": "twine-b9w0f0",
@@ -48,9 +65,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "I am looking for a video editor to collaborate on a single video project for a barber business. The work is expected to take a few hours. Please provide a polished edit suitable for sharing online, wi",
-      "publishedAt": "2026-11-21T03:06:47.017709+00:00",
+      "publishedAt": "2026-11-21T11:14:23.287581+00:00",
       "posted": "Posted 1d ago · 21 Nov",
-      "order": 3
+      "order": 4
     },
     {
       "id": "twine-b9w0s0",
@@ -65,9 +82,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Edit short-form videos for Instagram Reels. The work involves creating engaging, polished vertical video edits suitable for social media. Please deliver clean pacing, effective cuts, and a format opti",
-      "publishedAt": "2026-11-21T03:06:47.016721+00:00",
+      "publishedAt": "2026-11-21T11:14:23.286452+00:00",
       "posted": "Posted 1d ago · 21 Nov",
-      "order": 4
+      "order": 5
     },
     {
       "id": "twine-b9w1n0",
@@ -83,25 +100,8 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Hi, I’m building a video editing agency and looking for a reliable long-term editing partner. We work with international podcast creators and businesses. I handle client acquisition and communication,",
-      "publishedAt": "2026-11-21T03:06:47.015237+00:00",
+      "publishedAt": "2026-11-21T11:14:23.285391+00:00",
       "posted": "Posted 1d ago · 21 Nov",
-      "order": 5
-    },
-    {
-      "id": "twine-b9vza0",
-      "title": "Video Editor for New YouTube Channel",
-      "company": "Twine Client",
-      "source": "Twine",
-      "url": "https://www.twine.net/projects/b9vza0-urgent-video-editor-for-new-youtube-channel-video-editor-remote-job",
-      "niche": [
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "Open to offers",
-      "notes": "Seeking a video editor to support a new YouTube channel. The initial work is expected to be completed within one week. Please be comfortable editing engaging YouTube content, including pacing, basic t",
-      "publishedAt": "2026-11-20T03:06:47.021208+00:00",
-      "posted": "Posted 2d ago · 20 Nov",
       "order": 6
     },
     {
@@ -117,7 +117,7 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Seeking a video editor for ongoing daily vlog content. The work involves editing vlog footage into engaging, polished videos on a regular basis. Please be comfortable with a consistent editing workflo",
-      "publishedAt": "2026-11-20T03:06:47.020037+00:00",
+      "publishedAt": "2026-11-20T11:14:23.289642+00:00",
       "posted": "Posted 2d ago · 20 Nov",
       "order": 7
     },
@@ -153,7 +153,7 @@
       "region": "world",
       "pay": "Per video",
       "notes": "I’m looking for an editor for long-form YouTube videos that help people learn English through travel and everyday situations. The style is calm and conversational. I’m looking for clear dialogue, natu",
-      "publishedAt": "2026-11-19T03:06:47.739714+00:00",
+      "publishedAt": "2026-11-19T11:14:24.149189+00:00",
       "posted": "Posted 3d ago · 19 Nov",
       "order": 9
     },
@@ -170,7 +170,7 @@
       "region": "world",
       "pay": "$20K-$36K/Year",
       "notes": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller Full-time | Worldwide Remote | Long-term We're not looking for someone who just knows how to edit long videos. We're looking for",
-      "publishedAt": "2026-11-19T03:06:47.739054+00:00",
+      "publishedAt": "2026-11-19T11:14:24.148610+00:00",
       "posted": "Posted 3d ago · 19 Nov",
       "order": 10
     },
@@ -210,6 +210,23 @@
       "order": 12
     },
     {
+      "id": "ytc-339",
+      "title": "Senior Video Editor — YouTube Health Education",
+      "company": "Hylianlink",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/339",
+      "niche": [
+        "youtube"
+      ],
+      "type": "fulltime",
+      "region": "world",
+      "pay": "",
+      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
+      "publishedAt": "2026-11-17T11:14:24.150490+00:00",
+      "posted": "Posted 5d ago · 17 Nov",
+      "order": 13
+    },
+    {
       "id": "reddit-1xyh9c8",
       "title": "Looking for a video editor to cut rave festival reels – 4 stages, 6 hours of raw footage",
       "company": "r/VideoEditors_forhire (/u/vereinuwe)",
@@ -223,8 +240,8 @@
       "pay": "",
       "notes": "Hey everyone! We’re UWE, a volunteer-run association in Austria. We put on Rave am Hof , an electronic music festival with 4 stages, up to 3,000 people, and a mix of EDM, Harder Styles and D…",
       "publishedAt": "2026-11-17T10:40:58+00:00",
-      "posted": "Posted 4d ago · 17 Nov",
-      "order": 13
+      "posted": "Posted 5d ago · 17 Nov",
+      "order": 14
     },
     {
       "id": "reddit-1xyff14",
@@ -240,8 +257,8 @@
       "pay": "$6",
       "notes": "I'm looking for a skilled video editor who can closely recreate the editing style Reference videos: https://www.youtube.com/watch?v=Ux01XXSGKFw https://www.youtube.com/watch?v=JEgu9Fv8Faw ht…",
       "publishedAt": "2026-11-17T08:46:20+00:00",
-      "posted": "Posted 4d ago · 17 Nov",
-      "order": 14
+      "posted": "Posted 5d ago · 17 Nov",
+      "order": 15
     },
     {
       "id": "reddit-1xyaquo",
@@ -257,23 +274,6 @@
       "pay": "$100",
       "notes": "Hey everyone, I’m a new creator looking for a reliable gaming video editor to handle my multiplayer gaming sessions. The Project & Workflow: My first project is a chaotic Cyberpunk 2077 co-o…",
       "publishedAt": "2026-11-17T04:10:55+00:00",
-      "posted": "Posted 4d ago · 17 Nov",
-      "order": 15
-    },
-    {
-      "id": "ytc-339",
-      "title": "Senior Video Editor — YouTube Health Education",
-      "company": "Hylianlink",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/339",
-      "niche": [
-        "youtube"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "",
-      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
-      "publishedAt": "2026-11-17T03:06:47.741211+00:00",
       "posted": "Posted 5d ago · 17 Nov",
       "order": 16
     },
@@ -380,7 +380,7 @@
       "region": "world",
       "pay": "$2000 for the project",
       "notes": "You will be a good fit if: You are looking for long-term growth and a partnership with a channel, not one-off video jobs. You are great at storytelling and at making eye-catching animations that hook",
-      "publishedAt": "2026-11-15T03:06:47.742063+00:00",
+      "publishedAt": "2026-11-15T11:14:24.151199+00:00",
       "posted": "Posted 7d ago · 15 Nov",
       "order": 22
     },
@@ -402,23 +402,6 @@
       "order": 23
     },
     {
-      "id": "ytc-335",
-      "title": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel",
-      "company": "Chris Guerriero",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/335",
-      "niche": [
-        "youtube"
-      ],
-      "type": "parttime",
-      "region": "world",
-      "pay": "",
-      "notes": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel About the channel Chris Guerriero has spent over 30 years building, buying and selling companies. He’s grown a portfolio of",
-      "publishedAt": "2026-11-14T03:06:47.742872+00:00",
-      "posted": "Posted 8d ago · 14 Nov",
-      "order": 24
-    },
-    {
       "id": "dj-nencreative-video-editor",
       "title": "Video Editor",
       "company": "Nencreative",
@@ -433,6 +416,23 @@
       "notes": "Video Editing Sound design Color Grading Motion Graphics Sound Mixing Storytelling Video Editor Please submit your application through this posting only. We're unable to review applications sent via e",
       "publishedAt": "2026-11-13T12:00:00+00:00",
       "posted": "Posted 8d ago · 13 Nov",
+      "order": 24
+    },
+    {
+      "id": "ytc-335",
+      "title": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel",
+      "company": "Chris Guerriero",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/335",
+      "niche": [
+        "youtube"
+      ],
+      "type": "parttime",
+      "region": "world",
+      "pay": "",
+      "notes": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel About the channel Chris Guerriero has spent over 30 years building, buying and selling companies. He’s grown a portfolio of",
+      "publishedAt": "2026-11-13T11:14:24.151975+00:00",
+      "posted": "Posted 9d ago · 13 Nov",
       "order": 25
     },
     {
@@ -449,8 +449,8 @@
       "region": "world",
       "pay": "",
       "notes": "About GraphicsZoo GraphicsZoo (GZoo) is a creative services company providing graphic design and video editing solutions to businesses, brands, and content creators. We work with clients across differ",
-      "publishedAt": "2026-11-12T03:06:47.744471+00:00",
-      "posted": "Posted 10d ago · 12 Nov",
+      "publishedAt": "2026-11-11T11:14:24.153398+00:00",
+      "posted": "Posted 11d ago · 11 Nov",
       "order": 26
     },
     {
