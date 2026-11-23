@@ -1,5 +1,5 @@
 {
-  "sweepDate": "22 Nov 2026",
+  "sweepDate": "23 Nov 2026",
   "jobs": [
     {
       "id": "twine-b9w1t0",
@@ -14,8 +14,8 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Seeking a video editor for a fully remote project. Please share relevant editing experience and examples of work where appropriate. The exact video format, footage, style, deliverables, and timeline w",
-      "publishedAt": "2026-11-22T15:30:33.819560+00:00",
-      "posted": "Posted 3h ago · 22 Nov",
+      "publishedAt": "2026-11-22T00:16:57.485922+00:00",
+      "posted": "Posted 1d ago · 22 Nov",
       "order": 1
     },
     {
@@ -32,8 +32,8 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Social Media Content Creator & Video Editor Company: Trending TV Position: Content Creator & Video Editor Location: Remote – Worldwide Employment: Part-time Monthly Budget: $20–$45 About Trending TV T",
-      "publishedAt": "2026-11-22T15:30:33.818542+00:00",
-      "posted": "Posted 3h ago · 22 Nov",
+      "publishedAt": "2026-11-22T00:16:57.484986+00:00",
+      "posted": "Posted 1d ago · 22 Nov",
       "order": 2
     },
     {
@@ -49,8 +49,8 @@
       "region": "world",
       "pay": "$750–$1,500",
       "notes": "We are looking for an experienced video editor to create a high-quality promotional video for a premium lifestyle product brand. The project involves editing approximately 3–5 minutes of raw footage i",
-      "publishedAt": "2026-11-22T15:30:33.817395+00:00",
-      "posted": "Posted 3h ago · 22 Nov",
+      "publishedAt": "2026-11-22T00:16:57.483926+00:00",
+      "posted": "Posted 1d ago · 22 Nov",
       "order": 3
     },
     {
@@ -66,9 +66,26 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Experienced Documentary Video Editor for Unseen Europe We are looking for an experienced video editor for regular, ongoing work on Unseen Europe, an English-language YouTube channel about European his",
-      "publishedAt": "2026-11-22T15:30:33.815750+00:00",
-      "posted": "Posted 3h ago · 22 Nov",
+      "publishedAt": "2026-11-22T00:16:57.482286+00:00",
+      "posted": "Posted 1d ago · 22 Nov",
       "order": 4
+    },
+    {
+      "id": "ytc-345",
+      "title": "i am looking for a gaming video editor",
+      "company": "Sluxxzz",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/345",
+      "niche": [
+        "youtube"
+      ],
+      "type": "parttime",
+      "region": "world",
+      "pay": "",
+      "notes": "Just edit my videos as best you can; we can talk about the price. As you can see, I'm just beginning my YouTube journey, and I'm looking for an editor who can take my videos to the next level. I'm not",
+      "publishedAt": "2026-11-21T00:16:58.113805+00:00",
+      "posted": "Posted 2d ago · 21 Nov",
+      "order": 5
     },
     {
       "id": "twine-b9w1n0",
@@ -84,25 +101,8 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Hi, I’m building a video editing agency and looking for a reliable long-term editing partner. We work with international podcast creators and businesses. I handle client acquisition and communication,",
-      "publishedAt": "2026-11-21T18:30:33.820605+00:00",
-      "posted": "Posted 1d ago · 21 Nov",
-      "order": 5
-    },
-    {
-      "id": "ytc-345",
-      "title": "i am looking for a gaming video editor",
-      "company": "Sluxxzz",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/345",
-      "niche": [
-        "youtube"
-      ],
-      "type": "parttime",
-      "region": "world",
-      "pay": "",
-      "notes": "Just edit my videos as best you can; we can talk about the price. As you can see, I'm just beginning my YouTube journey, and I'm looking for an editor who can take my videos to the next level. I'm not",
-      "publishedAt": "2026-11-20T18:30:34.624041+00:00",
-      "posted": "Posted 2d ago · 20 Nov",
+      "publishedAt": "2026-11-21T00:16:57.486951+00:00",
+      "posted": "Posted 2d ago · 21 Nov",
       "order": 6
     },
     {
@@ -120,7 +120,7 @@
       "pay": "$5",
       "notes": "Work From Anywhere in LATAM / PH Work Schedule: PST | 8:30 AM – 5:30 PM (Monday–Friday) About Pearl Talent Pearl works with the top 1% of candidates from around the world and connects them with t",
       "publishedAt": "2026-11-20T00:00:00+00:00",
-      "posted": "Posted 2d ago · 20 Nov",
+      "posted": "Posted 3d ago · 20 Nov",
       "order": 7
     },
     {
@@ -137,8 +137,8 @@
       "region": "world",
       "pay": "Per video",
       "notes": "I’m looking for an editor for long-form YouTube videos that help people learn English through travel and everyday situations. The style is calm and conversational. I’m looking for clear dialogue, natu",
-      "publishedAt": "2026-11-19T18:30:34.626625+00:00",
-      "posted": "Posted 3d ago · 19 Nov",
+      "publishedAt": "2026-11-19T00:16:58.116146+00:00",
+      "posted": "Posted 4d ago · 19 Nov",
       "order": 8
     },
     {
@@ -154,8 +154,8 @@
       "region": "world",
       "pay": "$20K-$36K/Year",
       "notes": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller Full-time | Worldwide Remote | Long-term We're not looking for someone who just knows how to edit long videos. We're looking for",
-      "publishedAt": "2026-11-19T18:30:34.625917+00:00",
-      "posted": "Posted 3d ago · 19 Nov",
+      "publishedAt": "2026-11-19T00:16:58.115492+00:00",
+      "posted": "Posted 4d ago · 19 Nov",
       "order": 9
     },
     {
@@ -245,6 +245,23 @@
       "order": 14
     },
     {
+      "id": "ytc-339",
+      "title": "Senior Video Editor — YouTube Health Education",
+      "company": "Hylianlink",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/339",
+      "niche": [
+        "youtube"
+      ],
+      "type": "fulltime",
+      "region": "world",
+      "pay": "",
+      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
+      "publishedAt": "2026-11-17T00:16:58.116983+00:00",
+      "posted": "Posted 6d ago · 17 Nov",
+      "order": 15
+    },
+    {
       "id": "hz-33f40191",
       "title": "Direct Response Video Editor (PCS963)",
       "company": "Hire Overseas",
@@ -259,24 +276,7 @@
       "pay": "",
       "notes": "We're looking for a Direct Response Video Editor to produce short-form video ads for a boutique agency that helps brands grow on Amazon. You will take scripts from the team, review them, and buil",
       "publishedAt": "2026-11-17T00:00:00+00:00",
-      "posted": "Posted 5d ago · 17 Nov",
-      "order": 15
-    },
-    {
-      "id": "ytc-339",
-      "title": "Senior Video Editor — YouTube Health Education",
-      "company": "Hylianlink",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/339",
-      "niche": [
-        "youtube"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "",
-      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
-      "publishedAt": "2026-11-16T18:30:34.627488+00:00",
-      "posted": "Posted 6d ago · 16 Nov",
+      "posted": "Posted 6d ago · 17 Nov",
       "order": 16
     },
     {
@@ -294,7 +294,7 @@
       "pay": "",
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-16T00:00:00+00:00",
-      "posted": "Posted 6d ago · 16 Nov",
+      "posted": "Posted 7d ago · 16 Nov",
       "order": 17
     },
     {
@@ -312,7 +312,7 @@
       "pay": "",
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-16T00:00:00+00:00",
-      "posted": "Posted 6d ago · 16 Nov",
+      "posted": "Posted 7d ago · 16 Nov",
       "order": 18
     },
     {
@@ -330,7 +330,7 @@
       "pay": "",
       "notes": "Short-Form Video Editor – Reels & Premium Brand Content | Remote Position Type: Fractional, Remote Function: Creative / Video Production About the Role At Pavago, one of our clients is hiring a S",
       "publishedAt": "2026-11-16T00:00:00+00:00",
-      "posted": "Posted 6d ago · 16 Nov",
+      "posted": "Posted 7d ago · 16 Nov",
       "order": 19
     },
     {
@@ -348,7 +348,7 @@
       "pay": "",
       "notes": "Video Editor About the Role We are looking for a creative, detail-oriented Video Editor who can turn raw footage into polished, engaging content that captures attention and communicates a clear m",
       "publishedAt": "2026-11-16T00:00:00+00:00",
-      "posted": "Posted 6d ago · 16 Nov",
+      "posted": "Posted 7d ago · 16 Nov",
       "order": 20
     },
     {
@@ -364,8 +364,8 @@
       "region": "world",
       "pay": "$2000 for the project",
       "notes": "You will be a good fit if: You are looking for long-term growth and a partnership with a channel, not one-off video jobs. You are great at storytelling and at making eye-catching animations that hook",
-      "publishedAt": "2026-11-14T18:30:34.628374+00:00",
-      "posted": "Posted 8d ago · 14 Nov",
+      "publishedAt": "2026-11-15T00:16:58.117817+00:00",
+      "posted": "Posted 8d ago · 15 Nov",
       "order": 21
     },
     {
@@ -398,8 +398,8 @@
       "region": "world",
       "pay": "",
       "notes": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel About the channel Chris Guerriero has spent over 30 years building, buying and selling companies. He’s grown a portfolio of",
-      "publishedAt": "2026-11-13T18:30:34.629275+00:00",
-      "posted": "Posted 9d ago · 13 Nov",
+      "publishedAt": "2026-11-14T00:16:58.118642+00:00",
+      "posted": "Posted 9d ago · 14 Nov",
       "order": 23
     },
     {
@@ -433,8 +433,8 @@
       "region": "world",
       "pay": "",
       "notes": "About GraphicsZoo GraphicsZoo (GZoo) is a creative services company providing graphic design and video editing solutions to businesses, brands, and content creators. We work with clients across differ",
-      "publishedAt": "2026-11-11T18:30:34.630938+00:00",
-      "posted": "Posted 11d ago · 11 Nov",
+      "publishedAt": "2026-11-12T00:16:58.120209+00:00",
+      "posted": "Posted 11d ago · 12 Nov",
       "order": 25
     },
     {
@@ -451,7 +451,7 @@
       "pay": "",
       "notes": "We're looking for an AI Video Editor to own AI-driven short-form video creative for a well-established clinical skincare brand with a strong presence across Southeast Asia. You will start from a",
       "publishedAt": "2026-11-11T00:00:00+00:00",
-      "posted": "Posted 11d ago · 11 Nov",
+      "posted": "Posted 12d ago · 11 Nov",
       "order": 26
     },
     {
