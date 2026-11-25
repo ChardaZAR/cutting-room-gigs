@@ -2,6 +2,23 @@
   "sweepDate": "25 Nov 2026",
   "jobs": [
     {
+      "id": "ytc-353",
+      "title": "Content Producer/ Video Editor",
+      "company": "Meltin Metal Anthony",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/353",
+      "niche": [
+        "social"
+      ],
+      "type": "parttime",
+      "region": "world",
+      "pay": "",
+      "notes": "MELTIN METAL IS HIRING — VIDEO EDITOR I’m looking to bring on a dedicated video editor to help with the continued growth of Meltin Metal. Our content primarily revolves around welding, metal fabricati",
+      "publishedAt": "2026-11-25T16:56:16.240277+00:00",
+      "posted": "Posted 3h ago · 25 Nov",
+      "order": 1
+    },
+    {
       "id": "twine-b9wah0",
       "title": "Creative Video Editor for Instagram and TikTok Content",
       "company": "Twine Client",
@@ -14,9 +31,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "What’s up! I’m looking for a video editor who can become part of the bigger vision I’m building with my content. I’m not just looking for someone to cut clips together. I want someone who understands",
-      "publishedAt": "2026-11-25T06:49:43.759047+00:00",
+      "publishedAt": "2026-11-25T16:56:15.736542+00:00",
       "posted": "Posted 3h ago · 25 Nov",
-      "order": 1
+      "order": 2
     },
     {
       "id": "twine-b9wb40",
@@ -31,9 +48,26 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Create marketing videos for real estate listings using supplied property photos. Each video should present the images in a polished, engaging format suitable for property promotion. Please include tra",
-      "publishedAt": "2026-11-25T06:49:43.758118+00:00",
+      "publishedAt": "2026-11-25T16:56:15.735936+00:00",
       "posted": "Posted 3h ago · 25 Nov",
-      "order": 2
+      "order": 3
+    },
+    {
+      "id": "twine-b9wbp0",
+      "title": "Video Editor For Channel Dr Insanity",
+      "company": "Twine Client",
+      "source": "Twine",
+      "url": "https://www.twine.net/projects/b9wbp0-urgent-video-editor-for-channel-dr-insanity-video-editor-remote-job",
+      "niche": [
+        "youtube"
+      ],
+      "type": "freelance",
+      "region": "world",
+      "pay": "$750–$1,500",
+      "notes": "Edit a video for a true crime channel, replicating its established old Windows-style visual aesthetic. Professional video editing skills are required. The work is fully remote and must be completed wi",
+      "publishedAt": "2026-11-25T16:56:15.734976+00:00",
+      "posted": "Posted 3h ago · 25 Nov",
+      "order": 4
     },
     {
       "id": "ytc-351",
@@ -48,9 +82,9 @@
       "region": "world",
       "pay": "$60 for first 10 minutes",
       "notes": "Video editor for GTA 6 WTF & Funny Moments compilation channel, with an editing style similar to Red Arcade, Zynxize, RespawnTV, and Top Gaming Plays. Videos will be 15–25 minutes long, with one video",
-      "publishedAt": "2026-11-24T23:49:44.551226+00:00",
-      "posted": "Posted 10h ago · 24 Nov",
-      "order": 3
+      "publishedAt": "2026-11-24T23:56:16.241178+00:00",
+      "posted": "Posted 20h ago · 24 Nov",
+      "order": 5
     },
     {
       "id": "ytc-348",
@@ -65,60 +99,9 @@
       "region": "world",
       "pay": "$65 per video (paid $10 test edit first)",
       "notes": "About CUE CUE is a numerology and astrology app on iOS, Android and the web. I'm the co-founder, hiring directly for my own company. The work Short-form edits for TikTok, Reels and Shorts: 30-60 secon",
-      "publishedAt": "2026-11-24T16:49:44.552401+00:00",
-      "posted": "Posted 17h ago · 24 Nov",
-      "order": 4
-    },
-    {
-      "id": "twine-b9w720",
-      "title": "Instagram Reels Videographer and Editor for Hair Salon",
-      "company": "Twine Client",
-      "source": "Twine",
-      "url": "https://www.twine.net/projects/b9w720-urgent-instagram-reels-videographer-and-editor-for-hair-salon-video-editor-remote-job",
-      "niche": [
-        "social"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "Open to offers",
-      "notes": "Create monthly Instagram content for a hair salon. Visit the salon once per month to film transformations, colouring services, hairstyles, salon atmosphere, and an introduction to the owner. Edit the",
-      "publishedAt": "2026-11-24T09:49:43.762128+00:00",
-      "posted": "Posted 1d ago · 24 Nov",
-      "order": 5
-    },
-    {
-      "id": "twine-b9w780",
-      "title": "Cinematic Trailer and News-Style Video Editing",
-      "company": "Twine Client",
-      "source": "Twine",
-      "url": "https://www.twine.net/projects/b9w780-urgent-cinematic-trailer-and-news-style-video-editing-video-editor-remote-job",
-      "niche": [
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "Open to offers",
-      "notes": "Create a cinematic trailer/teaser based on a supplied script and visual materials. The trailer should be approximately 80 seconds long and have a polished, engaging film-promotion style. Also produce",
-      "publishedAt": "2026-11-24T09:49:43.761646+00:00",
+      "publishedAt": "2026-11-24T19:56:16.242269+00:00",
       "posted": "Posted 1d ago · 24 Nov",
       "order": 6
-    },
-    {
-      "id": "twine-b9w790",
-      "title": "Maya 3D Video Editor for Ongoing Projects",
-      "company": "Twine Client",
-      "source": "Twine",
-      "url": "https://www.twine.net/projects/b9w790-searching-maya-3d-video-editor-for-ongoing-projects-video-editor-remote-job",
-      "niche": [
-        "youtube"
-      ],
-      "type": "freelance",
-      "region": "world",
-      "pay": "Open to offers",
-      "notes": "Seeking a skilled video editor based in Nepal or Bangladesh with experience using Maya 3D or comparable professional software. This is a fully remote, ongoing collaboration with multiple video project",
-      "publishedAt": "2026-11-24T09:49:43.761134+00:00",
-      "posted": "Posted 1d ago · 24 Nov",
-      "order": 7
     },
     {
       "id": "twine-b9w7q0",
@@ -133,9 +116,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Edit existing music performance footage into a polished 60–90 second demonstration video for an emerging musical project, October Road . The musical direction and creative vision are already establish",
-      "publishedAt": "2026-11-24T09:49:43.760562+00:00",
+      "publishedAt": "2026-11-24T19:56:15.738171+00:00",
       "posted": "Posted 1d ago · 24 Nov",
-      "order": 8
+      "order": 7
     },
     {
       "id": "twine-b9w8t0",
@@ -150,9 +133,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Create a compelling short video teaser from provided footage and assets. The teaser should quickly capture attention and communicate the key message or mood. Please handle editing, pacing, transitions",
-      "publishedAt": "2026-11-24T09:49:43.760060+00:00",
+      "publishedAt": "2026-11-24T19:56:15.737620+00:00",
       "posted": "Posted 1d ago · 24 Nov",
-      "order": 9
+      "order": 8
     },
     {
       "id": "twine-b9w9e0",
@@ -167,9 +150,9 @@
       "region": "world",
       "pay": "Open to offers",
       "notes": "Edit provided raw UGC footage into polished videos for organic and paid social campaigns. Create multiple cutdowns and creative variations tailored to the campaign messaging and brand guidelines. Deli",
-      "publishedAt": "2026-11-24T09:49:43.759560+00:00",
+      "publishedAt": "2026-11-24T19:56:15.737081+00:00",
       "posted": "Posted 1d ago · 24 Nov",
-      "order": 10
+      "order": 9
     },
     {
       "id": "ytc-345",
@@ -184,9 +167,9 @@
       "region": "world",
       "pay": "",
       "notes": "Just edit my videos as best you can; we can talk about the price. As you can see, I'm just beginning my YouTube journey, and I'm looking for an editor who can take my videos to the next level. I'm not",
-      "publishedAt": "2026-11-20T09:49:44.553160+00:00",
+      "publishedAt": "2026-11-20T19:56:16.243081+00:00",
       "posted": "Posted 5d ago · 20 Nov",
-      "order": 11
+      "order": 10
     },
     {
       "id": "hz-46d049a0",
@@ -204,7 +187,7 @@
       "notes": "Work From Anywhere in LATAM / PH Work Schedule: PST | 8:30 AM – 5:30 PM (Monday–Friday) About Pearl Talent Pearl works with the top 1% of candidates from around the world and connects them with t",
       "publishedAt": "2026-11-20T00:00:00+00:00",
       "posted": "Posted 5d ago · 20 Nov",
-      "order": 12
+      "order": 11
     },
     {
       "id": "ytc-342",
@@ -220,9 +203,9 @@
       "region": "world",
       "pay": "Per video",
       "notes": "I’m looking for an editor for long-form YouTube videos that help people learn English through travel and everyday situations. The style is calm and conversational. I’m looking for clear dialogue, natu",
-      "publishedAt": "2026-11-19T09:49:44.554387+00:00",
+      "publishedAt": "2026-11-19T19:56:16.244467+00:00",
       "posted": "Posted 6d ago · 19 Nov",
-      "order": 13
+      "order": 12
     },
     {
       "id": "ytc-343",
@@ -237,9 +220,9 @@
       "region": "world",
       "pay": "$20K-$36K/Year",
       "notes": "We're Hiring: Senior Long-Form YouTube Editor & Documentary Storyteller Full-time | Worldwide Remote | Long-term We're not looking for someone who just knows how to edit long videos. We're looking for",
-      "publishedAt": "2026-11-19T09:49:44.554047+00:00",
+      "publishedAt": "2026-11-19T19:56:16.244076+00:00",
       "posted": "Posted 6d ago · 19 Nov",
-      "order": 14
+      "order": 13
     },
     {
       "id": "dj-lumenalta-junior-video-edito",
@@ -255,25 +238,8 @@
       "pay": "$40k - $55k per year",
       "notes": "Video Editing Adobe Premiere Pro Color Correction Audio Editing Motion Graphics Junior Video Editor About the Role Lumenalta is a technology firm of more than 500 specialists who build data, AI, and s",
       "publishedAt": "2026-11-17T12:00:00+00:00",
-      "posted": "Posted 7d ago · 17 Nov",
-      "order": 15
-    },
-    {
-      "id": "ytc-339",
-      "title": "Senior Video Editor — YouTube Health Education",
-      "company": "Hylianlink",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/339",
-      "niche": [
-        "youtube"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "",
-      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
-      "publishedAt": "2026-11-17T09:49:44.554853+00:00",
       "posted": "Posted 8d ago · 17 Nov",
-      "order": 16
+      "order": 14
     },
     {
       "id": "hz-33f40191",
@@ -291,7 +257,24 @@
       "notes": "We're looking for a Direct Response Video Editor to produce short-form video ads for a boutique agency that helps brands grow on Amazon. You will take scripts from the team, review them, and buil",
       "publishedAt": "2026-11-17T00:00:00+00:00",
       "posted": "Posted 8d ago · 17 Nov",
-      "order": 17
+      "order": 15
+    },
+    {
+      "id": "ytc-339",
+      "title": "Senior Video Editor — YouTube Health Education",
+      "company": "Hylianlink",
+      "source": "YT.Careers",
+      "url": "https://yt.careers/youtube-jobs/339",
+      "niche": [
+        "youtube"
+      ],
+      "type": "fulltime",
+      "region": "world",
+      "pay": "",
+      "notes": "Senior Video Editor — YouTube Health Education Remote | Full-time contract Channel Will Remain Private Until Candidates are Chosen We’re an established physician-led health education channel looking f",
+      "publishedAt": "2026-11-16T19:56:16.244932+00:00",
+      "posted": "Posted 9d ago · 16 Nov",
+      "order": 16
     },
     {
       "id": "wk-pavago-d51f760d86",
@@ -309,7 +292,7 @@
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 9d ago · 16 Nov",
-      "order": 18
+      "order": 17
     },
     {
       "id": "wk-pavago-b3a6fcebbe",
@@ -327,7 +310,7 @@
       "notes": "Verified active opening on Pavago's Workable ATS (Pakistan).",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 9d ago · 16 Nov",
-      "order": 19
+      "order": 18
     },
     {
       "id": "hz-2b9ec7e0",
@@ -345,7 +328,7 @@
       "notes": "Short-Form Video Editor – Reels & Premium Brand Content | Remote Position Type: Fractional, Remote Function: Creative / Video Production About the Role At Pavago, one of our clients is hiring a S",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 9d ago · 16 Nov",
-      "order": 20
+      "order": 19
     },
     {
       "id": "hz-3174e801",
@@ -363,7 +346,7 @@
       "notes": "Video Editor About the Role We are looking for a creative, detail-oriented Video Editor who can turn raw footage into polished, engaging content that captures attention and communicates a clear m",
       "publishedAt": "2026-11-16T00:00:00+00:00",
       "posted": "Posted 9d ago · 16 Nov",
-      "order": 21
+      "order": 20
     },
     {
       "id": "hz-13a3fa8f",
@@ -379,8 +362,8 @@
       "pay": "",
       "notes": "Job Title: At-Work Video Recorder (For Business Owners) Role Type:ContractorWork Arrangement:Remote — Eligible Locations Only Job Summary Are you a small business owner looking to earn additional",
       "publishedAt": "2026-11-14T17:59:24+00:00",
-      "posted": "Posted 10d ago · 14 Nov",
-      "order": 22
+      "posted": "Posted 11d ago · 14 Nov",
+      "order": 21
     },
     {
       "id": "ytc-335",
@@ -395,9 +378,9 @@
       "region": "world",
       "pay": "",
       "notes": "YouTube Growth Manager & Editor for a Business and Entrepreneurship Channel About the channel Chris Guerriero has spent over 30 years building, buying and selling companies. He’s grown a portfolio of",
-      "publishedAt": "2026-11-14T09:49:44.555320+00:00",
-      "posted": "Posted 11d ago · 14 Nov",
-      "order": 23
+      "publishedAt": "2026-11-13T19:56:16.245445+00:00",
+      "posted": "Posted 12d ago · 13 Nov",
+      "order": 22
     },
     {
       "id": "dj-nencreative-video-editor",
@@ -413,26 +396,8 @@
       "pay": "$65k - $100k per year",
       "notes": "Video Editing Sound design Color Grading Motion Graphics Sound Mixing Storytelling Video Editor Please submit your application through this posting only. We're unable to review applications sent via e",
       "publishedAt": "2026-11-13T12:00:00+00:00",
-      "posted": "Posted 11d ago · 13 Nov",
-      "order": 24
-    },
-    {
-      "id": "ytc-332",
-      "title": "Creative Video Editor | Short-Form & Social Media Content",
-      "company": "Graphics Zoo",
-      "source": "YT.Careers",
-      "url": "https://yt.careers/youtube-jobs/332",
-      "niche": [
-        "social",
-        "youtube"
-      ],
-      "type": "fulltime",
-      "region": "world",
-      "pay": "",
-      "notes": "About GraphicsZoo GraphicsZoo (GZoo) is a creative services company providing graphic design and video editing solutions to businesses, brands, and content creators. We work with clients across differ",
-      "publishedAt": "2026-11-11T09:49:44.556191+00:00",
-      "posted": "Posted 14d ago · 11 Nov",
-      "order": 25
+      "posted": "Posted 12d ago · 13 Nov",
+      "order": 23
     }
   ]
 }
